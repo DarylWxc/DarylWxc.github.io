@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-16x16-Aren.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-Aren.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Aren.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端框架,Vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.指令是啥？Vue有一套为数据驱动视图更方便的指令系统。v-开头的行内属性都是指令，不同指令可以实现不同的功能。 2.如何实现？局部注册，全局注册。通过Vue.directive注册。全局注册： 12345Vue.directive(&#39;focus&#39;, &amp;#123; &#x2F;&#x2F; 注册v-focus指令   inserted: function (el) &amp;#123;      el.focus() &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue指令">
+<meta property="og:url" content="http://yoursite.com/2021/02/25/Vue%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="DarylWXC的博客">
+<meta property="og:description" content="1.指令是啥？Vue有一套为数据驱动视图更方便的指令系统。v-开头的行内属性都是指令，不同指令可以实现不同的功能。 2.如何实现？局部注册，全局注册。通过Vue.directive注册。全局注册： 12345Vue.directive(&#39;focus&#39;, &amp;#123; &#x2F;&#x2F; 注册v-focus指令   inserted: function (el) &amp;#123;      el.focus() &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-25T06:05:04.000Z">
+<meta property="article:modified_time" content="2021-02-25T08:14:15.888Z">
+<meta property="article:author" content="DarylWxc">
+<meta property="article:tag" content="前端框架">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/25/Vue指令/"/>
+
+
+
+
+
+  <title>Vue指令 | DarylWXC的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DarylWXC的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/Vue%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DarylWxc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Aren.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DarylWXC的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue指令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-25T14:05:04+08:00">
+                2021-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.1k words
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-指令是啥？"><a href="#1-指令是啥？" class="headerlink" title="1.指令是啥？"></a>1.指令是啥？</h2><p>Vue有一套为数据驱动视图更方便的指令系统。v-开头的行内属性都是指令，不同指令可以实现不同的功能。</p>
+<h2 id="2-如何实现？"><a href="#2-如何实现？" class="headerlink" title="2.如何实现？"></a>2.如何实现？</h2><p>局部注册，全局注册。通过Vue.directive注册。<br>全局注册：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'focus'</span>, &#123; // 注册v-focus指令</span><br><span class="line">   inserted: <span class="keyword">function</span> (el) &#123;</span><br><span class="line">      el.focus() // 让元素自动聚焦</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>局部注册：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">directives: &#123;</span><br><span class="line">   focus: &#123;</span><br><span class="line">      inserted: <span class="keyword">function</span> (el) &#123;</span><br><span class="line">         el.focus() //功能同上</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模板中的使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-focus /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>自定义指令也存在钩子函数：<br>·bind：只调用一次，指令第一次绑定到元素时使用。初始化设置。<br>·inserted：被绑定元素插入父节点时调用<br>·update：所在组件VNode更新时调用<br>·componentUpdated：所在组件VNode和子VNode全部更新后调用<br>·unbind：只调用一次，指令与元素解绑时调用<br>钩子函数的参数有：<br>·el：指令绑定的元素，可操作DOM<br>·binding：一个对象，包含name,value,oldValue,expression,arg,modifiers<br>·vnode：虚拟节点<br>·oldVnode：上一个虚拟节点</p>
+<h2 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="3.应用场景"></a>3.应用场景</h2><p>·防抖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 1.设置v-throttle自定义指令</span><br><span class="line">Vue.directive(<span class="string">'throttle'</span>, &#123;</span><br><span class="line">  <span class="built_in">bind</span>: (el, binding) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> throttleTime = binding.value; // 防抖时间</span><br><span class="line">    <span class="keyword">if</span> (!throttleTime) &#123; // 用户若不设置防抖时间，则默认2s</span><br><span class="line">      throttleTime = 2000;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">let</span> cbFun;</span><br><span class="line">    el.addEventListener(<span class="string">'click'</span>, event =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!cbFun) &#123; // 第一次执行</span><br><span class="line">        cbFun = setTimeout(() =&gt; &#123;</span><br><span class="line">          cbFun = null;</span><br><span class="line">        &#125;, throttleTime);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        event &amp;&amp; event.stopImmediatePropagation();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="literal">true</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">// 2.为button标签设置v-throttle自定义指令</span><br><span class="line">&lt;button @click=<span class="string">"sayHello"</span> v-throttle&gt;提交&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>·图片懒加载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">// 1.设置v-throttle自定义指令</span><br><span class="line">Vue.directive(<span class="string">'throttle'</span>, &#123;</span><br><span class="line">  <span class="built_in">bind</span>: (el, binding) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> throttleTime = binding.value; // 防抖时间</span><br><span class="line">    <span class="keyword">if</span> (!throttleTime) &#123; // 用户若不设置防抖时间，则默认2s</span><br><span class="line">      throttleTime = 2000;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">let</span> cbFun;</span><br><span class="line">    el.addEventListener(<span class="string">'click'</span>, event =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!cbFun) &#123; // 第一次执行</span><br><span class="line">        cbFun = setTimeout(() =&gt; &#123;</span><br><span class="line">          cbFun = null;</span><br><span class="line">        &#125;, throttleTime);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        event &amp;&amp; event.stopImmediatePropagation();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="literal">true</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">// 2.为button标签设置v-throttle自定义指令</span><br><span class="line">&lt;button @click=<span class="string">"sayHello"</span> v-throttle&gt;提交&lt;/button&gt;</span><br><span class="line">图片懒加载</span><br><span class="line">设置一个v-lazy自定义组件完成图片懒加载</span><br><span class="line">const LazyLoad = &#123;</span><br><span class="line">    // install方法</span><br><span class="line">    install(Vue,options)&#123;</span><br><span class="line">       // 代替图片的loading图</span><br><span class="line">        <span class="built_in">let</span> defaultSrc = options.default;</span><br><span class="line">        Vue.directive(<span class="string">'lazy'</span>,&#123;</span><br><span class="line">            <span class="built_in">bind</span>(el,binding)&#123;</span><br><span class="line">                LazyLoad.init(el,binding.value,defaultSrc);</span><br><span class="line">            &#125;,</span><br><span class="line">            inserted(el)&#123;</span><br><span class="line">                // 兼容处理</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">'IntersectionObserver'</span> <span class="keyword">in</span> window)&#123;</span><br><span class="line">                    LazyLoad.observe(el);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    LazyLoad.listenerScroll(el);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 初始化</span><br><span class="line">    init(el,val,def)&#123;</span><br><span class="line">        // data-src 储存真实src</span><br><span class="line">        el.setAttribute(<span class="string">'data-src'</span>,val);</span><br><span class="line">        // 设置src为loading图</span><br><span class="line">        el.setAttribute(<span class="string">'src'</span>,def);</span><br><span class="line">    &#125;,</span><br><span class="line">    // 利用IntersectionObserver监听el</span><br><span class="line">    observe(el)&#123;</span><br><span class="line">        <span class="built_in">let</span> io = new IntersectionObserver(entries =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> realSrc = el.dataset.src;</span><br><span class="line">            <span class="keyword">if</span>(entries[0].isIntersecting)&#123;</span><br><span class="line">                <span class="keyword">if</span>(realSrc)&#123;</span><br><span class="line">                    el.src = realSrc;</span><br><span class="line">                    el.removeAttribute(<span class="string">'data-src'</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        io.observe(el);</span><br><span class="line">    &#125;,</span><br><span class="line">    // 监听scroll事件</span><br><span class="line">    listenerScroll(el)&#123;</span><br><span class="line">        <span class="built_in">let</span> handler = LazyLoad.throttle(LazyLoad.load,300);</span><br><span class="line">        LazyLoad.load(el);</span><br><span class="line">        window.addEventListener(<span class="string">'scroll'</span>,() =&gt; &#123;</span><br><span class="line">            handler(el);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    // 加载真实图片</span><br><span class="line">    load(el)&#123;</span><br><span class="line">        <span class="built_in">let</span> windowHeight = document.documentElement.clientHeight</span><br><span class="line">        <span class="built_in">let</span> elTop = el.getBoundingClientRect().top;</span><br><span class="line">        <span class="built_in">let</span> elBtm = el.getBoundingClientRect().bottom;</span><br><span class="line">        <span class="built_in">let</span> realSrc = el.dataset.src;</span><br><span class="line">        <span class="keyword">if</span>(elTop - windowHeight&lt;0&amp;&amp;elBtm &gt; 0)&#123;</span><br><span class="line">            <span class="keyword">if</span>(realSrc)&#123;</span><br><span class="line">                el.src = realSrc;</span><br><span class="line">                el.removeAttribute(<span class="string">'data-src'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 节流</span><br><span class="line">    throttle(fn,delay)&#123;</span><br><span class="line">        <span class="built_in">let</span> timer; </span><br><span class="line">        <span class="built_in">let</span> prevTime;</span><br><span class="line">        <span class="built_in">return</span> <span class="keyword">function</span>(...args)&#123;</span><br><span class="line">            <span class="built_in">let</span> currTime = Date.now();</span><br><span class="line">            <span class="built_in">let</span> context = this;</span><br><span class="line">            <span class="keyword">if</span>(!prevTime) prevTime = currTime;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(currTime - prevTime &gt; delay)&#123;</span><br><span class="line">                prevTime = currTime;</span><br><span class="line">                fn.apply(context,args);</span><br><span class="line">                clearTimeout(timer);</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            timer = setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                prevTime = Date.now();</span><br><span class="line">                timer = null;</span><br><span class="line">                fn.apply(context,args);</span><br><span class="line">            &#125;,delay);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default LazyLoad;</span><br></pre></td></tr></table></figure>
+<p>·一键copy的功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Message &#125; from <span class="string">'ant-design-vue'</span>;</span><br><span class="line"></span><br><span class="line">const vCopy = &#123; //</span><br><span class="line">  /*</span><br><span class="line">    <span class="built_in">bind</span> 钩子函数，第一次绑定时调用，可以在这里做初始化设置</span><br><span class="line">    el: 作用的 dom 对象</span><br><span class="line">    value: 传给指令的值，也就是我们要 copy 的值</span><br><span class="line">  */</span><br><span class="line">  <span class="built_in">bind</span>(el, &#123; value &#125;) &#123;</span><br><span class="line">    el.<span class="variable">$value</span> = value; // 用一个全局属性来存传进来的值，因为这个值在别的钩子函数里还会用到</span><br><span class="line">    el.handler = () =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!el.<span class="variable">$value</span>) &#123;</span><br><span class="line">      // 值为空的时候，给出提示，我这里的提示是用的 ant-design-vue 的提示，你们随意</span><br><span class="line">        Message.warning(<span class="string">'无复制内容'</span>);</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      // 动态创建 textarea 标签</span><br><span class="line">      const textarea = document.createElement(<span class="string">'textarea'</span>);</span><br><span class="line">      // 将该 textarea 设为 <span class="built_in">readonly</span> 防止 iOS 下自动唤起键盘，同时将 textarea 移出可视区域</span><br><span class="line">      textarea.readOnly = <span class="string">'readonly'</span>;</span><br><span class="line">      textarea.style.position = <span class="string">'absolute'</span>;</span><br><span class="line">      textarea.style.left = <span class="string">'-9999px'</span>;</span><br><span class="line">      // 将要 copy 的值赋给 textarea 标签的 value 属性</span><br><span class="line">      textarea.value = el.<span class="variable">$value</span>;</span><br><span class="line">      // 将 textarea 插入到 body 中</span><br><span class="line">      document.body.appendChild(textarea);</span><br><span class="line">      // 选中值并复制</span><br><span class="line">      textarea.select();</span><br><span class="line">      // textarea.setSelectionRange(0, textarea.value.length);</span><br><span class="line">      const result = document.execCommand(<span class="string">'Copy'</span>);</span><br><span class="line">      <span class="keyword">if</span> (result) &#123;</span><br><span class="line">        Message.success(<span class="string">'复制成功'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      document.body.removeChild(textarea);</span><br><span class="line">    &#125;;</span><br><span class="line">    // 绑定点击事件，就是所谓的一键 copy 啦</span><br><span class="line">    el.addEventListener(<span class="string">'click'</span>, el.handler);</span><br><span class="line">  &#125;,</span><br><span class="line">  // 当传进来的值更新的时候触发</span><br><span class="line">  componentUpdated(el, &#123; value &#125;) &#123;</span><br><span class="line">    el.<span class="variable">$value</span> = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  // 指令与元素解绑的时候，移除事件绑定</span><br><span class="line">  unbind(el) &#123;</span><br><span class="line">    el.removeEventListener(<span class="string">'click'</span>, el.handler);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default vCopy;</span><br></pre></td></tr></table></figure>
+<p>还有拖拽指令、页面水印、权限校验等等</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag"># 前端框架</a>
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/21/%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%A4%9A%E9%A1%B5%E9%9D%A2/" rel="next" title="单页面和多页面">
+                <i class="fa fa-chevron-left"></i> 单页面和多页面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/25/Vue-mixin/" rel="prev" title="Vue-mixin">
+                Vue-mixin <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Aren.jpg"
+                alt="DarylWxc" />
+            
+              <p class="site-author-name" itemprop="name">DarylWxc</p>
+              <p class="site-description motion-element" itemprop="description">每日提升一点点</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives/%7C%7Carchive">
+                <a href="/archives">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=485347116&auto=1&height=66"></iframe>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wxc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1498368314@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-qq"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                CSDN博客链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/weixin_43898759" title="CSDN主页" target="_blank">CSDN主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-指令是啥？"><span class="nav-number">1.</span> <span class="nav-text">1.指令是啥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如何实现？"><span class="nav-number">2.</span> <span class="nav-text">2.如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-应用场景"><span class="nav-number">3.</span> <span class="nav-text">3.应用场景</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DarylWxc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Wxc</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">L·O·V·E</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="true"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<script type="text/javascript" 
+color="0,0,0" opacity='1' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>
