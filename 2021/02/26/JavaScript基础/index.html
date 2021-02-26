@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="结构型模式 1.适配器模式特点：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。后台返回的数据格式不同，可以通过适配器修改。例：后台返回json格式的数据，通过方法检索出自己需要的数据进行显示，这个方法即为适配器。通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误。最优解：">
+<meta name="description" content="1. 原型链每个函数都有prototype，指向了一个对象，该对象为实例的原型。每个JS对象（除了null）都具有_proto_属性，指向该对象的原型。每个原型都具有constructor属性，指向关联的构造函数。Object.prototype._proto_为null代表该对象没有原型。 2. 继承 原型链继承123456789101112131415161718192021222324252">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
-<meta property="og:url" content="http://yoursite.com/2020/09/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="JavaScript基础">
+<meta property="og:url" content="http://yoursite.com/2021/02/26/JavaScript%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="DarylWXC的博客">
-<meta property="og:description" content="结构型模式 1.适配器模式特点：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。后台返回的数据格式不同，可以通过适配器修改。例：后台返回json格式的数据，通过方法检索出自己需要的数据进行显示，这个方法即为适配器。通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误。最优解：">
+<meta property="og:description" content="1. 原型链每个函数都有prototype，指向了一个对象，该对象为实例的原型。每个JS对象（除了null）都具有_proto_属性，指向该对象的原型。每个原型都具有constructor属性，指向关联的构造函数。Object.prototype._proto_为null代表该对象没有原型。 2. 继承 原型链继承123456789101112131415161718192021222324252">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-11T07:44:22.000Z">
-<meta property="article:modified_time" content="2020-09-11T09:46:29.000Z">
+<meta property="article:published_time" content="2021-02-26T07:17:21.000Z">
+<meta property="article:modified_time" content="2021-02-26T08:48:04.221Z">
 <meta property="article:author" content="DarylWxc">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/09/11/设计模式/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/02/26/JavaScript基础/"/>
 
 
 
 
 
-  <title>设计模式 | DarylWXC的博客</title>
+  <title>JavaScript基础 | DarylWXC的博客</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/26/JavaScript%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DarylWxc">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript基础</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T15:44:22+08:00">
-                2020-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-26T15:17:21+08:00">
+                2021-02-26
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">Web前端</span>
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
                   </a>
                 </span>
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  732 words
+                  447 words
                 </span>
               
 
@@ -383,20 +383,12 @@
       
 
       
-        <h2 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h2><hr>
-<p>1.适配器模式<br>特点：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。<br>后台返回的数据格式不同，可以通过适配器修改。例：<br>后台返回json格式的数据，通过方法检索出自己需要的数据进行显示，这个方法即为适配器。<br>通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误。<br>最优解：项目开发过程中前后端协商讨论数据格式、文件名等代码规范。</p>
-<hr>
-<p>2.代理模式<br>为一个对象提供一个代用品或占位符，以便控制对他的访问。<br>在一个对象中调用其他对象的方法（函数可以实例化成对象）<br>保护代理：数据拦截（可以在函数中条件判断拦截数据从而执行不同下文）<br>虚拟代理：数据通过这些代理传递没有被拦截（可实现图片懒加载）</p>
-<hr>
-<p>3.桥接模式<br>把事物对象和其具体行为、具体特征分离开来，使它们可以各自独立的变化。<br>需要一种方式让对象和行为分离，便于随意拼接。<br>优点：分离抽象接口及其实现部分，提高可拓展性。<br>缺点：增加系统的理解和设计难度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">boy,girl,piano,guitar</span><br><span class="line">boy-piano,boy-guitar,girl-piano,girl-guitar</span><br><span class="line"><span class="keyword">function</span> Boy(instrument) &#123;</span><br><span class="line">      this.sayHi = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          console.log(<span class="string">'hi, 我是男生'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      this.playInstrument = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          instrument.play()</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> Girl(instrument) &#123;</span><br><span class="line">      this.sayHi = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          console.log(<span class="string">'hi, 我是女生'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      this.playInstrument = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          instrument.play()</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">Piano</span></span>() &#123;</span><br><span class="line">      this.play = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          console.log(<span class="string">'钢琴开始演奏'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">Guitar</span></span>() &#123;</span><br><span class="line">      this.play = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          console.log(<span class="string">'吉他开始演奏'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">let</span> piano = new Piano()</span><br><span class="line">  <span class="built_in">let</span> guitar = new Guitar()</span><br><span class="line">  <span class="built_in">let</span> pianoBoy = new Boy(piano)</span><br><span class="line">  pianoBoy.playInstrument()</span><br><span class="line">  <span class="built_in">let</span> guitarGirl = new Girl(guitar)</span><br><span class="line">  guitarGirl.playInstrument()</span><br></pre></td></tr></table></figure>
-<hr>
-<p>4.装饰模式<br>动态地给一个对象添加一些额外的职责。（类似魂斗罗的子弹种类变化，原来子弹还在）<br>优点：装饰类和被装饰类可以独立发展，不会相互耦合，继承的一个替代模式。<br>缺点：多层装饰，比较复杂。<br>类似闭包，在函数对象中添加调用其他函数，给对象增加功能</p>
-<hr>
-<p>5.组合模式<br>由小对象构建大对象，常和装饰者模式一起使用<br>优点：通过对象的多态表现，使对单个对象和组合对象的使用具有一致性<br>缺点：系统负担，性能<br>小函数添加进一个对象（可以是实例化的函数），通过该函数去调用各种小函数，囊括这些功能。</p>
-<hr>
-<h2 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h2><hr>
-<h2 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h2><hr>
+        <h2 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h2><p>每个函数都有prototype，指向了一个对象，该对象为实例的原型。<br>每个JS对象（除了null）都具有_proto_属性，指向该对象的原型。<br>每个原型都具有constructor属性，指向关联的构造函数。<br>Object.prototype._proto_为null代表该对象没有原型。</p>
+<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h2><ul>
+<li>原型链继承<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function Parent () &#123;</span><br><span class="line">    this.name &#x3D; &#39;kevin&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Parent.prototype.getName &#x3D; function () &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child () &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype &#x3D; new Parent();</span><br><span class="line"></span><br><span class="line">var child1 &#x3D; new Child();</span><br><span class="line"></span><br><span class="line">console.log(child1.getName()) &#x2F;&#x2F; kevin</span><br><span class="line"></span><br><span class="line">var child1 &#x3D; new Child(); &#x2F;&#x2F; 引用类型的属性被所有实例共享</span><br><span class="line"></span><br><span class="line">child1.names.push(&#39;yayu&#39;); </span><br><span class="line"></span><br><span class="line">console.log(child1.names); &#x2F;&#x2F; [&quot;kevin&quot;, &quot;daisy&quot;, &quot;yayu&quot;]</span><br><span class="line"></span><br><span class="line">var child2 &#x3D; new Child(); &#x2F;&#x2F; 创建child实例时无法向Parent传参</span><br><span class="line"></span><br><span class="line">console.log(child2.names); &#x2F;&#x2F; [&quot;kevin&quot;, &quot;daisy&quot;, &quot;yayu&quot;]</span><br></pre></td></tr></table></figure></li>
+<li>借用构造函数（经典继承）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">function Parent () &#123;</span><br><span class="line">    this.names &#x3D; [&#39;kevin&#39;, &#39;daisy&#39;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child () &#123;</span><br><span class="line">    Parent.call(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var child1 &#x3D; new Child();</span><br><span class="line"></span><br><span class="line">child1.names.push(&#39;yayu&#39;);</span><br><span class="line"></span><br><span class="line">console.log(child1.names); &#x2F;&#x2F; [&quot;kevin&quot;, &quot;daisy&quot;, &quot;yayu&quot;]</span><br><span class="line"></span><br><span class="line">var child2 &#x3D; new Child();</span><br><span class="line"></span><br><span class="line">console.log(child2.names); &#x2F;&#x2F; [&quot;kevin&quot;, &quot;daisy&quot;]</span><br><span class="line"></span><br><span class="line">function Parent (name) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child (name) &#123;</span><br><span class="line">    Parent.call(this, name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var child1 &#x3D; new Child(&#39;kevin&#39;);</span><br><span class="line"></span><br><span class="line">console.log(child1.name); &#x2F;&#x2F; kevin</span><br><span class="line"></span><br><span class="line">var child2 &#x3D; new Child(&#39;daisy&#39;);</span><br><span class="line"></span><br><span class="line">console.log(child2.name); &#x2F;&#x2F; daisy</span><br></pre></td></tr></table></figure>
+优点：<br>1.避免了引用类型的属性被所有实例共享<br>2.可以在Child中向Parent传参<br>缺点：<br>方法都在构造函数中定义，每次创建实例都会创建一遍方法。<h2 id="3-作用域"><a href="#3-作用域" class="headerlink" title="3. 作用域"></a>3. 作用域</h2><h2 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h2><h2 id="5-变量提升"><a href="#5-变量提升" class="headerlink" title="5. 变量提升"></a>5. 变量提升</h2><h2 id="6-this的指向"><a href="#6-this的指向" class="headerlink" title="6. this的指向"></a>6. this的指向</h2><h2 id="7-立即执行函数"><a href="#7-立即执行函数" class="headerlink" title="7. 立即执行函数"></a>7. 立即执行函数</h2><h2 id="8-instanceof原理"><a href="#8-instanceof原理" class="headerlink" title="8. instanceof原理"></a>8. instanceof原理</h2><h2 id="9-bind的实现"><a href="#9-bind的实现" class="headerlink" title="9. bind的实现"></a>9. bind的实现</h2><h2 id="10-apply和call"><a href="#10-apply和call" class="headerlink" title="10. apply和call"></a>10. apply和call</h2><h2 id="11-柯里化"><a href="#11-柯里化" class="headerlink" title="11. 柯里化"></a>11. 柯里化</h2><h2 id="12-v8垃圾回收机制"><a href="#12-v8垃圾回收机制" class="headerlink" title="12. v8垃圾回收机制"></a>12. v8垃圾回收机制</h2><h2 id="13-浮点数精度"><a href="#13-浮点数精度" class="headerlink" title="13. 浮点数精度"></a>13. 浮点数精度</h2><h2 id="14-new操作符"><a href="#14-new操作符" class="headerlink" title="14. new操作符"></a>14. new操作符</h2><h2 id="15-事件循环机制"><a href="#15-事件循环机制" class="headerlink" title="15. 事件循环机制"></a>15. 事件循环机制</h2><h2 id="16-promise原理"><a href="#16-promise原理" class="headerlink" title="16. promise原理"></a>16. promise原理</h2><h2 id="17-generator原理"><a href="#17-generator原理" class="headerlink" title="17. generator原理"></a>17. generator原理</h2></li>
+</ul>
 
       
     </div>
@@ -414,7 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -427,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/11/%E5%B7%A5%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="next" title="工作注意事项">
-                <i class="fa fa-chevron-left"></i> 工作注意事项
+              <a href="/2021/02/26/vue%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" rel="next" title="vue权限管理">
+                <i class="fa fa-chevron-left"></i> vue权限管理
               </a>
             
           </div>
@@ -436,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/11/18/javaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="javaScript设计模式">
-                javaScript设计模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构型模式"><span class="nav-number">1.</span> <span class="nav-text">结构型模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建型模式"><span class="nav-number">2.</span> <span class="nav-text">创建型模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行为型模式"><span class="nav-number">3.</span> <span class="nav-text">行为型模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原型链"><span class="nav-number">1.</span> <span class="nav-text">1. 原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-继承"><span class="nav-number">2.</span> <span class="nav-text">2. 继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-作用域"><span class="nav-number">3.</span> <span class="nav-text">3. 作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-闭包"><span class="nav-number">4.</span> <span class="nav-text">4. 闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-变量提升"><span class="nav-number">5.</span> <span class="nav-text">5. 变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-this的指向"><span class="nav-number">6.</span> <span class="nav-text">6. this的指向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-立即执行函数"><span class="nav-number">7.</span> <span class="nav-text">7. 立即执行函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-instanceof原理"><span class="nav-number">8.</span> <span class="nav-text">8. instanceof原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-bind的实现"><span class="nav-number">9.</span> <span class="nav-text">9. bind的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-apply和call"><span class="nav-number">10.</span> <span class="nav-text">10. apply和call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-柯里化"><span class="nav-number">11.</span> <span class="nav-text">11. 柯里化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-v8垃圾回收机制"><span class="nav-number">12.</span> <span class="nav-text">12. v8垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-浮点数精度"><span class="nav-number">13.</span> <span class="nav-text">13. 浮点数精度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-new操作符"><span class="nav-number">14.</span> <span class="nav-text">14. new操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-事件循环机制"><span class="nav-number">15.</span> <span class="nav-text">15. 事件循环机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-promise原理"><span class="nav-number">16.</span> <span class="nav-text">16. promise原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-generator原理"><span class="nav-number">17.</span> <span class="nav-text">17. generator原理</span></a></li></ol></div>
             
 
           </div>
