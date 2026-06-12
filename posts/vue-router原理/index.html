@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Vue-Router原理 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Vue-Router原理</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Jan 5, 2022</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 2815 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 7 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1路由注册">1.路由注册</h3>
+<p>Vue-router可以通过vue.use进行注册，在use中，会将router当成插件install，然后存储到installedPlugins中。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.mixin({ //通过混入将router对象与options合并，混入时会调用init初始化</span></span>
+<span class="line"><span>    beforeCreate () {</span></span>
+<span class="line"><span>      if (isDef(this.$options.router)) {</span></span>
+<span class="line"><span>        this._routerRoot = this</span></span>
+<span class="line"><span>        this._router = this.$options.router</span></span>
+<span class="line"><span>        this._router.init(this)</span></span>
+<span class="line"><span>        Vue.util.defineReactive(this, '_route', this._router.history.current)</span></span>
+<span class="line"><span>      } else {</span></span>
+<span class="line"><span>        this._routerRoot = (this.$parent &#x26;&#x26; this.$parent._routerRoot) || this</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>      registerInstance(this, this)</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    destroyed () {</span></span>
+<span class="line"><span>      registerInstance(this)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  })</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Object.defineProperty(Vue.prototype, '$router', { //劫持$router数据，返回router对象</span></span>
+<span class="line"><span>    get () { return this._routerRoot._router }</span></span>
+<span class="line"><span>  })</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Object.defineProperty(Vue.prototype, '$route', { //劫持$route实例，返回当前route信息</span></span>
+<span class="line"><span>    get () { return this._routerRoot._route }</span></span>
+<span class="line"><span>  })</span></span></code></pre>
+<p>然后定义了路由中的钩子函数</p>
+<hr>
+<h3 id="2router对象">2.Router对象</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>//Router类</span></span>
+<span class="line"><span>this.matcher = createMatcher(options.routes || [], this) //创建matcher对象</span></span>
+<span class="line"><span>//其中matcher对象的match函数用于路由匹配</span></span>
+<span class="line"><span>switch (mode) { //根据mode设置路由模式，默认hash模式</span></span>
+<span class="line"><span>    case 'history':</span></span>
+<span class="line"><span>      this.history = new HTML5History(this, options.base)</span></span>
+<span class="line"><span>      break</span></span>
+<span class="line"><span>    case 'hash':</span></span>
+<span class="line"><span>      this.history = new HashHistory(this, options.base, this.fallback)</span></span>
+<span class="line"><span>      break</span></span>
+<span class="line"><span>    case 'abstract':</span></span>
+<span class="line"><span>      this.history = new AbstractHistory(this, options.base)</span></span>
+<span class="line"><span>      break</span></span>
+<span class="line"><span>    default:</span></span>
+<span class="line"><span>      if (process.env.NODE_ENV !== 'production') {</span></span>
+<span class="line"><span>        assert(false, `invalid mode: ${mode}`)</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>//根据不同模式进行URL的监听</span></span>
+<span class="line"><span>addRoutes (routes: Array&#x3C;RouteConfig>) {</span></span>
+<span class="line"><span>    this.matcher.addRoutes(routes) //调用addRoutes根据传进来的Router对象进行路由添加</span></span>
+<span class="line"><span>    if (this.history.current !== START) {</span></span>
+<span class="line"><span>      this.history.transitionTo(this.history.getCurrentLocation())</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span></code></pre>
+<hr>
+<h3 id="3-matcher">3. Matcher</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>export type Matcher = {</span></span>
+<span class="line"><span>  match: (raw: RawLocation, current?: Route, redirectedFrom?: Location) => Route;</span></span>
+<span class="line"><span>  addRoutes: (routes: Array&#x3C;RouteConfig>) => void; //addRoutes方法将路由配置转换成一张路由映射表</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>Matcher中暴露了两个方法：match、addRoutes</p>
+<h2 id="31-addroutes">3.1 addRoutes</h2>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>//addRoutes调用了createRouteMap</span></span>
+<span class="line"><span> routes.forEach(route => {</span></span>
+<span class="line"><span>    addRouteRecord(pathList, pathMap, nameMap, route)</span></span>
+<span class="line"><span>  })//其中为每个route执行addRouteRecord生成一条记录</span></span>
+<span class="line"><span> const record: RouteRecord = {</span></span>
+<span class="line"><span>  path: normalizedPath,</span></span>
+<span class="line"><span>  regex: compileRouteRegex(normalizedPath, pathToRegexpOptions),</span></span>
+<span class="line"><span>  components: route.components || { default: route.component },//这里为组件实例</span></span>
+<span class="line"><span>  instances: {},</span></span>
+<span class="line"><span>  name,</span></span>
+<span class="line"><span>  parent, //由于可以嵌套路由，表示RouteRecord是一个树形结构</span></span>
+<span class="line"><span>  matchAs,</span></span>
+<span class="line"><span>  redirect: route.redirect,</span></span>
+<span class="line"><span>  beforeEnter: route.beforeEnter,</span></span>
+<span class="line"><span>  meta: route.meta || {},</span></span>
+<span class="line"><span>  props: route.props == null</span></span>
+<span class="line"><span>    ? {}</span></span>
+<span class="line"><span>    : route.components</span></span>
+<span class="line"><span>      ? route.props</span></span>
+<span class="line"><span>      : { default: route.props }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>addRoutes的主要作用是动态添加路由配置</p>
+<h2 id="32-match">3.2 match</h2>
+<p>match方法主要是根据Rawlocation对象和Route信息去计算路径返回，其中通过_createRoute函数创建定位信息</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const route: Route = { //通过createRoute创建route对象信息返回</span></span>
+<span class="line"><span>    name: location.name || (record &#x26;&#x26; record.name),</span></span>
+<span class="line"><span>    meta: (record &#x26;&#x26; record.meta) || {},</span></span>
+<span class="line"><span>    path: location.path || '/',</span></span>
+<span class="line"><span>    hash: location.hash || '',</span></span>
+<span class="line"><span>    query,</span></span>
+<span class="line"><span>    params: location.params || {},</span></span>
+<span class="line"><span>    fullPath: getFullPath(location, stringifyQuery),</span></span>
+<span class="line"><span>    matched: record ? formatMatch(record) : [] //根据matched匹配组件渲染</span></span>
+<span class="line"><span>  }</span></span></code></pre>
+<hr>
+<h3 id="4-小结">4. 小结</h3>
+<p>vue在安装路由时，会通过mixin在组件钩子beforeCreate和destroyed钩子中将路由信息注册与重置，在路由注册期间，会将Options的路由信息merge合并到Vue实例的options当中，然后实例化VueRouter对象。在VueRouter对象中定义了一些常用的路由函数提供使用。
+VueRouter对象中会创建Matcher对象并暴露出match和addRoutes两个函数：</p>
+<ul>
+<li>match函数用于根据Location对象和Route信息去计算路径并创建定位信息返回。</li>
+<li>addRoutes函数用于根据路由信息动态创建路由配置映射表方便路径匹配。</li>
+</ul>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端框架/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端框架 </a><a href="/tags/Vue/" class="tag-pill" data-astro-cid-gjtny2mx>
+# Vue </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/vuex原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>Vuex原理</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/webpack小结/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>Webpack小结</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/vuex原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vuex原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vue全局api原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue全局API原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue计算属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue计算属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue监听属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue监听属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue模板组件原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue模板组件原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue的mixin原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue的mixin原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Dec 31, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1路由注册" data-target="1路由注册" data-astro-cid-6t6zfk7k>1.路由注册</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2router对象" data-target="2router对象" data-astro-cid-6t6zfk7k>2.Router对象</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3-matcher" data-target="3-matcher" data-astro-cid-6t6zfk7k>3. Matcher</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#31-addroutes" data-target="31-addroutes" data-astro-cid-6t6zfk7k>3.1 addRoutes</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#32-match" data-target="32-match" data-astro-cid-6t6zfk7k>3.2 match</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4-小结" data-target="4-小结" data-astro-cid-6t6zfk7k>4. 小结</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

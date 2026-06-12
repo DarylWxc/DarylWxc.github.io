@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>前端进阶之道 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>前端进阶之道</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Dec 4, 2020</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 3288 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 8 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1-数据类型">1. 数据类型</h3>
+<h2 id="js分两种类型原始类型和对象类型原始类型1boolean2number3string4undefined5null6symbol7bigint对象类型1objectarrayregexpmathmapset2function">JS分两种类型，原始类型和对象类型。
+原始类型：
+1.boolean
+2.number
+3.string
+4.undefined
+5.null
+6.symbol
+7.bigint
+对象类型：
+1.Object(Array,RegExp,Math,Map,Set)
+2.Function</h2>
+<h3 id="2-类型判断">2. 类型判断</h3>
+<h2 id="21-typeof">2.1 typeof</h2>
+<p>原始类型中除了null，都可以用typeof判断。
+typeof判断函数为function，其他均为object。</p>
+<h2 id="22-instanceof">2.2 instanceof</h2>
+<p>常用于判断对象类型</p>
+<h2 id="23-objectprototypetostring">2.3 Object.prototype.toString</h2>
+<p>最佳选择，能判断的类型最完整</p>
+<h2 id="24-isxxx-api">2.4 isXXX API</h2>
+<p>isArray()，isNaN()</p>
+<h3 id="3-类型转换">3. 类型转换</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Number(false) // -> 0</span></span>
+<span class="line"><span>Number('1')// -> 1</span></span>
+<span class="line"><span>Number('zb')// -> NaN</span></span>
+<span class="line"><span>(1).toString()// '1'</span></span></code></pre>
+<p>转布尔值规则：
+1.undefined、null、false、NaN、”、0、-0都转为false
+2.其他所有值都转为true，包括所有对象
+转数字规则：
+1.true为1，false为0
+2.null为0，undefined为NaN，symbol报错
+3.字符串看内容，如果是数字或者进制值就正常转，否则就NaN
+4.对象的规则隐式转换再讲</p>
+<h3 id="4-this">4. this</h3>
+<h2 id="41-普通函数">4.1 普通函数</h2>
+<p>谁调用this指向谁</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>var c = new foo()</span></span>
+<span class="line"><span>c.a = 3</span></span>
+<span class="line"><span>console.log(c.a) // this绑定到c上，不会被任何方式修改</span></span></code></pre>
+<p>使用apply，call，bind改变this，优先级仅次于new</p>
+<h2 id="42-箭头函数">4.2 箭头函数</h2>
+<p>箭头函数的this取决于定义时的环境</p>
+<h3 id="5-闭包">5. 闭包</h3>
+<p>定义：加入一个函数能访问外部的变量，那么这个函数它就是一个闭包。
+闭包会将访问的变量存放在内部对象[[Scopes]]上，因此可以访问到本该销毁的变量
+局部变量才是被存储在栈上，全局变量存在静态区域上，其他都存在堆上。(只针对Chrome)</p>
+<h3 id="6-new">6. new</h3>
+<p>new可以构建出一个实例，并绑定上this，执行步骤如下：
+1.新生成一个对象
+2.对象连接到构造函数原型上，并绑定this
+3.执行构造函数代码
+4.返回新对象
+当构造函数中返回一个对象时，内部创建的新对象会被我们返回的对象所覆盖，所以构造函数一般来说不返回对象。</p>
+<h3 id="7-作用域">7. 作用域</h3>
+<p>作用域有三类：
+1.全局作用域
+2.函数作用域
+3.块级作用域
+[[Scopes]],定义时就被确定下来，后续不会改变</p>
+<h3 id="8-原型">8. 原型</h3>
+<p>原型更重要引出继承，概念：
+1.每个对象都有一个_proto_指向一个对象，就是原型
+2.每个对象的原型都可以通过constructor访问构造函数，构造函数通过prototype访问原型
+3.所有函数都可以通过_proto_找到Function对象
+4.所有对象都可以通过_proto_找到Object对象
+5.对象直接通过_proto_连接起来为原型链，顶层Object对象的原型为null</p>
+<h3 id="9-继承">9. 继承</h3>
+<p>继承中的class，本质上还是一个函数。
+ES5与6继承的区别：
+1.ES6继承的子类需要调用super()才能拿到子类，ES5的话是通过apply这种绑定的方式
+2.类声明不会提升，和let这些一致</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>function Super() {}</span></span>
+<span class="line"><span>Super.prototype.getNumber = function() {</span></span>
+<span class="line"><span>  return 1</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function Sub() {}</span></span>
+<span class="line"><span>Sub.prototype = Object.create(Super.prototype, {</span></span>
+<span class="line"><span>  constructor: {</span></span>
+<span class="line"><span>    value: Sub,</span></span>
+<span class="line"><span>    enumerable: false,</span></span>
+<span class="line"><span>    writable: true,</span></span>
+<span class="line"><span>    configurable: true</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>})</span></span>
+<span class="line"><span>let s = new Sub()</span></span>
+<span class="line"><span>s.getNumber()</span></span></code></pre>
+<h3 id="10-深浅拷贝">10. 深浅拷贝</h3>
+<h2 id="101-浅拷贝">10.1 浅拷贝</h2>
+<p>浅拷贝：第一层引用不同
+通过assign和扩展运算符实现浅拷贝</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>let a = {age:1}</span></span>
+<span class="line"><span>let b = Object.assign({},a)</span></span>
+<span class="line"><span>b = {...a}</span></span></code></pre>
+<h2 id="102-深拷贝">10.2 深拷贝</h2>
+<p>深拷贝：所有引用不同
+使用JSON.parse(JSON.stringify(object))可以实现，不过存在不少缺陷。
+也可以通过递归实现深拷贝：</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// 利用 WeakMap 解决循环引用</span></span>
+<span class="line"><span>let map = new WeakMap()</span></span>
+<span class="line"><span>function deepClone(obj) {</span></span>
+<span class="line"><span>  if (obj instanceof Object) {</span></span>
+<span class="line"><span>    if (map.has(obj)) {</span></span>
+<span class="line"><span>      return map.get(obj)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    let newObj</span></span>
+<span class="line"><span>    if (obj instanceof Array) {</span></span>
+<span class="line"><span>      newObj = []</span></span>
+<span class="line"><span>    } else if (obj instanceof Function) {</span></span>
+<span class="line"><span>      newObj = function() {</span></span>
+<span class="line"><span>        return obj.apply(this, arguments)</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    } else if (obj instanceof RegExp) {</span></span>
+<span class="line"><span>      // 拼接正则</span></span>
+<span class="line"><span>      newobj = new RegExp(obj.source, obj.flags)</span></span>
+<span class="line"><span>    } else if (obj instanceof Date) {</span></span>
+<span class="line"><span>      newobj = new Date(obj)</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>      newObj = {}</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    // 克隆一份对象出来</span></span>
+<span class="line"><span>    let desc = Object.getOwnPropertyDescriptors(obj)</span></span>
+<span class="line"><span>    let clone = Object.create(Object.getPrototypeOf(obj), desc)</span></span>
+<span class="line"><span>    map.set(obj, clone)</span></span>
+<span class="line"><span>    for (let key in obj) {</span></span>
+<span class="line"><span>      if (obj.hasOwnProperty(key)) {</span></span>
+<span class="line"><span>        newObj[key] = deepClone(obj[key])</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    return newObj</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  return obj</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h3 id="11-promise">11. Promise</h3>
+<p>高频考点，涉及API，问到all，race。
+then，catch，finally都为微任务。其他代码都是宏任务(同步执行)
+这些微任务在Promise状态为非pending时加入队列。
+同级then下，前一个then执行完后，后面的才会加入任务队列。
+最开始调用的then会首先依次加入任务队列。
+同一个promise的每个链式调用的开端会首先依次进入队列。</p>
+<h2 id="111-asyncawait">11.1 async/await</h2>
+<p>async/await(ES8)
+阻塞await后面的内容。</p>
+<h3 id="12-事件循环">12. 事件循环</h3>
+<p>异步只是延迟执行同步代码。其他线程不影响(Web worker)。
+Task(宏任务)：同步代码、setTimeout回调、setInterval回调、IO、UI交互事件、postMessage、MessageChannel。
+MicroTask(微任务)：Promise的回调，Mutation observer回调，queueMicrotask回调。
+执行顺序如下：
+1.执行同步代码
+2.执行完所有同步代码后且执行栈为空，判断是否有微任务需要执行
+3.执行所有微任务且微任务队列为空
+4.是否有必要渲染页面
+5.执行一个宏任务</p>
+<h3 id="13-模块化">13. 模块化</h3>
+<p>CommonJS，ES6的ESM</p>
+<h3 id="14-垃圾回收">14. 垃圾回收</h3>
+<p>分两个空间，新生代和老生代。</p>
+<h2 id="141-新生代">14.1 新生代</h2>
+<p>使用Scavenge GC算法
+也分两个部分，From空间，To空间。
+From占满时，启动算法检查存活的对象复制到To空间中，会和To空间互换。</p>
+<h2 id="142-老生代">14.2 老生代</h2>
+<p>使用标记清除和标记压缩算法
+经历过Scavenge算法后还存活，To空间对象占比大小超过25%，会将新生代移到老生代。
+启动标记清除算法条件：
+1.某一个空间没有分块
+2.空间中被对象超过一定限制
+3.空间不能保证新生代中的对象移动到老生代中
+标记活对象，销毁没被标记的对象</p>
+<h3 id="15-其他">15. 其他</h3>
+<p>0.1+0.2 !== 0.3
+浮点数用二进制表示的时候是无穷的，因为精度的问题，两个浮点数相加会造成截断丢失精度，因此再转换为十进制就出了问题。</p>
+<h3 id="16-手写题">16. 手写题</h3>
+<h2 id="161-防抖">16.1 防抖</h2>
+<h2 id="162-节流">16.2 节流</h2>
+<h2 id="163-event-bus">16.3 Event Bus</h2>
+<h2 id="164-instanceof">16.4 instanceof</h2>
+<h2 id="165-callbindapply">16.5 call，bind，apply</h2>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端学习/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端学习 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/javascript高级程序设计/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>JavaScript高级程序设计</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/单页面和多页面/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>单页面和多页面</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/js常见考点/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JS常见考点</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 20, 2021</span></a><a class="related-item" href="/posts/typescript-learning-note/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Typescript-Learning-Note</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jun 1, 2023</span></a><a class="related-item" href="/posts/javascript之深入map/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Map</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入set/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Set</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入闭包/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入闭包</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入执行上下文/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入执行上下文</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1-数据类型" data-target="1-数据类型" data-astro-cid-6t6zfk7k>1. 数据类型</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#js分两种类型原始类型和对象类型原始类型1boolean2number3string4undefined5null6symbol7bigint对象类型1objectarrayregexpmathmapset2function" data-target="js分两种类型原始类型和对象类型原始类型1boolean2number3string4undefined5null6symbol7bigint对象类型1objectarrayregexpmathmapset2function" data-astro-cid-6t6zfk7k>JS分两种类型，原始类型和对象类型。
+原始类型：
+1.boolean
+2.number
+3.string
+4.undefined
+5.null
+6.symbol
+7.bigint
+对象类型：
+1.Object(Array,RegExp,Math,Map,Set)
+2.Function</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2-类型判断" data-target="2-类型判断" data-astro-cid-6t6zfk7k>2. 类型判断</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#21-typeof" data-target="21-typeof" data-astro-cid-6t6zfk7k>2.1 typeof</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#22-instanceof" data-target="22-instanceof" data-astro-cid-6t6zfk7k>2.2 instanceof</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#23-objectprototypetostring" data-target="23-objectprototypetostring" data-astro-cid-6t6zfk7k>2.3 Object.prototype.toString</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#24-isxxx-api" data-target="24-isxxx-api" data-astro-cid-6t6zfk7k>2.4 isXXX API</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3-类型转换" data-target="3-类型转换" data-astro-cid-6t6zfk7k>3. 类型转换</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4-this" data-target="4-this" data-astro-cid-6t6zfk7k>4. this</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#41-普通函数" data-target="41-普通函数" data-astro-cid-6t6zfk7k>4.1 普通函数</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#42-箭头函数" data-target="42-箭头函数" data-astro-cid-6t6zfk7k>4.2 箭头函数</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#5-闭包" data-target="5-闭包" data-astro-cid-6t6zfk7k>5. 闭包</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#6-new" data-target="6-new" data-astro-cid-6t6zfk7k>6. new</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#7-作用域" data-target="7-作用域" data-astro-cid-6t6zfk7k>7. 作用域</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#8-原型" data-target="8-原型" data-astro-cid-6t6zfk7k>8. 原型</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#9-继承" data-target="9-继承" data-astro-cid-6t6zfk7k>9. 继承</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#10-深浅拷贝" data-target="10-深浅拷贝" data-astro-cid-6t6zfk7k>10. 深浅拷贝</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#101-浅拷贝" data-target="101-浅拷贝" data-astro-cid-6t6zfk7k>10.1 浅拷贝</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#102-深拷贝" data-target="102-深拷贝" data-astro-cid-6t6zfk7k>10.2 深拷贝</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#11-promise" data-target="11-promise" data-astro-cid-6t6zfk7k>11. Promise</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#111-asyncawait" data-target="111-asyncawait" data-astro-cid-6t6zfk7k>11.1 async/await</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#12-事件循环" data-target="12-事件循环" data-astro-cid-6t6zfk7k>12. 事件循环</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#13-模块化" data-target="13-模块化" data-astro-cid-6t6zfk7k>13. 模块化</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#14-垃圾回收" data-target="14-垃圾回收" data-astro-cid-6t6zfk7k>14. 垃圾回收</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#141-新生代" data-target="141-新生代" data-astro-cid-6t6zfk7k>14.1 新生代</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#142-老生代" data-target="142-老生代" data-astro-cid-6t6zfk7k>14.2 老生代</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#15-其他" data-target="15-其他" data-astro-cid-6t6zfk7k>15. 其他</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#16-手写题" data-target="16-手写题" data-astro-cid-6t6zfk7k>16. 手写题</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#161-防抖" data-target="161-防抖" data-astro-cid-6t6zfk7k>16.1 防抖</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#162-节流" data-target="162-节流" data-astro-cid-6t6zfk7k>16.2 节流</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#163-event-bus" data-target="163-event-bus" data-astro-cid-6t6zfk7k>16.3 Event Bus</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#164-instanceof" data-target="164-instanceof" data-astro-cid-6t6zfk7k>16.4 instanceof</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#165-callbindapply" data-target="165-callbindapply" data-astro-cid-6t6zfk7k>16.5 call，bind，apply</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

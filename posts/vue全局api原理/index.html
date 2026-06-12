@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Vue全局API原理 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Vue全局API原理</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Jan 4, 2022</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 3500 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 9 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1vueutil">1.Vue.util</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.util = {</span></span>
+<span class="line"><span>  warn,</span></span>
+<span class="line"><span>  extend,</span></span>
+<span class="line"><span>  mergeOptions,</span></span>
+<span class="line"><span>  defineReactive,</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>Vue.util是Vue内部的工具方法，不推荐业务组件去使用，因为可能随着版本发生变动，不开发第三方Vue插件会比较少用</p>
+<hr>
+<h3 id="2vuesetvuedelete">2.Vue.set/Vue.delete</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>export function set(target: Array&#x3C;any> | Object, key: any, val: any): any {</span></span>
+<span class="line"><span>  // 如果是数组 直接调用我们重写的splice方法 可以刷新视图</span></span>
+<span class="line"><span>  if (Array.isArray(target) &#x26;&#x26; isValidArrayIndex(key)) {</span></span>
+<span class="line"><span>    target.length = Math.max(target.length, key);</span></span>
+<span class="line"><span>    target.splice(key, 1, val);</span></span>
+<span class="line"><span>    return val;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  // 如果是对象本身的属性，则直接添加即可</span></span>
+<span class="line"><span>  if (key in target &#x26;&#x26; !(key in Object.prototype)) {</span></span>
+<span class="line"><span>    target[key] = val;</span></span>
+<span class="line"><span>    return val;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  const ob = (target: any).__ob__;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // 如果对象本身就不是响应式 不需要将其定义成响应式属性</span></span>
+<span class="line"><span>  if (!ob) {</span></span>
+<span class="line"><span>    target[key] = val;</span></span>
+<span class="line"><span>    return val;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  // 利用defineReactive   实际就是Object.defineProperty 将新增的属性定义成响应式的</span></span>
+<span class="line"><span>  defineReactive(ob.value, key, val);</span></span>
+<span class="line"><span>  ob.dep.notify(); // 通知视图更新</span></span>
+<span class="line"><span>  return val;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>export function del(target: Array&#x3C;any> | Object, key: any) {</span></span>
+<span class="line"><span>  // 如果是数组依旧调用splice方法</span></span>
+<span class="line"><span>  if (Array.isArray(target) &#x26;&#x26; isValidArrayIndex(key)) {</span></span>
+<span class="line"><span>    target.splice(key, 1);</span></span>
+<span class="line"><span>    return;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  const ob = (target: any).__ob__;</span></span>
+<span class="line"><span>  // 如果对象本身就没有这个属性 什么都不做</span></span>
+<span class="line"><span>  if (!hasOwn(target, key)) {</span></span>
+<span class="line"><span>    return;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  // 直接使用delete  删除这个属性</span></span>
+<span class="line"><span>  delete target[key];</span></span>
+<span class="line"><span>  //   如果对象本身就不是响应式 直接返回</span></span>
+<span class="line"><span>  if (!ob) {</span></span>
+<span class="line"><span>    return;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  ob.dep.notify(); //通知视图更新</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>该API在业务场经常使用与新增或删除响应式数据，由于Object.defineProperty对于数组和对象的响应式没有具体的劫持，所以通过该API操作会直接触发渲染</p>
+<hr>
+<h3 id="3vuenexttick">3.Vue.nextTick</h3>
+<p>该函数为异步更新的核心，通过将函数放入执行栈当中，再分别使用promise、mutationObserver、setImmediate和setTimeout来进行一个微任务后执行的异步机制，常用于要获取dom节点相关属性时</p>
+<hr>
+<h3 id="4vueobservable">4.Vue.observable</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.observable = &#x3C;T>(obj: T): T => {</span></span>
+<span class="line"><span>  observe(obj);</span></span>
+<span class="line"><span>  return obj;</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>核心方法就是调用observe方法将传入的数据变成响应式对象，用于制造全局变量在组件中共享数据</p>
+<hr>
+<h3 id="5vueoptions">5.Vue.options</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.options = Object.create(null);</span></span>
+<span class="line"><span>ASSET_TYPES.forEach((type) => {</span></span>
+<span class="line"><span>  Vue.options[type + "s"] = Object.create(null);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// this is used to identify the "base" constructor to extend all plain-object</span></span>
+<span class="line"><span>// components with in Weex's multi-instance scenarios.</span></span>
+<span class="line"><span>Vue.options._base = Vue;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>extend(Vue.options.components, builtInComponents); //内置组件</span></span></code></pre>
+<p>options是存放组件、指令和过滤器的容器，Vue.options._base指向Vue构造函数</p>
+<hr>
+<h3 id="6vueuse">6.Vue.use</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.use = function (plugin: Function | Object) {</span></span>
+<span class="line"><span>  const installedPlugins =</span></span>
+<span class="line"><span>    this._installedPlugins || (this._installedPlugins = []);</span></span>
+<span class="line"><span>  if (installedPlugins.indexOf(plugin) > -1) {</span></span>
+<span class="line"><span>    // 如果安装过这个插件直接返回</span></span>
+<span class="line"><span>    return this;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  const args = toArray(arguments, 1); // 获取参数</span></span>
+<span class="line"><span>  args.unshift(this); //在参数中增加Vue构造函数</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  if (typeof plugin.install === "function") {</span></span>
+<span class="line"><span>    plugin.install.apply(plugin, args); // 执行install方法</span></span>
+<span class="line"><span>  } else if (typeof plugin === "function") {</span></span>
+<span class="line"><span>    plugin.apply(null, args); // 没有install方法直接把传入的插件执行</span></span>
+<span class="line"><span>  }         </span></span>
+<span class="line"><span>  // 记录安装的插件</span></span>
+<span class="line"><span>  installedPlugins.push(plugin);</span></span>
+<span class="line"><span>  return this;</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>主要用于插件的注册，调用插件的install方法，把自身Vue传到插件的install方法，可以避免第三方插件强依赖Vue</p>
+<hr>
+<h3 id="7vuemixin">7.Vue.mixin</h3>
+<h2 id="调用mergeoptions合并选项然后合并字段全局混入方法一般作用提取全局的公共方法和属性">调用mergeOptions合并选项，然后合并字段。
+全局混入方法，一般作用提取全局的公共方法和属性</h2>
+<h3 id="8vueextend">8.Vue.extend</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.extend = function (extendOptions: Object): Function {</span></span>
+<span class="line"><span>  const Sub = function VueComponent(options) {</span></span>
+<span class="line"><span>    // 创建子类的构造函数 并且调用初始化方法</span></span>
+<span class="line"><span>    this._init(options);</span></span>
+<span class="line"><span>  };</span></span>
+<span class="line"><span>  Sub.prototype = Object.create(Super.prototype); // 子类原型指向父类</span></span>
+<span class="line"><span>  Sub.prototype.constructor = Sub; //constructor指向自己</span></span>
+<span class="line"><span>  Sub.options = mergeOptions(</span></span>
+<span class="line"><span>    //合并自己的options和父类的options</span></span>
+<span class="line"><span>    Super.options,</span></span>
+<span class="line"><span>    extendOptions</span></span>
+<span class="line"><span>  );</span></span>
+<span class="line"><span>  return Sub;</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>组件构造器Vue的组件创建，利用原型继承的方法创建继承自Vue的子类</p>
+<hr>
+<h3 id="9组件指令过滤器">9.组件、指令、过滤器</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>export function initAssetRegisters(Vue: GlobalAPI) {</span></span>
+<span class="line"><span>  var ASSET_TYPES = ["component", "directive", "filter"];</span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Create asset registration methods.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  ASSET_TYPES.forEach((type) => {</span></span>
+<span class="line"><span>    Vue[type] = function (</span></span>
+<span class="line"><span>      id: string,</span></span>
+<span class="line"><span>      definition: Function | Object</span></span>
+<span class="line"><span>    ): Function | Object | void {</span></span>
+<span class="line"><span>      if (!definition) {</span></span>
+<span class="line"><span>        return this.options[type + "s"][id];</span></span>
+<span class="line"><span>      } else {</span></span>
+<span class="line"><span>        if (type === "component" &#x26;&#x26; isPlainObject(definition)) {</span></span>
+<span class="line"><span>          definition.name = definition.name || id;</span></span>
+<span class="line"><span>          definition = this.options._base.extend(definition);</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        if (type === "directive" &#x26;&#x26; typeof definition === "function") {</span></span>
+<span class="line"><span>          definition = { bind: definition, update: definition };</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        this.options[type + "s"][id] = definition; //把组件  指令  过滤器 放到Vue.options中</span></span>
+<span class="line"><span>        return definition;</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>定义component、directive、filter三大api并且格式化用户传入内容，最后把结果放到options中</p>
+<hr>
+<h3 id="10小结">10.小结</h3>
+<p>如上，都是在initGlobalAPI时将API挂载到Vue构造函数当中，可以在Vue全局中使用</p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端框架/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端框架 </a><a href="/tags/Vue/" class="tag-pill" data-astro-cid-gjtny2mx>
+# Vue </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/vue计算属性原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>Vue计算属性原理</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/vuex原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>Vuex原理</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/vue-router原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue-Router原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vuex原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vuex原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vue计算属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue计算属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue监听属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue监听属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue模板组件原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue模板组件原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue的mixin原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue的mixin原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Dec 31, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1vueutil" data-target="1vueutil" data-astro-cid-6t6zfk7k>1.Vue.util</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2vuesetvuedelete" data-target="2vuesetvuedelete" data-astro-cid-6t6zfk7k>2.Vue.set/Vue.delete</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3vuenexttick" data-target="3vuenexttick" data-astro-cid-6t6zfk7k>3.Vue.nextTick</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4vueobservable" data-target="4vueobservable" data-astro-cid-6t6zfk7k>4.Vue.observable</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#5vueoptions" data-target="5vueoptions" data-astro-cid-6t6zfk7k>5.Vue.options</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#6vueuse" data-target="6vueuse" data-astro-cid-6t6zfk7k>6.Vue.use</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#7vuemixin" data-target="7vuemixin" data-astro-cid-6t6zfk7k>7.Vue.mixin</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#调用mergeoptions合并选项然后合并字段全局混入方法一般作用提取全局的公共方法和属性" data-target="调用mergeoptions合并选项然后合并字段全局混入方法一般作用提取全局的公共方法和属性" data-astro-cid-6t6zfk7k>调用mergeOptions合并选项，然后合并字段。
+全局混入方法，一般作用提取全局的公共方法和属性</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#8vueextend" data-target="8vueextend" data-astro-cid-6t6zfk7k>8.Vue.extend</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#9组件指令过滤器" data-target="9组件指令过滤器" data-astro-cid-6t6zfk7k>9.组件、指令、过滤器</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#10小结" data-target="10小结" data-astro-cid-6t6zfk7k>10.小结</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

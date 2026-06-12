@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Flex布局 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Flex布局</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted May 11, 2020</span>  <a href="/categories/UI设计开发/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> UI设计开发 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 1860 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 5 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <p>页面CSS样式之Flex布局</p>
+<hr>
+<h2 id="2020511-1456-write">2020/5/11 14:56 Write</h2>
+<p>关键词：UI</p>
+<p>使用flex布局</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">在父容器设置属性</span><span style="color:#91B859;--shiki-dark:#C3E88D"> display:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> flex</span></span></code></pre>
+<p><img alt="Flex基本概念" loading="lazy" decoding="async" width="500" height="194" src="/_astro/Flex%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.DUNdeJtI_Z295Yys.webp" srcset="">
+Flex的核心概念就是容器和轴。容器包括外层的父容器和内层的子容器，轴包括主轴和交叉轴，Flex的布局特性构建在这两个概念上（如上图）。</p>
+<h2 id="1容器">1.容器</h2>
+<p>容器具有这样的特点：父容器可以统一设置子容器的排列方式，子容器也可以单独设置自身的排列方式，如果两者同时设置，以子容器的设置为准。</p>
+<p><img alt="Flex容器" loading="lazy" decoding="async" width="500" height="172" src="/_astro/Flex%E5%AE%B9%E5%99%A8.BU2jo7tt_Z1LomRX.webp" srcset=""></p>
+<h3 id="11父容器">1.1父容器</h3>
+<p>·设置子容器沿主轴排列：justify-content
+justify-content 属性用于定义如何沿着主轴方向排列子容器。</p>
+<p><img alt="justify-content" loading="lazy" decoding="async" width="500" height="187" src="/_astro/justify-content.DIIwpafX_1A8Y3H.webp" srcset=""></p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-start:</span><span style="color:#91B859;--shiki-dark:#C3E88D">  起始端对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-end：末尾段对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">center：居中对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">space-around：子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">space-between：子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切</span></span></code></pre>
+<p>·设置子容器如何沿交叉轴排列：align-items
+align-items 属性用于定义如何沿着交叉轴方向分配子容器的间距
+<img alt="align-items" loading="lazy" decoding="async" width="500" height="287" src="/_astro/align-items.BWrzVfs2_Z2n6frg.webp" srcset=""></p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-start：起始端对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-end：末尾段对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">center：居中对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">baseline：基线对齐，这里的</span><span style="color:#91B859;--shiki-dark:#C3E88D"> baseline</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 默认是指首行文字，即</span><span style="color:#91B859;--shiki-dark:#C3E88D"> first</span><span style="color:#91B859;--shiki-dark:#C3E88D"> baseline，所有子容器向基线对齐，交叉轴起点到元素基线距离最大的子容器将会与交叉轴起始端相切以确定基线</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">stretch：子容器沿交叉轴方向的尺寸拉伸至与父容器一致</span></span></code></pre>
+<h3 id="12子容器">1.2子容器</h3>
+<p>·在主轴上如何伸缩：flex
+子容器是有弹性的（flex 即弹性），它们会自动填充剩余空间，子容器的伸缩比例由 flex 属性确定。
+flex 的值可以是无单位数字（如：1, 2, 3），也可以是有单位数字（如：15px，30px，60px），还可以是 none 关键字。子容器会按照 flex 定义的尺寸比例自动伸缩，如果取值为 none 则不伸缩。
+虽然 flex 是多个属性的缩写，允许 1 - 3 个值连用，但通常用 1 个值就可以满足需求，它的全部写法可参考下图。
+<img alt="flex" loading="lazy" decoding="async" width="600" height="329" src="/_astro/flex.BvbLNPQe_Z1jdbXR.webp" srcset="">
+·单独设置子容器如何沿交叉轴排列：align-self
+<img alt="align-self" loading="lazy" decoding="async" width="500" height="215" src="/_astro/align-self.CPlx9kej_Z1WvtkU.webp" srcset="">
+每个子容器也可以单独定义沿交叉轴排列的方式，此属性的可选值与父容器 align-items 属性完全一致，如果两者同时设置则以子容器的 align-self 属性为准。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-start：起始端对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">flex-end：末尾段对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">center：居中对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">baseline：基线对齐</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">stretch：拉伸对齐</span></span></code></pre>
+<h2 id="2轴">2.轴</h2>
+<p>如图所示，轴 包括 主轴 和 交叉轴，我们知道 justify-content 属性决定子容器沿主轴的排列方式，align-items 属性决定子容器沿着交叉轴的排列方式。那么轴本身又是怎样确定的呢？在 flex 布局中，flex-direction 属性决定主轴的方向，交叉轴的方向由主轴确定。
+<img alt="轴" loading="lazy" decoding="async" width="480" height="313" src="/_astro/%E8%BD%B4.BRt-J6q2_Zx98it.webp" srcset=""></p>
+<h3 id="主轴">主轴</h3>
+<p>主轴的起始端由 flex-start 表示，末尾段由 flex-end 表示。不同的主轴方向对应的起始端、末尾段的位置也不相同。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">向右：flex-direction:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> row</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">向下：flex-direction:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> column</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">向左：flex-direction:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> row-reverse</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">向上：flex-direction:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> column-reverse</span></span></code></pre>
+<h3 id="交叉轴">交叉轴</h3>
+<p>主轴沿逆时针方向旋转 90° 就得到了交叉轴，交叉轴的起始端和末尾段也由 flex-start 和 flex-end 表示。</p>
+<p>flex：1；默认flex-grow，flex-shrink，flex-basis的值都为1，自动等分缩短和放大。</p>
+<p>上面介绍的几项属性是 flex 布局中最常用到的部分，一般来说可以满足大多数需求，如果实现复杂的布局还需要深入了解更多的属性。</p>
+<p>参考链接<a href="https://juejin.im/post/58e3a5a0a0bb9f0069fc16bb">https://juejin.im/post/58e3a5a0a0bb9f0069fc16bb</a>
+深入理解Flex布局:<a href="https://juejin.im/post/5dedb28ef265da33b12e98cd">https://juejin.im/post/5dedb28ef265da33b12e98cd</a></p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/CSS/" class="tag-pill" data-astro-cid-gjtny2mx>
+# CSS </a><a href="/tags/伸缩布局/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 伸缩布局 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/正则表达式/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>正则表达式</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/清除浮动的方法/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>清除浮动的方法</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/水平垂直居中方式/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>水平垂直居中方式</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 7, 2021</span></a><a class="related-item" href="/posts/bfc/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>BFC</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 6, 2021</span></a><a class="related-item" href="/posts/清除浮动的方法/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>清除浮动的方法</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 11, 2020</span></a><a class="related-item" href="/posts/css样式/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS样式</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 9, 2020</span></a><a class="related-item" href="/posts/css预处理器/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS预处理器</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 26, 2021</span></a><a class="related-item" href="/posts/设置小于12px的字体/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>设置小于12PX的字体</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 23, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#2020511-1456-write" data-target="2020511-1456-write" data-astro-cid-6t6zfk7k>2020/5/11 14:56 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#1容器" data-target="1容器" data-astro-cid-6t6zfk7k>1.容器</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#11父容器" data-target="11父容器" data-astro-cid-6t6zfk7k>1.1父容器</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#12子容器" data-target="12子容器" data-astro-cid-6t6zfk7k>1.2子容器</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#2轴" data-target="2轴" data-astro-cid-6t6zfk7k>2.轴</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#主轴" data-target="主轴" data-astro-cid-6t6zfk7k>主轴</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#交叉轴" data-target="交叉轴" data-astro-cid-6t6zfk7k>交叉轴</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

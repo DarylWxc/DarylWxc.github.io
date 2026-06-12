@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>React学习与应用 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>React学习与应用</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Sep 28, 2021</span>  <a href="/categories/前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> 前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 2450 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 6 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1项目搭建">1.项目搭建</h3>
+<h2 id="11-脚手架搭建项目">1.1 脚手架搭建项目</h2>
+<p>npm正常拉框架</p>
+<h2 id="12-手动敲打demo">1.2 手动敲打Demo</h2>
+<p>书写声明不同方式的组件
+function Name(props){ return 代码块}
+class Name extends React.Component{ render (){ return (代码块)}}
+可以在class内声明构造函数,construstor(props){super(props);this.state={}}
+state必须为对象或Null
+切有对应的声明周期钩子（类似vue）:
+1.componentWillMount()挂载到DOM前调用，只调用一次
+2.componentDidMount()挂载到DOM后调用，只调用一次
+3.shouldComponentUpdate(nextProps)//用于重新render的情况，更新props
+4.componentWillReceiveProps(nextProps)//用于将props转换成自己的state，此函数下调用setState不会引起二次渲染
+5.componentWillUpdate(nextProps,nextState)//更新前调用
+6.componentDidUpdate(prevProps,PrevState)//更新后调用
+7.componentWillUnmount//组件卸载阶段，一个方法</p>
+<h2 id="13-单向数据流动">1.3 单向数据流动</h2>
+<p>props赋值给state，state为组件独有状态。state可以继续向下传，作为props。</p>
+<h2 id="14-事件处理">1.4 事件处理</h2>
+<p>在回调函数中使用this，需要通过bind函数绑定:
+this.handle = this.handle.bind(this)//函数绑定到组件上
+然后在组件中声明函数，通过this在html上绑定事件处理
+函数未绑定，需要在DOM元素上通过调用箭头函数
+传参需要直接调用函数并显示传参(e)=>this.methods(id,e)
+this.methods.bind(this,id); 此时传入的参数为第二个参数</p>
+<h2 id="15-条件渲染">1.5 条件渲染</h2>
+<p>通过Boolean判断需要return什么组件，再创建一个组件用Boolean值判断来决定return的内容</p>
+<h2 id="16-列表循环">1.6 列表循环</h2>
+<p>通过map函数 返回一个元素列表并return，每个元素需要分配一个key，用于标识有改动的元素。key值必须唯一。</p>
+<h2 id="17-状态提升">1.7 状态提升</h2>
+<p>兄弟组件共用父组件的state变量，调用父组件的函数修改state值。</p>
+<h2 id="18-路由使用">1.8 路由使用</h2>
+<h2 id="181-路由配置">1.8.1 路由配置</h2>
+<p>当前路由配置：使用Switch组件，通过Route标签定义路由，标签还有path属性和component属性，且需要exact属性(用于精准匹配)，跳转则通过props.history.push，传入path属性可进行跳转
+优化点：可以将路由封装成一个组件，Switch标签包含，通过定义路由数组，使用map进行渲染。且当前还未使用嵌套路由，后续待跟进。</p>
+<h2 id="182-路由传参">1.8.2 路由传参</h2>
+<p>组件中props有location属性包含state,query,都可用于传参，其中state刷新参数会保存，query刷新会重置参数。传递方式同Vue相同，通过props的history属性进行路由跳转与参数传递。
+且location属性含有search为链接后缀，可使用QS库进行解析(npm install qs), QS.parse();</p>
+<h2 id="183--路由钩子函数">1.8.3  路由钩子函数</h2>
+<p>路由跳转前有一个钩子函数routerWillLeave，可用于拦截跳转(return false)，或跳转前提示用户(return Message)。需要在路由组件中使用。引入Lifecycle mixin来安装钩子。
+路由还提供了两个钩子函数分别是onEnter(next,replace),onLeave()，分别在路由即将进入时调用和路由即将退出时调用。</p>
+<h2 id="19-react-redux使用">1.9 react-redux使用</h2>
+<p>安装完redux react-redux后，进行开发。</p>
+<h3 id="191-store">1.9.1 store</h3>
+<p>可专门创建一个文件夹用于放总store合集，一个文件用于整合reducer，将其他reducer文件引入用combineReducers打包成一个总reducer，引入createStore创建后，通过Provider组件进行传递。</p>
+<h3 id="192-reducer">1.9.2 reducer</h3>
+<p>reducer用于初始化状态并且改变状态的值，在reducer里注册初始值然后设置action函数用于改变state的值，常用Switch语法，给action设置type属性与payload属性，type判断操作类型，payload为操作值。</p>
+<h3 id="193-使用方法">1.9.3 使用方法</h3>
+<p>react redux版本@7.1以上新增了useSelector,useDispatch函数,通过useSelector可以获取state，在render前定义并且使用即可，通过useDispatch调用操作去改变state的值，可以实时渲染(函数式组件)。
+//react redux#7.1版本以下
+旧版本react redux使用connect函数，链接App组件进行绑定，让App组件下的子组件可以通过context上下文获取state，同样通过provider进行传递，但需要定义mapStateToProps和mapDispatchToProps分别用于获取state和改变state值(类组件)。</p>
+<h3 id="194-小结">1.9.4 小结</h3>
+<p>值得一提的是，vuex与redux的思路都类似于将一个对象属性挂载在window对象上进行管理，如果有空余时间可以研究flux，可以自己开发一个store状态管理库</p>
+<h2 id="110-权限控制">1.10 权限控制</h2>
+<h3 id="1101-页面权限">1.10.1 页面权限</h3>
+<p>页面权限可以理解为路由权限。可以通过封装路由组件来控制菜单的展示，或者通过后台控制返回的数据，异步加载路由菜单，通过数据控制。</p>
+<h3 id="1102-按钮权限">1.10.2 按钮权限</h3>
+<p>暂无</p>
+<hr>
+<h1 id="30-问题列表">3.0 问题列表</h1>
+<ol>
+<li>路由重定向redirect标签，导致路由刷新会重定向到首页，删除标签即可</li>
+<li></li>
+</ol>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端开发/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端开发 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/realdom和virtualdom/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>RealDom和VirtualDom</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/深入原型到原型链/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>深入原型到原型链</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/前端需求/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>前端需求</span><span class="ri-date" data-astro-cid-dpgbfi7r>Aug 20, 2020</span></a><a class="related-item" href="/posts/lw2-0开发模式/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>LW2.0开发模式</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 16, 2021</span></a><a class="related-item" href="/posts/环境配置/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>环境配置</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 15, 2021</span></a><a class="related-item" href="/posts/nginx服务器的部署/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Nginx服务器的部署</span><span class="ri-date" data-astro-cid-dpgbfi7r>Aug 25, 2020</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1项目搭建" data-target="1项目搭建" data-astro-cid-6t6zfk7k>1.项目搭建</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#11-脚手架搭建项目" data-target="11-脚手架搭建项目" data-astro-cid-6t6zfk7k>1.1 脚手架搭建项目</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#12-手动敲打demo" data-target="12-手动敲打demo" data-astro-cid-6t6zfk7k>1.2 手动敲打Demo</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#13-单向数据流动" data-target="13-单向数据流动" data-astro-cid-6t6zfk7k>1.3 单向数据流动</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#14-事件处理" data-target="14-事件处理" data-astro-cid-6t6zfk7k>1.4 事件处理</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#15-条件渲染" data-target="15-条件渲染" data-astro-cid-6t6zfk7k>1.5 条件渲染</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#16-列表循环" data-target="16-列表循环" data-astro-cid-6t6zfk7k>1.6 列表循环</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#17-状态提升" data-target="17-状态提升" data-astro-cid-6t6zfk7k>1.7 状态提升</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#18-路由使用" data-target="18-路由使用" data-astro-cid-6t6zfk7k>1.8 路由使用</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#181-路由配置" data-target="181-路由配置" data-astro-cid-6t6zfk7k>1.8.1 路由配置</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#182-路由传参" data-target="182-路由传参" data-astro-cid-6t6zfk7k>1.8.2 路由传参</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#183--路由钩子函数" data-target="183--路由钩子函数" data-astro-cid-6t6zfk7k>1.8.3  路由钩子函数</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#19-react-redux使用" data-target="19-react-redux使用" data-astro-cid-6t6zfk7k>1.9 react-redux使用</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#191-store" data-target="191-store" data-astro-cid-6t6zfk7k>1.9.1 store</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#192-reducer" data-target="192-reducer" data-astro-cid-6t6zfk7k>1.9.2 reducer</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#193-使用方法" data-target="193-使用方法" data-astro-cid-6t6zfk7k>1.9.3 使用方法</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#194-小结" data-target="194-小结" data-astro-cid-6t6zfk7k>1.9.4 小结</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#110-权限控制" data-target="110-权限控制" data-astro-cid-6t6zfk7k>1.10 权限控制</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1101-页面权限" data-target="1101-页面权限" data-astro-cid-6t6zfk7k>1.10.1 页面权限</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1102-按钮权限" data-target="1102-按钮权限" data-astro-cid-6t6zfk7k>1.10.2 按钮权限</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

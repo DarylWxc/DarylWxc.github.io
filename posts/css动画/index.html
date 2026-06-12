@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>CSS动画 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>CSS动画</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Apr 14, 2021</span>  <a href="/categories/页面样式/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> 页面样式 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 833 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 2 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1-css动画">1. CSS动画</h3>
+<h2 id="实现方式1transition实现渐变动画2transform转变动画3animation实现自定义动画">实现方式：
+1.transition实现渐变动画
+2.transform转变动画
+3.animation实现自定义动画</h2>
+<h3 id="2-transition">2. transition</h3>
+<h2 id="transition的属性1property填写需要变化的css属性2duration完成过渡效果需要的时间单位3timing-function完成效果的速度曲线linear匀速ease从慢到快再到慢ease-in慢慢变快ease-out慢慢变慢ease-in-out先变快在到慢cubic-bezier定义自己的值4delay动画效果的延迟触发时间">transition的属性：
+1.property
+填写需要变化的CSS属性
+2.duration
+完成过渡效果需要的时间单位
+3.timing-function
+完成效果的速度曲线
+linear(匀速)，ease(从慢到快再到慢)，ease-in(慢慢变快)，ease-out(慢慢变慢)，ease-in-out(先变快在到慢)，cubic-bezier(定义自己的值)
+4.delay
+动画效果的延迟触发时间</h2>
+<h3 id="3-transform">3. transform</h3>
+<h2 id="tranform有的属性1translate-位移2scale-缩放3rotate-旋转4skew-倾斜一般配合transition使用不支持inline元素">tranform有的属性
+1.translate 位移
+2.scale 缩放
+3.rotate 旋转
+4.skew 倾斜
+一般配合transition使用，不支持inline元素</h2>
+<h3 id="4-animation">4. animation</h3>
+<p>animation自带属性：
+1.animation-duration
+指动画周期时间
+2.animation-timing-function
+指动画计时函数
+3.animation-delay
+延迟时间，默认为0
+4.animation-iteration-count
+播放次数
+5.animation-fill-mode
+填充模式，默认none
+6.animation-play-state
+播放状态
+7.animation-name
+@keyframes动画名称
+8.animation-dirction
+播放方向normal</p>
+<h3 id="5-总结">5. 总结</h3>
+<p>transition(过渡)：用于设置元素的样式过渡，和animation有着类似的效果，但细节上有很大的不同
+transform(变形):用于元素进行旋转、缩放、移动或倾斜，和设置样式的动画并没有什么关系，相当于color一样用来设置元素的“外表”
+translate(移动)：只是transform的一个属性值，即移动
+animation(动画):用于设置动画属性</p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/CSS/" class="tag-pill" data-astro-cid-gjtny2mx>
+# CSS </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/css3特性/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>CSS3特性</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/回流与重绘/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>回流与重绘</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/css预处理器/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS预处理器</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 26, 2021</span></a><a class="related-item" href="/posts/设置小于12px的字体/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>设置小于12PX的字体</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 23, 2021</span></a><a class="related-item" href="/posts/css视差滚动/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS视差滚动</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 21, 2021</span></a><a class="related-item" href="/posts/css响应式设计/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS响应式设计</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 16, 2021</span></a><a class="related-item" href="/posts/回流与重绘/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>回流与重绘</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 15, 2021</span></a><a class="related-item" href="/posts/css3特性/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS3特性</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 13, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1-css动画" data-target="1-css动画" data-astro-cid-6t6zfk7k>1. CSS动画</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#实现方式1transition实现渐变动画2transform转变动画3animation实现自定义动画" data-target="实现方式1transition实现渐变动画2transform转变动画3animation实现自定义动画" data-astro-cid-6t6zfk7k>实现方式：
+1.transition实现渐变动画
+2.transform转变动画
+3.animation实现自定义动画</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2-transition" data-target="2-transition" data-astro-cid-6t6zfk7k>2. transition</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#transition的属性1property填写需要变化的css属性2duration完成过渡效果需要的时间单位3timing-function完成效果的速度曲线linear匀速ease从慢到快再到慢ease-in慢慢变快ease-out慢慢变慢ease-in-out先变快在到慢cubic-bezier定义自己的值4delay动画效果的延迟触发时间" data-target="transition的属性1property填写需要变化的css属性2duration完成过渡效果需要的时间单位3timing-function完成效果的速度曲线linear匀速ease从慢到快再到慢ease-in慢慢变快ease-out慢慢变慢ease-in-out先变快在到慢cubic-bezier定义自己的值4delay动画效果的延迟触发时间" data-astro-cid-6t6zfk7k>transition的属性：
+1.property
+填写需要变化的CSS属性
+2.duration
+完成过渡效果需要的时间单位
+3.timing-function
+完成效果的速度曲线
+linear(匀速)，ease(从慢到快再到慢)，ease-in(慢慢变快)，ease-out(慢慢变慢)，ease-in-out(先变快在到慢)，cubic-bezier(定义自己的值)
+4.delay
+动画效果的延迟触发时间</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3-transform" data-target="3-transform" data-astro-cid-6t6zfk7k>3. transform</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#tranform有的属性1translate-位移2scale-缩放3rotate-旋转4skew-倾斜一般配合transition使用不支持inline元素" data-target="tranform有的属性1translate-位移2scale-缩放3rotate-旋转4skew-倾斜一般配合transition使用不支持inline元素" data-astro-cid-6t6zfk7k>tranform有的属性
+1.translate 位移
+2.scale 缩放
+3.rotate 旋转
+4.skew 倾斜
+一般配合transition使用，不支持inline元素</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4-animation" data-target="4-animation" data-astro-cid-6t6zfk7k>4. animation</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#5-总结" data-target="5-总结" data-astro-cid-6t6zfk7k>5. 总结</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

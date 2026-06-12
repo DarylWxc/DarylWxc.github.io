@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Vue监听属性原理 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Vue监听属性原理</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Jan 4, 2022</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 1834 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 5 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1监听属性的初始化">1.监听属性的初始化</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// 初始化watch</span></span>
+<span class="line"><span>function initWatch(vm) {</span></span>
+<span class="line"><span>  let watch = vm.$options.watch;</span></span>
+<span class="line"><span>  for (let k in watch) {</span></span>
+<span class="line"><span>    const handler = watch[k]; //用户自定义watch的写法可能是数组 对象 函数 字符串</span></span>
+<span class="line"><span>    if (Array.isArray(handler)) {</span></span>
+<span class="line"><span>      // 如果是数组就遍历进行创建</span></span>
+<span class="line"><span>      handler.forEach((handle) => {</span></span>
+<span class="line"><span>        createWatcher(vm, k, handle);</span></span>
+<span class="line"><span>      });</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>      createWatcher(vm, k, handler);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>// 创建watcher的核心</span></span>
+<span class="line"><span>function createWatcher(vm, exprOrFn, handler, options = {}) {</span></span>
+<span class="line"><span>  if (typeof handler === "object") {</span></span>
+<span class="line"><span>    options = handler; //保存用户传入的对象</span></span>
+<span class="line"><span>    handler = handler.handler; //这个代表真正用户传入的函数</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  if (typeof handler === "string") {</span></span>
+<span class="line"><span>    //   代表传入的是定义好的methods方法</span></span>
+<span class="line"><span>    handler = vm[handler];</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  //   调用vm.$watch创建用户watcher</span></span>
+<span class="line"><span>  return vm.$watch(exprOrFn, handler, options);</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>初始化watch时对options上的watch属性进行处理，如果是数组则遍历处理调用createWatcher函数，最后调用$watch创建用户watcher</p>
+<hr>
+<h3 id="2watch">2.$watch</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import Watcher from "./observer/watcher";</span></span>
+<span class="line"><span>Vue.prototype.$watch = function (exprOrFn, cb, options) {</span></span>
+<span class="line"><span>  const vm = this;</span></span>
+<span class="line"><span>  //  user: true 这里表示是一个用户watcher</span></span>
+<span class="line"><span>  let watcher = new Watcher(vm, exprOrFn, cb, { ...options, user: true });</span></span>
+<span class="line"><span>  // 如果有immediate属性 代表需要立即执行回调</span></span>
+<span class="line"><span>  if (options.immediate) {</span></span>
+<span class="line"><span>    cb(); //如果立刻执行</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>创建自定义watch的核心方法，把用户定义的options和user:true传给构造函数watcher</p>
+<hr>
+<h3 id="3watcher改造">3.Watcher改造</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span> this.user = options.user; //标识用户watcher</span></span>
+<span class="line"><span>if (typeof exprOrFn === "function") {</span></span>
+<span class="line"><span>      this.getter = exprOrFn;</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>      this.getter = function () {</span></span>
+<span class="line"><span>        //用户watcher传过来的可能是一个字符串   类似a.a.a.a.b</span></span>
+<span class="line"><span>        let path = exprOrFn.split(".");</span></span>
+<span class="line"><span>        let obj = vm;</span></span>
+<span class="line"><span>        for (let i = 0; i &#x3C; path.length; i++) {</span></span>
+<span class="line"><span>          obj = obj[path[i]]; //vm.a.a.a.a.b</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        return obj;</span></span>
+<span class="line"><span>      };</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    // 实例化就进行一次取值操作 进行依赖收集过程</span></span>
+<span class="line"><span>    this.value = this.get();</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>run() {</span></span>
+<span class="line"><span>    const newVal = this.get(); //新值</span></span>
+<span class="line"><span>    const oldVal = this.value; //老值</span></span>
+<span class="line"><span>    this.value = newVal; //现在的新值将成为下一次变化的老值</span></span>
+<span class="line"><span>    if (this.user) {</span></span>
+<span class="line"><span>      // 如果两次的值不相同  或者值是引用类型 因为引用类型新老值是相等的 他们是指向同一引用地址</span></span>
+<span class="line"><span>      if (newVal !== oldVal || isObject(newVal)) {</span></span>
+<span class="line"><span>        this.cb.call(this.vm, newVal, oldVal);</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>      // 渲染watcher</span></span>
+<span class="line"><span>      this.cb.call(this.vm);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span></code></pre>
+<h2 id="为了兼容watch的写法会将传入的字符串转成vue实例对应的值调用get方法保存一次旧值run方法中当判断为用户watcher那么执行用户传入的回调函数cb并把新旧值传入">为了兼容watch的写法，会将传入的字符串转成Vue实例对应的值，调用get方法保存一次旧值。
+run方法中，当判断为用户watcher，那么执行用户传入的回调函数cb，并把新旧值传入。</h2>
+<h3 id="4小结">4.小结</h3>
+<p>借助watcher实现。初始化响应式时，会调用createWatcher创建用户watcher，其中会将传入的handler存为watcher的cb函数，渲染更新时，会调用一次get获取旧值，执行用户watcher的run函数，判断为用户watcher时执行cb函数并将新值和旧值传入。</p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端框架/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端框架 </a><a href="/tags/Vue/" class="tag-pill" data-astro-cid-gjtny2mx>
+# Vue </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/vue模板组件原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>Vue模板组件原理</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/vue计算属性原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>Vue计算属性原理</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/vue-router原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue-Router原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vuex原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vuex原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vue全局api原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue全局API原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue计算属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue计算属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue模板组件原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue模板组件原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue的mixin原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue的mixin原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Dec 31, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1监听属性的初始化" data-target="1监听属性的初始化" data-astro-cid-6t6zfk7k>1.监听属性的初始化</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2watch" data-target="2watch" data-astro-cid-6t6zfk7k>2.$watch</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3watcher改造" data-target="3watcher改造" data-astro-cid-6t6zfk7k>3.Watcher改造</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#为了兼容watch的写法会将传入的字符串转成vue实例对应的值调用get方法保存一次旧值run方法中当判断为用户watcher那么执行用户传入的回调函数cb并把新旧值传入" data-target="为了兼容watch的写法会将传入的字符串转成vue实例对应的值调用get方法保存一次旧值run方法中当判断为用户watcher那么执行用户传入的回调函数cb并把新旧值传入" data-astro-cid-6t6zfk7k>为了兼容watch的写法，会将传入的字符串转成Vue实例对应的值，调用get方法保存一次旧值。
+run方法中，当判断为用户watcher，那么执行用户传入的回调函数cb，并把新旧值传入。</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4小结" data-target="4小结" data-astro-cid-6t6zfk7k>4.小结</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

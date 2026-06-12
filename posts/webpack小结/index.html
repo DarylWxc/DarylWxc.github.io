@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Webpack小结 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Webpack小结</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Jan 6, 2022</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 7142 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 18 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1-webpack">1. Webpack</h3>
+<p>webpack是自动化打包解决方案，也是一个模块打包机。将浏览器不能直接运行的语言或资源打包为合适的格式供浏览器使用。
+webpack能做到：</p>
+<ul>
+<li>代码转换：TypeScript编译成JavaScript、SCSS，LESS编译成CSS</li>
+<li>文件优化：压缩JavaScript、CSS、HTML代码，压缩合并图片</li>
+<li>代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载</li>
+<li>模块合并：在采用模块化的项目里会有很多个模块和文件，需要构建功能把模块分类合并成一个文件</li>
+<li>自动刷新：监听本地源代码的变化，自动重新构建、刷新浏览器</li>
+</ul>
+<hr>
+<h3 id="2-webpack常见配置有哪些">2. Webpack常见配置有哪些</h3>
+<ul>
+<li>Entry：入口，Webpack执行构建的第一步将从Entry开始，可抽象成输入。</li>
+<li>Output：输出结果，在Webpack经过一系列处理并得出最终想要的代码后输出结果。</li>
+<li>mode：提供mode配置选项，告知webpack使用相应模式的内置优化。</li>
+<li>Module：模块，在Webpack里一切皆模块，一个模块对应着一个文件。</li>
+<li>Chunk：代码块，一个Chunk由多个模块组合而成，用于代码合并与分割。</li>
+<li>Loader：模块转换器，用于把模块原内容按照需求转换成新内容。</li>
+<li>Plugin：扩展插件，在Webpack构建流程中的特定时机注入扩展逻辑来改变构建结果或者你想要的事情。</li>
+</ul>
+<hr>
+<h3 id="3-webpack工作流程">3. webpack工作流程</h3>
+<ul>
+<li>参数解析：从配置文件和Shell语句中读取与合并参数，得出最终的参数</li>
+<li>找到入口文件：从Entry里配置的Module，开始递归解析Entry依赖的所有Module</li>
+<li>调用Loader编译文件：每找到一个Module，就会根据配置的Loader去找出对应的转换规则</li>
+<li>遍历AST，收集依赖：对Module进行转换后，再解析出当前Module依赖的Module</li>
+<li>生成Chunk：这些模块会以Entry为单位进行分组，一个Entry和其所有依赖的Module被分到一个组也就是一个Chunk</li>
+<li>输出文件：最后Webpack会把所有Chunk转换成文件输出</li>
+</ul>
+<hr>
+<h3 id="4-常见loader配置以及工作流程">4. 常见Loader配置以及工作流程</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// webpack.config.js</span></span>
+<span class="line"><span>module.exports = {</span></span>
+<span class="line"><span>  module: {</span></span>
+<span class="line"><span>    rules: [</span></span>
+<span class="line"><span>     {</span></span>
+<span class="line"><span>        test: /\.vue$/,</span></span>
+<span class="line"><span>        loader: 'vue-loader'</span></span>
+<span class="line"><span>      },</span></span>
+<span class="line"><span>      { test: /\.js$/, use: 'babel-loader' },</span></span>
+<span class="line"><span>      {</span></span>
+<span class="line"><span>        test: /\.css$/,</span></span>
+<span class="line"><span>        use: [</span></span>
+<span class="line"><span>          { loader: 'style-loader' },</span></span>
+<span class="line"><span>          { loader: 'css-loader' },</span></span>
+<span class="line"><span>          { loader: 'postcss-loader' },</span></span>
+<span class="line"><span>        ]</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<ol>
+<li>webpack.config.js里配置了一个模块的Loader</li>
+<li>遇到对应模块文件时，触发了该模块的Loader</li>
+<li>loader接受了一个表示该模块文件内容的source</li>
+<li>loader使用webpack提供的一系列api对source进行转换，得到一个result</li>
+<li>将result返回或者传递到下一个loader，直到处理完毕</li>
+</ol>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>let less = require('less'); //less-loader例子</span></span>
+<span class="line"><span>module.exports = function (source) {</span></span>
+<span class="line"><span>    const callback = this.async();</span></span>
+<span class="line"><span>    //this.async() 返回一个回调函数，用于异步执行</span></span>
+<span class="line"><span>    less.render(source, (err, result) => {</span></span>
+<span class="line"><span>    //使用less处理对应的less文件的source</span></span>
+<span class="line"><span>        callback(err, result.css);</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<hr>
+<h3 id="5-常见plugin配置以及简易原理">5. 常见plugin配置以及简易原理</h3>
+<p>1.extract-text-webpack-plugin
+webpack默认将css当做一个模块打包到一个chunk中，extract-text-webpack-plugin的作用就是将css提取成独立的css文件</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const ExtractTextPlugin = require('extract-text-webpack-plugin');</span></span>
+<span class="line"><span>new ExtractTextPlugin({</span></span>
+<span class="line"><span>    filename: 'css/[name].css',</span></span>
+<span class="line"><span>})</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    test: /\.css$/,</span></span>
+<span class="line"><span>    use: ExtractTextPlugin.extract({</span></span>
+<span class="line"><span>        use: ['css-loader','postcss-loader','less-loader'],</span></span>
+<span class="line"><span>        fallback: 'vue-style-loader',  #使用vue时要用这个配置</span></span>
+<span class="line"><span>    })</span></span>
+<span class="line"><span>},</span></span></code></pre>
+<p>2.html-webpack-plugin
+该插件作用是创建HMTL页面文件到你的输出目录，还能将webpack打包后的chunk自动引入到这个HTML中</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const HtmlPlugin = require('html-webpack-plugin')</span></span>
+<span class="line"><span>new HtmlPlugin({</span></span>
+<span class="line"><span>    filename: 'index.html',</span></span>
+<span class="line"><span>    template: 'pages/index.html'</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>3.DefinePlugin定义全局常量</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>new webpack.DefinePlugin({</span></span>
+<span class="line"><span>    'process.env': {</span></span>
+<span class="line"><span>        NODE_ENV: JSON.stringify(process.env.NODE_ENV)</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    PRODUCTION: JSON.stringify(PRODUCTION),</span></span>
+<span class="line"><span>    APP_CONFIG: JSON.stringify(appConfig[process.env.NODE_ENV]),</span></span>
+<span class="line"><span>})</span></span></code></pre>
+<p>4.UglifyJsPlugin js压缩</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>new webpack.optimize.UglifyJsPlugin() //webpack4 已经移除了该插件，用 optimization.minimize 替代</span></span></code></pre>
+<p>5.CommonsChunkPlugin
+该插件主要用来提取第三方库(jQuery)和公共模块(js,css)，常用于多页面应用程序，生成公共chunk，避免重复引用。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>{</span></span>
+<span class="line"><span>    entry: {</span></span>
+<span class="line"><span>        vendor: 'index.js'</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    plugins: [</span></span>
+<span class="line"><span>        new webpack.optimize.CommonsChunkPlugin({</span></span>
+<span class="line"><span>            name: ['vendor','runtime'],</span></span>
+<span class="line"><span>            filename: '[name].js'</span></span>
+<span class="line"><span>        }),</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>//webpack4 已经移除了该插件，用 optimization.SplitChunks 替代</span></span></code></pre>
+<p>6.插件原理
+插件相当于在特定的时机对生产线上的资源做处理。编译过程中，会触发一系列Tapable钩子事件，在对应的钩子上挂自己的任务，注册事件后，随着钩子的触发而执行。
+webpack插件由以下组成：</p>
+<ul>
+<li>一个JavaScript命名函数</li>
+<li>在插件函数的prototype上定义一个apply方法</li>
+<li>指定一个绑定到webpack自身的事件钩子</li>
+<li>处理webpack内部实例的特定数据</li>
+<li>功能完成后调用webpack提供的回调</li>
+</ul>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// 一个 JavaScript 命名函数。</span></span>
+<span class="line"><span>function MyExampleWebpackPlugin() {</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span>// 在插件函数的 prototype 上定义一个 apply 方法。</span></span>
+<span class="line"><span>MyExampleWebpackPlugin.prototype.apply = function(compiler) {</span></span>
+<span class="line"><span>// 指定一个挂载到 webpack 自身的事件钩子。</span></span>
+<span class="line"><span>compiler.plugin('webpacksEventHook', function(compilation /* 处理 webpack 内部实例的特定数据。*/, callback) {</span></span>
+<span class="line"><span>console.log("This is an example plugin!!!");</span></span>
+<span class="line"><span>// 功能完成后调用 webpack 提供的回调。</span></span>
+<span class="line"><span>callback();</span></span>
+<span class="line"><span>复制代码</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<hr>
+<h3 id="6-如何提高webpack打包速度">6. 如何提高webpack打包速度</h3>
+<p>1.缩小编译范围，减少不必要的编译功能，即modules、mainFields、noParse、includes、exclude、alias全部使用</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const resolve = dir => path.join(__dirname, '..', dir);</span></span>
+<span class="line"><span>resolve: {</span></span>
+<span class="line"><span>    modules: [ // 指定以下目录寻找第三方模块，避免webpack往父级目录递归搜索</span></span>
+<span class="line"><span>        resolve('src'),</span></span>
+<span class="line"><span>        resolve('node_modules'),</span></span>
+<span class="line"><span>        resolve(config.common.layoutPath)</span></span>
+<span class="line"><span>    ],</span></span>
+<span class="line"><span>    mainFields: ['main'], // 只采用main字段作为入口文件描述字段，减少搜索步骤</span></span>
+<span class="line"><span>    alias: {</span></span>
+<span class="line"><span>        vue$: "vue/dist/vue.common",</span></span>
+<span class="line"><span>        "@": resolve("src") // 缓存src目录为@符号，避免重复寻址</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>},</span></span>
+<span class="line"><span>module: {</span></span>
+<span class="line"><span>    noParse: /jquery|lodash/, // 忽略未采用模块化的文件，因此jquery或lodash将不会被下面的loaders解析</span></span>
+<span class="line"><span>    // noParse: function(content) {</span></span>
+<span class="line"><span>    //     return /jquery|lodash/.test(content)</span></span>
+<span class="line"><span>    // },</span></span>
+<span class="line"><span>    rules: [</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>            test: /\.js$/,</span></span>
+<span class="line"><span>            include: [ // 表示只解析以下目录，减少loader处理范围</span></span>
+<span class="line"><span>                resolve("src"),</span></span>
+<span class="line"><span>                resolve(config.common.layoutPath)</span></span>
+<span class="line"><span>            ],</span></span>
+<span class="line"><span>            exclude: file => /test/.test(file), // 排除test目录文件</span></span>
+<span class="line"><span>            loader: "happypack/loader?id=happy-babel" // 后面会介绍</span></span>
+<span class="line"><span>        },</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>2.webpack-parallel-uglify-plugin插件(优化js压缩过程)
+该插件能够把任务分解给多个子进程去并发的执行，子进程处理完后再把结果发送给主进程，从而实现并发编译，进而大幅提升js压缩速度</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');</span></span>
+<span class="line"><span>// ...</span></span>
+<span class="line"><span>optimization: {</span></span>
+<span class="line"><span>minimizer: [</span></span>
+<span class="line"><span>   new ParallelUglifyPlugin({ // 多进程压缩</span></span>
+<span class="line"><span>   cacheDir: '.cache/',</span></span>
+<span class="line"><span>   uglifyJS: {</span></span>
+<span class="line"><span>      output: {</span></span>
+<span class="line"><span>      comments: false,</span></span>
+<span class="line"><span>      beautify: false</span></span>
+<span class="line"><span>   },</span></span>
+<span class="line"><span>   compress: {</span></span>
+<span class="line"><span>      warnings: false,</span></span>
+<span class="line"><span>      drop_console: true,</span></span>
+<span class="line"><span>      collapse_vars: true,</span></span>
+<span class="line"><span>      reduce_vars: true</span></span>
+<span class="line"><span>   }</span></span>
+<span class="line"><span>}}),</span></span>
+<span class="line"><span>]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>3.HappyPack
+在webpack运行在node中打包的时候，happypack可以开启多个子进程去并发执行，子进程处理完后把结果交给主进程</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const HappyPack = require('happypack');</span></span>
+<span class="line"><span>module.exports = {</span></span>
+<span class="line"><span>	entry: './src/index.js',</span></span>
+<span class="line"><span>	output: {</span></span>
+<span class="line"><span>		path: path.join(__dirname, './dist'),</span></span>
+<span class="line"><span>		filename: 'main.js',</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    module: {</span></span>
+<span class="line"><span>        rules: [</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                test: /\.jsx?$/,</span></span>
+<span class="line"><span>                exclude: /node_modules/,</span></span>
+<span class="line"><span>                use: 'happypack/loader?id=babel',</span></span>
+<span class="line"><span>            },</span></span>
+<span class="line"><span>        ]</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    plugins: [</span></span>
+<span class="line"><span>        new HappyPack({</span></span>
+<span class="line"><span>            id: 'babel',  //id值，与loader配置项对应</span></span>
+<span class="line"><span>            threads: 4,  //配置多少个子进程</span></span>
+<span class="line"><span>            loaders: ['babel-loader']  //用什么loader处理</span></span>
+<span class="line"><span>        }),</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>4.DLL 动态链接
+第三方库不是经常更新，打包的时候希望分开打包，来提升打包速度。打包dll需要新建一个webpack配置文件(webpack.dll.config.js)，在打包dll的时候，webpack做一个索引，写在mainfest文件中。然后打包项目文件时只需要读取manifest文件。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const webpack = require("webpack");</span></span>
+<span class="line"><span>const path = require('path');</span></span>
+<span class="line"><span>const CleanWebpackPlugin = require("clean-webpack-plugin");</span></span>
+<span class="line"><span>const dllPath = path.resolve(__dirname, "../src/assets/dll"); // dll文件存放的目录</span></span>
+<span class="line"><span>复制代码module.exports = {</span></span>
+<span class="line"><span>   entry: {</span></span>
+<span class="line"><span>   // 把 vue 相关模块的放到一个单独的动态链接库</span></span>
+<span class="line"><span>   vue: ["babel-polyfill", "fastclick", "vue", "vue-router", "vuex", "axios","element-ui"]</span></span>
+<span class="line"><span>   },</span></span>
+<span class="line"><span>   output: {</span></span>
+<span class="line"><span>      filename: "[name]-[hash].dll.js", // 生成vue.dll.js</span></span>
+<span class="line"><span>      path: dllPath,</span></span>
+<span class="line"><span>      library: "dll[name]"</span></span>
+<span class="line"><span>   },</span></span>
+<span class="line"><span>   plugins: [</span></span>
+<span class="line"><span>      new CleanWebpackPlugin(["*.js"], { // 清除之前的dll文件</span></span>
+<span class="line"><span>      root: dllPath,</span></span>
+<span class="line"><span>   }),</span></span>
+<span class="line"><span>   new webpack.DllPlugin({</span></span>
+<span class="line"><span>      name: "dll[name]",</span></span>
+<span class="line"><span>      // manifest.json 描述动态链接库包含了哪些内容</span></span>
+<span class="line"><span>      path: path.join(__dirname, "./", "[name].dll.manifest.json")</span></span>
+<span class="line"><span>   }),</span></span>
+<span class="line"><span>   ],</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>接着，需要在package.json中新增dll命令</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"scripts": {</span></span>
+<span class="line"><span>    "dll": "webpack --mode production --config build/webpack.dll.config.js"</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>运行npm run dll后，会生成 ./src/assets/dll/vue.dll-[hash].js 公共 js 和 ./build/vue.dll.manifest.json 资源说明文件，至此 dll 准备工作完成，接下来在 webpack 中引用即可。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>externals: {</span></span>
+<span class="line"><span>    'vue': 'Vue',</span></span>
+<span class="line"><span>    'vue-router': 'VueRouter',</span></span>
+<span class="line"><span>    'vuex': 'vuex',</span></span>
+<span class="line"><span>    'elemenct-ui': 'ELEMENT',</span></span>
+<span class="line"><span>    'axios': 'axios',</span></span>
+<span class="line"><span>    'fastclick': 'FastClick'</span></span>
+<span class="line"><span>},</span></span>
+<span class="line"><span>plugins: [</span></span>
+<span class="line"><span>    ...(config.common.needDll ? [</span></span>
+<span class="line"><span>        new webpack.DllReferencePlugin({</span></span>
+<span class="line"><span>            manifest: require("./vue.dll.manifest.json")</span></span>
+<span class="line"><span>        })</span></span>
+<span class="line"><span>    ] : [])</span></span>
+<span class="line"><span>]</span></span></code></pre>
+<hr>
+<h3 id="7-webpack如何优化前端性能">7. webpack如何优化前端性能</h3>
+<ol>
+<li>第三方库按需加载、路由懒加载</li>
+</ol>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>//第三方ui库element，vant等库都提供来按需加载的方式，避免全部引入，加大项目体积</span></span>
+<span class="line"><span>import { Button, Select } from 'element-ui';</span></span>
+<span class="line"><span>复制代码//路由懒加载</span></span>
+<span class="line"><span>const showImage = () => import('@/components/common/showImage');。</span></span></code></pre>
+<ol start="2">
+<li>代码分割</li>
+</ol>
+<ul>
+<li>提取第三方库 [vendor]</li>
+</ul>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>module.exports = {</span></span>
+<span class="line"><span>    entry: {</span></span>
+<span class="line"><span>        main: './src/index.js',</span></span>
+<span class="line"><span>        vendor: ['react', 'react-dom'],</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<ul>
+<li>依赖库分离 [splitChunks]</li>
+</ul>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>optimization: {</span></span>
+<span class="line"><span>  splitChunks: {</span></span>
+<span class="line"><span>     chunks: "async", // 必须三选一： "initial" | "all"(推荐) | "async" (默认就是async)</span></span>
+<span class="line"><span>     minSize: 30000, // 最小尺寸，30000</span></span>
+<span class="line"><span>     minChunks: 1, // 最小 chunk ，默认1</span></span>
+<span class="line"><span>     maxAsyncRequests: 5, // 最大异步请求数， 默认5</span></span>
+<span class="line"><span>     maxInitialRequests : 3, // 最大初始化请求书，默认3</span></span>
+<span class="line"><span>     automaticNameDelimiter: '~',// 打包分隔符</span></span>
+<span class="line"><span>     name: function(){}, // 打包后的名称，此选项可接收 function</span></span>
+<span class="line"><span>     cacheGroups:{ // 这里开始设置缓存的 chunks</span></span>
+<span class="line"><span>         priority: 0, // 缓存组优先级</span></span>
+<span class="line"><span>         vendor: { // key 为entry中定义的 入口名称</span></span>
+<span class="line"><span>             chunks: "initial", // 必须三选一： "initial" | "all" | "async"(默认就是async)</span></span>
+<span class="line"><span>             test: /react|lodash/, // 正则规则验证，如果符合就提取 chunk</span></span>
+<span class="line"><span>             name: "vendor", // 要缓存的 分隔出来的 chunk 名称</span></span>
+<span class="line"><span>             minSize: 30000,</span></span>
+<span class="line"><span>             minChunks: 1,</span></span>
+<span class="line"><span>             enforce: true,</span></span>
+<span class="line"><span>             maxAsyncRequests: 5, // 最大异步请求数， 默认1</span></span>
+<span class="line"><span>             maxInitialRequests : 3, // 最大初始化请求书，默认1</span></span>
+<span class="line"><span>             reuseExistingChunk: true // 可设置是否重用该chunk</span></span>
+<span class="line"><span>         }</span></span>
+<span class="line"><span>     }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span> },</span></span></code></pre>
+<ol start="3">
+<li>删除冗余代码(Tree-Shaking)</li>
+</ol>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const UglifyJSPlugin = require('uglifyjs-webpack-plugin');</span></span>
+<span class="line"><span>plugins:[</span></span>
+<span class="line"><span>   new UglifyJSPlugin()</span></span>
+<span class="line"><span>]</span></span>
+<span class="line"><span>//在webpack4中，只需要配置mode为'production'即可</span></span></code></pre>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/工程化/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 工程化 </a><a href="/tags/webpack/" class="tag-pill" data-astro-cid-gjtny2mx>
+# webpack </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/vue-router原理/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>Vue-Router原理</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/es6之迭代器/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>ES6之迭代器</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/webpack学习/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Webpack学习</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 8, 2022</span></a><a class="related-item" href="/posts/webpack/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Webpack</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 27, 2021</span></a><a class="related-item" href="/posts/前端工程化/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>前端工程化</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 15, 2021</span></a><a class="related-item" href="/posts/typescript-learning-note/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Typescript-Learning-Note</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jun 1, 2023</span></a><a class="related-item" href="/posts/javascript之深入map/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Map</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入set/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Set</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#1-webpack" data-target="1-webpack" data-astro-cid-6t6zfk7k>1. Webpack</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#2-webpack常见配置有哪些" data-target="2-webpack常见配置有哪些" data-astro-cid-6t6zfk7k>2. Webpack常见配置有哪些</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#3-webpack工作流程" data-target="3-webpack工作流程" data-astro-cid-6t6zfk7k>3. webpack工作流程</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#4-常见loader配置以及工作流程" data-target="4-常见loader配置以及工作流程" data-astro-cid-6t6zfk7k>4. 常见Loader配置以及工作流程</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#5-常见plugin配置以及简易原理" data-target="5-常见plugin配置以及简易原理" data-astro-cid-6t6zfk7k>5. 常见plugin配置以及简易原理</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#6-如何提高webpack打包速度" data-target="6-如何提高webpack打包速度" data-astro-cid-6t6zfk7k>6. 如何提高webpack打包速度</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#7-webpack如何优化前端性能" data-target="7-webpack如何优化前端性能" data-astro-cid-6t6zfk7k>7. webpack如何优化前端性能</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

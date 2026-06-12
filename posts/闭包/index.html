@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>执行上下文到作用域和闭包 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>执行上下文到作用域和闭包</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Jun 16, 2020</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 2360 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 6 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h2 id="再次深入执行上下文">再次深入执行上下文</h2>
+<h3 id="全局上下文">全局上下文</h3>
+<p>预定义的对象，可以访问其他所有预定义的对象、函数和属性。在顶层JS中，可以用关键字this引用全局对象(Window对象)。全局对象是由Object构造函数实例化的一个对象。全局上下文中的变量对象(VO)就是全局对象。</p>
+<h3 id="函数上下文">函数上下文</h3>
+<p>AO(activation object,AO)变量对象，变量对象(VO)与活动对象其实是一个东西，当进入到一个执行上下文中，这个上下文的变量对象被激活，所以叫做活动对象，只有活动对象才能被访问。活动对象在进入上下文中通过arguments属性初始化。</p>
+<h3 id="执行上下文">执行上下文</h3>
+<p>执行代码前变量对象包括：
+1.函数的所有形参
+由名称和对应值组成的一个变量对象的属性被创建
+没有实参，属性值设为undefined
+2.函数声明
+由名称和对应值(函数对象)组成一个变量对象的属性被创建
+如果变量对象已经存在相同名称的属性，则完全替换这个属性
+3.变量声明
+由名称和对应值(undefined)组成一个变量对象的属性被创建
+如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性
+代码执行时会顺序执行代码，根据代码修改变量对象的值</p>
+<h3 id="小结">小结</h3>
+<h2 id="1全局上下文的变量对象初始化是全局对象2函数上下文的对象初始化只包括arguments对象3在进入执行上下文时会给变量对象添加形参函数声明变量声明等初始的属性值4在代码执行阶段会再次修改变量对象的属性值">1.全局上下文的变量对象初始化是全局对象
+2.函数上下文的对象初始化只包括Arguments对象
+3.在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值
+4.在代码执行阶段，会再次修改变量对象的属性值</h2>
+<h2 id="再次深入作用域链">再次深入作用域链</h2>
+<p>查找变量时，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象，由多个上下文的变量对象构成的链表就叫做作用域链</p>
+<h3 id="函数创建">函数创建</h3>
+<p>函数的作用域在函数定义的时候就决定了。函数创建时会保存所有父级变量对象到其中，可以理解[[scope]]就是所有父变量对象的层级链，但不代表完整的作用域链。</p>
+<h3 id="函数激活">函数激活</h3>
+<p>函数激活时，创建VO/AO后，会将活动对象添加到作用链的前端。
+Scope为执行上下文的作用域链。</p>
+<h3 id="深入理解函数创建到执行">深入理解函数创建到执行</h3>
+<h2 id="1创建函数保存作用域链到函数scope2准备执行函数创建函数执行上下文将其压入执行上下文栈3函数不立即执行复制函数scope创建作用域链4用arguments创建ao然后初始化加入形参函数声明变量声明5将ao压入函数作用域链顶端6执行函数修改ao的属性值7查找到ao值函数执行完毕后函数上下文从执行上下文栈中弹出">1.创建函数，保存作用域链到函数Scope
+2.准备执行函数，创建函数执行上下文，将其压入执行上下文栈
+3.函数不立即执行，复制函数Scope创建作用域链
+4.用arguments创建AO，然后初始化，加入形参、函数声明、变量声明
+5.将AO压入函数作用域链顶端
+6.执行函数，修改AO的属性值
+7.查找到AO值，函数执行完毕后，函数上下文从执行上下文栈中弹出</h2>
+<h2 id="针对闭包基础的理解和使用">针对闭包基础的理解和使用</h2>
+<h3 id="什么是闭包">什么是闭包</h3>
+<p>闭包允许函数访问并操作函数外部的变量。只要变量或函数存在于声明函数时的作用域内，闭包即可使函数能够访问这些变量或函数。
+调用一个函数时，会为这个函数调用创建一个执行上下文，并创建一个作用域链。然后用arguments和其他命名参数来初始化这个函数的活动对象(AO)。外部函数的活动对象是内部函数作用域链上的第二个对象。这个作用域一直向外反串起了所有包含函数的活动对象，直到全局执行上下文才终止。</p>
+<h3 id="闭包使用例子">闭包使用例子</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> Ninja</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> feints</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 0</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      this.getFeints</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> </span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">        return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> feints</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">      };</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      this.feint</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">        feints++</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">      }</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">     }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ninja1</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Ninja</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">();</span><span style="color:#E2931D;--shiki-dark:#FFCB6B"> //赋值一个实例</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">     ninja1.feint</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">();</span><span style="color:#E2931D;--shiki-dark:#FFCB6B"> //undefined</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 通过实例无法直接获取该变量值，但是能调用方法去改变变量值</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     assert(ninja1.feints</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ===</span><span style="color:#91B859;--shiki-dark:#C3E88D"> undefined,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">            "And the private data is inaccessible to us."</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     assert(ninja1.getFeints(</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) === 1,// 通过作用域内的方法获取私有变量的值，但是无法对该值进行直接操作</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">           "We're able to access the internal feint count."</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ninja2</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Ninja</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">();</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//新的实例有自己的私有变量</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     assert(ninja2.getFeints(</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) === 0,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">            "The second ninja object gets it’s own feints variable."</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span></code></pre>
+<h3 id="闭包的特性">闭包的特性</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">类似于“气泡”效果，每个实例都有一个单独的闭包，不能访问其他闭包中的变量，作用域（scopes）强相关。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">关于执行上下文栈：上下文在变化。每次执行新的函数，都将创建新的函数上下文。内部代码结构可以访问外部代码结构中定义的变量。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">查找变量是从内往外根据环境来查找数据，直到外层环境global还未找到则返回错误。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">词法环境：块级环境，函数环境，全局环境</span></span></code></pre>
+<h3 id="js执行">JS执行</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">JS引擎会访问并注册在当前词法环境中所声明的变量和函数。JS在第一阶段完成后开始执行第二阶段，具体执行取决于变量的类型（let，const，var，函数声明）以及环境类型（↑词法环境）。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> myFunExper</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> funtion</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D">{}</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//指向语数表达式(无法在声明前访问函数</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> myArrow</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (x) =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#90A4AE;--shiki-dark:#BABED8"> x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//指向箭头表达式(无法在声明前访问函数</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> fun</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(){}</span><span style="color:#90A4AE;--shiki-dark:#BABED8">//作为函数声明进行定义(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">可以在声明前访问函数</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">变量提升！！</span></span></code></pre>
+<p><img alt="过程" loading="lazy" decoding="async" width="545" height="442" src="/_astro/%E8%BF%87%E7%A8%8B.Dk-2d-H6_2rVKHR.webp" srcset=""></p>
+<h3 id="闭包小结">闭包小结</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">闭包的高级功能：通过构造函数内的变量以及构造方法来模拟对象的私有属性；处理回调函数，简化代码。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">上下文栈的创建，推入，退出。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">JS引擎通过词法环境跟踪标识符（词法环境：俗称作用域）。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 定义距离最近的函数级变量或全局变量</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">let和const定义距离最近级别的变量，包括块级变量。</span></span></code></pre>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/JavaScript/" class="tag-pill" data-astro-cid-gjtny2mx>
+# JavaScript </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/ps技术研究/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>PS技术研究</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/生成器和promise/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>生成器和promise</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/javascript之深入map/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Map</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入set/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Set</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入闭包/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入闭包</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入执行上下文/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入执行上下文</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入this/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入this</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入作用域链/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入作用域链</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#再次深入执行上下文" data-target="再次深入执行上下文" data-astro-cid-6t6zfk7k>再次深入执行上下文</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#全局上下文" data-target="全局上下文" data-astro-cid-6t6zfk7k>全局上下文</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#函数上下文" data-target="函数上下文" data-astro-cid-6t6zfk7k>函数上下文</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#执行上下文" data-target="执行上下文" data-astro-cid-6t6zfk7k>执行上下文</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#小结" data-target="小结" data-astro-cid-6t6zfk7k>小结</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#1全局上下文的变量对象初始化是全局对象2函数上下文的对象初始化只包括arguments对象3在进入执行上下文时会给变量对象添加形参函数声明变量声明等初始的属性值4在代码执行阶段会再次修改变量对象的属性值" data-target="1全局上下文的变量对象初始化是全局对象2函数上下文的对象初始化只包括arguments对象3在进入执行上下文时会给变量对象添加形参函数声明变量声明等初始的属性值4在代码执行阶段会再次修改变量对象的属性值" data-astro-cid-6t6zfk7k>1.全局上下文的变量对象初始化是全局对象
+2.函数上下文的对象初始化只包括Arguments对象
+3.在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值
+4.在代码执行阶段，会再次修改变量对象的属性值</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#再次深入作用域链" data-target="再次深入作用域链" data-astro-cid-6t6zfk7k>再次深入作用域链</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#函数创建" data-target="函数创建" data-astro-cid-6t6zfk7k>函数创建</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#函数激活" data-target="函数激活" data-astro-cid-6t6zfk7k>函数激活</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#深入理解函数创建到执行" data-target="深入理解函数创建到执行" data-astro-cid-6t6zfk7k>深入理解函数创建到执行</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#1创建函数保存作用域链到函数scope2准备执行函数创建函数执行上下文将其压入执行上下文栈3函数不立即执行复制函数scope创建作用域链4用arguments创建ao然后初始化加入形参函数声明变量声明5将ao压入函数作用域链顶端6执行函数修改ao的属性值7查找到ao值函数执行完毕后函数上下文从执行上下文栈中弹出" data-target="1创建函数保存作用域链到函数scope2准备执行函数创建函数执行上下文将其压入执行上下文栈3函数不立即执行复制函数scope创建作用域链4用arguments创建ao然后初始化加入形参函数声明变量声明5将ao压入函数作用域链顶端6执行函数修改ao的属性值7查找到ao值函数执行完毕后函数上下文从执行上下文栈中弹出" data-astro-cid-6t6zfk7k>1.创建函数，保存作用域链到函数Scope
+2.准备执行函数，创建函数执行上下文，将其压入执行上下文栈
+3.函数不立即执行，复制函数Scope创建作用域链
+4.用arguments创建AO，然后初始化，加入形参、函数声明、变量声明
+5.将AO压入函数作用域链顶端
+6.执行函数，修改AO的属性值
+7.查找到AO值，函数执行完毕后，函数上下文从执行上下文栈中弹出</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#针对闭包基础的理解和使用" data-target="针对闭包基础的理解和使用" data-astro-cid-6t6zfk7k>针对闭包基础的理解和使用</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#什么是闭包" data-target="什么是闭包" data-astro-cid-6t6zfk7k>什么是闭包</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#闭包使用例子" data-target="闭包使用例子" data-astro-cid-6t6zfk7k>闭包使用例子</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#闭包的特性" data-target="闭包的特性" data-astro-cid-6t6zfk7k>闭包的特性</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#js执行" data-target="js执行" data-astro-cid-6t6zfk7k>JS执行</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#闭包小结" data-target="闭包小结" data-astro-cid-6t6zfk7k>闭包小结</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

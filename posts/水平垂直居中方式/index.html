@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>水平垂直居中方式 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>水平垂直居中方式</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Apr 7, 2021</span>  <a href="/categories/UI设计开发/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> UI设计开发 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 1598 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 4 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h3 id="1-定位marginauto">1. 定位+margin:auto</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;style></span></span>
+<span class="line"><span>    .father{</span></span>
+<span class="line"><span>        width:500px;</span></span>
+<span class="line"><span>        height:300px;</span></span>
+<span class="line"><span>        border:1px solid #0a3b98;</span></span>
+<span class="line"><span>        position: relative;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    .son{</span></span>
+<span class="line"><span>        width:100px;</span></span>
+<span class="line"><span>        height:40px;</span></span>
+<span class="line"><span>        background: #f0a238;</span></span>
+<span class="line"><span>        position: absolute;</span></span>
+<span class="line"><span>        top:0;</span></span>
+<span class="line"><span>        left:0;</span></span>
+<span class="line"><span>        right:0;</span></span>
+<span class="line"><span>        bottom:0;</span></span>
+<span class="line"><span>        margin:auto;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>&#x3C;/style></span></span>
+<span class="line"><span>&#x3C;div class="father"></span></span>
+<span class="line"><span>    &#x3C;div class="son">&#x3C;/div></span></span>
+<span class="line"><span>&#x3C;/div></span></span></code></pre>
+<h3 id="2-定位margin负值">2. 定位+margin:负值</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.father {</span></span>
+<span class="line"><span>        position: relative;</span></span>
+<span class="line"><span>        width: 200px;</span></span>
+<span class="line"><span>        height: 200px;</span></span>
+<span class="line"><span>        background: skyblue;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    .son {</span></span>
+<span class="line"><span>        position: absolute;</span></span>
+<span class="line"><span>        top: 50%;</span></span>
+<span class="line"><span>        left: 50%;</span></span>
+<span class="line"><span>        margin-left:-50px;</span></span>
+<span class="line"><span>        margin-top:-50px;</span></span>
+<span class="line"><span>        width: 100px;</span></span>
+<span class="line"><span>        height: 100px;</span></span>
+<span class="line"><span>        background: red;</span></span>
+<span class="line"><span>    }</span></span></code></pre>
+<h3 id="3-定位transform">3. 定位+transform</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>    .father {</span></span>
+<span class="line"><span>        position: relative;</span></span>
+<span class="line"><span>        width: 200px;</span></span>
+<span class="line"><span>        height: 200px;</span></span>
+<span class="line"><span>        background: skyblue;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    .son {</span></span>
+<span class="line"><span>        position: absolute;</span></span>
+<span class="line"><span>        top: 50%;</span></span>
+<span class="line"><span>        left: 50%;</span></span>
+<span class="line"><span>  transform: translate(-50%,-50%);</span></span>
+<span class="line"><span>        width: 100px;</span></span>
+<span class="line"><span>        height: 100px;</span></span>
+<span class="line"><span>        background: red;</span></span>
+<span class="line"><span>    }</span></span></code></pre>
+<h3 id="4-table布局">4. table布局</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.father {</span></span>
+<span class="line"><span>        display: table-cell;</span></span>
+<span class="line"><span>        width: 200px;</span></span>
+<span class="line"><span>        height: 200px;</span></span>
+<span class="line"><span>        background: skyblue;</span></span>
+<span class="line"><span>        vertical-align: middle;</span></span>
+<span class="line"><span>        text-align: center;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    .son {</span></span>
+<span class="line"><span>        display: inline-block;</span></span>
+<span class="line"><span>        width: 100px;</span></span>
+<span class="line"><span>        height: 100px;</span></span>
+<span class="line"><span>        background: red;</span></span>
+<span class="line"><span>    }</span></span></code></pre>
+<h3 id="5-flex布局">5. flex布局</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.father {</span></span>
+<span class="line"><span>        display: flex;</span></span>
+<span class="line"><span>        justify-content: center;</span></span>
+<span class="line"><span>        align-items: center;</span></span>
+<span class="line"><span>        width: 200px;</span></span>
+<span class="line"><span>        height: 200px;</span></span>
+<span class="line"><span>        background: skyblue;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    .son {</span></span>
+<span class="line"><span>        width: 100px;</span></span>
+<span class="line"><span>        height: 100px;</span></span>
+<span class="line"><span>        background: red;</span></span>
+<span class="line"><span>    }</span></span></code></pre>
+<h3 id="6-grid网格布局">6. grid网格布局</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span> .father {</span></span>
+<span class="line"><span>            display: grid;</span></span>
+<span class="line"><span>            align-items:center;</span></span>
+<span class="line"><span>            justify-content: center;</span></span>
+<span class="line"><span>            width: 200px;</span></span>
+<span class="line"><span>            height: 200px;</span></span>
+<span class="line"><span>            background: skyblue;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        .son {</span></span>
+<span class="line"><span>            width: 10px;</span></span>
+<span class="line"><span>            height: 10px;</span></span>
+<span class="line"><span>            border: 1px solid red</span></span>
+<span class="line"><span>        }</span></span></code></pre>
+<h3 id="7-小结">7. 小结</h3>
+<h2 id="71-内联元素居中布局">7.1 内联元素居中布局</h2>
+<p>水平居中：
+行内元素设置text-align:center
+display:flex;justify-content:center
+垂直居中：
+单行文本父元素确认高度：height === line-height
+多行文本父元素确认高度：display：table-cell；vertical-align：middle</p>
+<h2 id="72-块级元素居中布局">7.2 块级元素居中布局</h2>
+<p>水平居中：
+定宽：margin：0 auto
+绝对定位+left：50%+margin：负自身一半
+垂直居中：</p>
+<ul>
+<li>position：absolute设置left，top，margin-left，margin-top(定高)</li>
+<li>display：table-cell</li>
+<li>transform：translate(x,y)</li>
+<li>flex(不定高，不定宽)</li>
+<li>grid(不定高，不定宽，兼容性较差)</li>
+</ul>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/CSS/" class="tag-pill" data-astro-cid-gjtny2mx>
+# CSS </a><a href="/tags/响应式布局/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 响应式布局 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/bfc/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>BFC</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/两栏布局和三栏布局/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>两栏布局和三栏布局</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/css样式/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS样式</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 9, 2020</span></a><a class="related-item" href="/posts/bfc/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>BFC</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 6, 2021</span></a><a class="related-item" href="/posts/清除浮动的方法/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>清除浮动的方法</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 11, 2020</span></a><a class="related-item" href="/posts/flex布局/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Flex布局</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 11, 2020</span></a><a class="related-item" href="/posts/css响应式设计/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS响应式设计</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 16, 2021</span></a><a class="related-item" href="/posts/css基础/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS基础</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 15, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#1-定位marginauto" data-target="1-定位marginauto" data-astro-cid-6t6zfk7k>1. 定位+margin:auto</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#2-定位margin负值" data-target="2-定位margin负值" data-astro-cid-6t6zfk7k>2. 定位+margin:负值</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#3-定位transform" data-target="3-定位transform" data-astro-cid-6t6zfk7k>3. 定位+transform</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#4-table布局" data-target="4-table布局" data-astro-cid-6t6zfk7k>4. table布局</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#5-flex布局" data-target="5-flex布局" data-astro-cid-6t6zfk7k>5. flex布局</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#6-grid网格布局" data-target="6-grid网格布局" data-astro-cid-6t6zfk7k>6. grid网格布局</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#7-小结" data-target="7-小结" data-astro-cid-6t6zfk7k>7. 小结</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#71-内联元素居中布局" data-target="71-内联元素居中布局" data-astro-cid-6t6zfk7k>7.1 内联元素居中布局</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#72-块级元素居中布局" data-target="72-块级元素居中布局" data-astro-cid-6t6zfk7k>7.2 块级元素居中布局</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

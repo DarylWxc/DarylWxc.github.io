@@ -1,454 +1,63 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DarylWxc</title><meta name="author" content="DarylWxc"><meta name="copyright" content="DarylWxc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
-<meta property="og:title" content="DarylWxc">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="DarylWxc">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/Aren.jpg">
-<meta property="article:author" content="DarylWxc">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/Aren.jpg"><link rel="shortcut icon" href="/img/Aren.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: true,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'DarylWxc',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2026-01-23 11:17:41'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href= "/css/my.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Aren.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">109</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">28</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/Web%E5%89%8D%E7%AB%AF/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/Princess.png')"><nav id="nav"><span id="blog-info"><a href="/" title="DarylWxc"><span class="site-name">DarylWxc</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/Web%E5%89%8D%E7%AB%AF/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">DarylWxc</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/DarylWxc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/DarylWxc@outlook.com" target="_blank" title="Email"><i class="far fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.youtube.com" target="_blank" title="Youtube"><i class="fab fa-youtube" style="color: #FF0000;"></i></a><a class="social-icon" href="https://soundcloud.com/roaldvelden" target="_blank" title="MyFavorite"><i class="fas fa-music" style="color: #FF5500;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/07/BCDA-noted/" title="BCDA-noted">BCDA-noted</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-07T14:22:38.000Z" title="Created 2025-05-07 08:22:38">2025-05-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Note/">Note</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Database/">Database</a></span></div><div class="content">importance of data(analyis)
-valuable insights
-better, more informed decisions
-help personalizing products services
-identity potential risks
-
-regular
-no need to face clients
-raw Data -&gt; information
-
-steps
-Collecting data
-Cleaning data
-Transforming data
-Analyzing data
-Visualizing data
-
-purpose of DA
-make informed decision
-solve problems
-test hypotheses
-
-type of DA
-descriptive historical data to describe what has occured in the past
-diagnostic explain why certain events,investigates the courses
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/11/03/Symbols-in-English/" title="Symbols-in-English">Symbols-in-English</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-11-04T04:14:05.000Z" title="Created 2024-11-03 21:14:05">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/English/">English</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learning/">learning</a></span></div><div class="content">Symbols
-(;) &#x2F;&#x2F; semicolon
-(&#96;&#96;) &#x2F;&#x2F; backtick
-(.) &#x2F;&#x2F; Period
-(?) &#x2F;&#x2F; Question Mark
-(!) &#x2F;&#x2F; Exclamation Point
-(,) &#x2F;&#x2F; Comma
-(:) &#x2F;&#x2F; Colon
-(-) &#x2F;&#x2F; Hyphen
-(_) &#x2F;&#x2F; Parentheses
-[] &#x2F;&#x2F; Brackets
-{} &#x2F;&#x2F; Braces
-(‘) &#x2F;&#x2F; Apostrophe
-(“”) &#x2F;&#x2F; Quotation Marks
-(…) &#x2F;&#x2F; Ellipsis
-(-) &#x2F;&#x2F; minus &#x2F; substraction
-(+) &#x2F;&#x2F; plus &#x2F; Addition
-(*) &#x2F;&#x2F; times & ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/11/03/Database-Notes/" title="Database-Notes">Database-Notes</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-11-04T03:30:29.000Z" title="Created 2024-11-03 20:30:29">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Back-End/">Back-End</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Database/">Database</a></span></div><div class="content">Syntax of SQLQuery
-DESC(descending order:Highest to Lowest),ASC(ascending order:Lowest to Highest)
-between - used to match the date datatype
-% - match string(example:”Ca%”,”%Ca%”,”%Ca”)
-like - match string, use with %
-is null&#x2F;is not null - match data is null or not
-Distinct - match unique data column
-Datediff - match difference of datetime datatype
-join - join different tables together with condition
-&lt;&gt; - means two data is different
-SUM&#x2F;MAX&#x2F;COUNT&#x2F;MIN - aggregate func fo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/24/react-porject-build/" title="react-porject-build">react-porject-build</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-10-25T02:07:02.000Z" title="Created 2024-10-24 20:07:02">2024-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/front-end/">front-end</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/front-end-development/">front-end development</a></span></div><div class="content">start with viteVite Documentation
-1npm create vite@latest (project_name) -- -- template react // Then a project auto generated
-create different foldersfolder list at first
-123456789101112131415161718192021Project/├── public├── src/│   ├── api│   ├── assets│   ├── components/│   │   ├── logo│   │   ├── cards│   │   └── ScrollTop.jsx│   ├── layout│   ├── pages│   ├── routes│   ├── index.jsx│   └── index.css├── .gitignore├── eslint.config.js├── index.html├── package.json├── package-lock.json└── REA ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/03/Node-Learning/" title="Node-Learning">Node-Learning</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-10-03T14:26:18.000Z" title="Created 2024-10-03 08:26:18">2024-10-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Class/">Class</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Studying/">Studying</a></span></div><div class="content">ExpressA frame work make it easy to code with node.jsrefer to my local exercise file of coding in courses
-PugA template Engines instead of HTML file to display the webpagesyou can code by html files and use online converter to convert the code into pug filesconverter  document for pug
-EJSAnother template Engines for displaying webpagescoding with the previous project
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/03/Class-Note/" title="CLass-Note">CLass-Note</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-03T13:51:47.000Z" title="Created 2024-09-03 07:51:47">2024-09-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Class/">Class</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Studying/">Studying</a></span></div><div class="content">teacherinformationname: Samuel Sofela:Office: NN318Cimportant:Network,Network,Network
-name: MAH-SAWOffice: NN406-Femail: &#x6d;&#97;&#104;&#x73;&#97;&#x2e;&#97;&#109;&#x69;&#x6e;&#105;&#x40;&#x73;&#x61;&#105;&#116;&#46;&#x63;&#97;number:2
-ITS Service Destlocation:MB027, Stan Grad Centre, SAIT Main CampusOnline resource—checking
-Career Advancemnt ServicesJob BoardWalk-in appointment: wednesday 3:45pm
-Resume Tips
-Maximum 2pages
-Target to the job posting,using keywords
-Be concise - 4-6 points&#x2F; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/24/Practical-Oral-Expression/" title="Practical-Oral-Expression">Practical-Oral-Expression</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-24T22:39:42.000Z" title="Created 2024-01-24 15:39:42">2024-01-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Personality/">Personality</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learning/">learning</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/record/">record</a></span></div><div class="content">dailyconsume time
-have time&#x2F;money to spare
-kill (the) time
-while away the time
-pass the time
-
-browse
-browse around
-look around
-wander around
-Just browsing
-
-confidence
-boosts my confidence
-stay in shape (保持好的状态)
-blow off the steam (减压)
-
-young people
-students
-teenager
-
-old people
-old man
-the aged
-
-life
-hand-to-mouth
-
-past form
-have been doing
-be used to sth&#x2F;used to do sth
-
-present formfuture form
-will do
-
-sentence
-I find&#x2F;found that&#x2F;it + adj
-… is the best way for&#x2F;to
-My pass ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/Reading-Library/" title="Reading-Library">Reading-Library</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T17:48:15.000Z" title="Created 2023-11-18 10:48:15">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Personality/">Personality</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learning/">learning</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/record/">record</a></span></div><div class="content">trick
-填空题
-
-
-注意1个还是2个单词(be careful about one word or two words)
-同义替换(find keywords)
-对应并列关系(and&#x2F;or&#x2F;in addtion&#x2F;also)
-因果关系(as a result&#x2F;in that&#x2F;therefore)
-对应转折关系(yet&#x2F;instead&#x2F;nonetheless&#x2F;nevertheless)
-主动被动改写(动词同义替换,by + 主体)
-填空的词性(adj,v,n)
-定冠词(the&#x2F;a&#x2F;an&#x2F;some)
-定语从句
-专有名词(called&#x2F;named&#x2F;known as)
-A and other B(B such as&#x2F;including A)改写
-
-
-判断题(TURE&#x2F;FALSE&#x2F;NOT GIVEN)
-
-
-TURE
-同义替换+意思一致(大多数)
-根据几句话概括总结(可能跨段落)
-
-
-
-FALSE
-同义替换+意思相反
-
-
-
-NOT GIV ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/15/Synonymous-substitution-vocabulary/" title="Synonymous-substitution-vocabulary">Synonymous-substitution-vocabulary</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-16T02:53:48.000Z" title="Created 2023-11-15 19:53:48">2023-11-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Personality/">Personality</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learning/">learning</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/record/">record</a></span></div><div class="content">1-20 (90% will be test)
-resemble - v 像,与…相似
-
-
-like
-look like
-be similar to
-
-
-recognize - v 认出,识别;承认
-
-
-perceive
-acknowledge
-realize
-appreciate
-admit
-identify
-comprehend
-understand
-know
-
-
-adjust - v 调整,使适合
-
-
-change
-modify
-shift
-alter
-
-
-approach - n 方法
-
-
-method
-way
-
-
-fundamental - adj 基本的,基础的
-
-
-basic
-rudimentary
-preliminary
-
-
-rely on - 依靠,依赖
-
-
-depend on
-
-
-domestic - adj 家庭的,国内的
-
-
-national
-home
-local
-
-
-measure - v 测量
-
-
-calculate
-asses
-evaluate
-
-
-trait - n 特点,特征
-
-
-characteristic
-feature
-property
-
-
-co ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/07/Writing-Library/" title="Writing-Library">Writing-Library</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-07T22:45:04.000Z" title="Created 2023-11-07 15:45:04">2023-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Personality/">Personality</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learning/">learning</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/record/">record</a></span></div><div class="content">1. The structure of essaySecret:13 sentences for writing,you don’t must to follow this rule.
-
-first paragraphyou need to describe your opinion at first
-second paragraphwrite the reason why you agree&#x2F;disagree,from the Objective perspective
-third paragraphwrite the your thoughts of your mind,as your subjective perspective
-finally,eventuallyconclusion
-
-2. General Grammar Sentences
-The bar&#x2F;line&#x2F;pie&#x2F;table&#x2F;map Chart compares&#x2F;shows sth in (where) on (sth) between (time) an ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#content-inner">11</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Aren.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">DarylWxc</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">109</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">28</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DarylWxc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DarylWxc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/DarylWxc@outlook.com" target="_blank" title="Email"><i class="far fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.youtube.com" target="_blank" title="Youtube"><i class="fab fa-youtube" style="color: #FF0000;"></i></a><a class="social-icon" href="https://soundcloud.com/roaldvelden" target="_blank" title="MyFavorite"><i class="fas fa-music" style="color: #FF5500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">My favorite music type is melodic progressive house</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/07/BCDA-noted/" title="BCDA-noted">BCDA-noted</a><time datetime="2025-05-07T14:22:38.000Z" title="Created 2025-05-07 08:22:38">2025-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/03/Symbols-in-English/" title="Symbols-in-English">Symbols-in-English</a><time datetime="2024-11-04T04:14:05.000Z" title="Created 2024-11-03 21:14:05">2024-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/03/Database-Notes/" title="Database-Notes">Database-Notes</a><time datetime="2024-11-04T03:30:29.000Z" title="Created 2024-11-03 20:30:29">2024-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/24/react-porject-build/" title="react-porject-build">react-porject-build</a><time datetime="2024-10-25T02:07:02.000Z" title="Created 2024-10-24 20:07:02">2024-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/03/Node-Learning/" title="Node-Learning">Node-Learning</a><time datetime="2024-10-03T14:26:18.000Z" title="Created 2024-10-03 08:26:18">2024-10-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>Categories</span>
-            <a class="card-more-btn" href="/categories/" title="More">
-    <i class="fas fa-angle-right"></i></a>
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Back-End/"><span class="card-category-list-name">Back-End</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Class/"><span class="card-category-list-name">Class</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/DOM/"><span class="card-category-list-name">DOM</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/English/"><span class="card-category-list-name">English</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Entertainment/"><span class="card-category-list-name">Entertainment</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Note/"><span class="card-category-list-name">Note</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Personality/"><span class="card-category-list-name">Personality</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/UI%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">UI设计开发</span><span class="card-category-list-count">5</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Mpvue/" style="font-size: 1.1em; color: #999">Mpvue</a> <a href="/tags/%E4%BC%B8%E7%BC%A9%E5%B8%83%E5%B1%80/" style="font-size: 1.1em; color: #999">伸缩布局</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%81%8C%E8%B4%A3/" style="font-size: 1.1em; color: #999">工作职责</a> <a href="/tags/Drama/" style="font-size: 1.1em; color: #999">Drama</a> <a href="/tags/Vue/" style="font-size: 1.45em; color: #99a7ba">Vue</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.15em; color: #999b9e">设计模式</a> <a href="/tags/Database/" style="font-size: 1.15em; color: #999b9e">Database</a> <a href="/tags/diary/" style="font-size: 1.1em; color: #999">diary</a> <a href="/tags/learning/" style="font-size: 1.35em; color: #99a3b1">learning</a> <a href="/tags/CSS/" style="font-size: 1.4em; color: #99a5b6">CSS</a> <a href="/tags/Typescript/" style="font-size: 1.1em; color: #999">Typescript</a> <a href="/tags/HEXO/" style="font-size: 1.1em; color: #999">HEXO</a> <a href="/tags/%E5%8D%95%E9%A1%B5%E9%9D%A2%E4%B8%8E%E5%A4%9A%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8/" style="font-size: 1.1em; color: #999">单页面与多页面应用</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.1em; color: #999">面试</a> <a href="/tags/%E5%9B%BE%E7%89%87%E7%BC%96%E8%BE%91/" style="font-size: 1.1em; color: #999">图片编辑</a> <a href="/tags/javaScript/" style="font-size: 1.2em; color: #999da3">javaScript</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.25em; color: #999fa7">前端开发</a> <a href="/tags/Web%E6%80%A7%E8%83%BD/" style="font-size: 1.1em; color: #999">Web性能</a> <a href="/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" style="font-size: 1.25em; color: #999fa7">响应式布局</a> <a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.1em; color: #999">函数</a> <a href="/tags/record/" style="font-size: 1.3em; color: #99a1ac">record</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.1em; color: #999">正则表达式</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E9%9C%80%E6%B1%82/" style="font-size: 1.1em; color: #999">学习需求</a> <a href="/tags/notes/" style="font-size: 1.1em; color: #999">notes</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="font-size: 1.25em; color: #999fa7">工程化</a> <a href="/tags/JavaScript/" style="font-size: 1.5em; color: #99a9bf">JavaScript</a> <a href="/tags/Studying/" style="font-size: 1.15em; color: #999b9e">Studying</a> <a href="/tags/%E5%AD%97%E4%BD%93/" style="font-size: 1.1em; color: #999">字体</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">代码管理</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">网络安全</a> <a href="/tags/Axure/" style="font-size: 1.1em; color: #999">Axure</a> <a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">开发者工具</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">移动端开发</a> <a href="/tags/Music/" style="font-size: 1.1em; color: #999">Music</a> <a href="/tags/ES6/" style="font-size: 1.15em; color: #999b9e">ES6</a> <a href="/tags/webpack/" style="font-size: 1.2em; color: #999da3">webpack</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">原型设计</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">版本管理</a> <a href="/tags/front-end-development/" style="font-size: 1.1em; color: #999">front-end development</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">测试</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">May 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">November 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">October 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">September 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">January 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">October 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">September 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">109</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-23T18:17:41.077Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By <i id="heartbeat" class="fa fas fa-heartbeat"></i> DarylWxc</div><div class="footer_custom_text"><p>  <a style="margin-inline:5px" target="_blank" href="https://music.163.com/#/user/home?id=314486495"><img alt="Static Badge" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" title="my personal NetEase Page"></a>  <a style="margin-inline:5px" target="_blank" href="https://twitter.com/darylWxc97"><img alt="Static Badge" src="https://img.shields.io/badge/Social-Twitter-00A9FF?logo=Twitter" title="Welcome To My Personal Twitter Page"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/DarylWxc"><img src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" title="This is my Github Page"></a> <a style="margin-inline:5px" target="_blank" href="https://steamcommunity.com/profiles/76561199093623098/"><img alt="Static Badge" src="https://img.shields.io/badge/Community-Stream-171d25?logo=Steam" title="My Personal Profile Of Steam Community"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
-
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><style>.article-card[data-astro-cid-iyiqi2so]{display:flex;overflow:hidden;margin-bottom:1.2rem}.article-card[data-astro-cid-iyiqi2so]:hover{box-shadow:var(--card-hover-box-shadow)}.card-cover[data-astro-cid-iyiqi2so]{flex:0 0 45%;max-width:45%;overflow:hidden}.card-cover[data-astro-cid-iyiqi2so] img[data-astro-cid-iyiqi2so]{width:100%;height:100%;min-height:200px;object-fit:cover;transition:transform .6s}.card-cover[data-astro-cid-iyiqi2so]:hover img[data-astro-cid-iyiqi2so]{transform:scale(1.05)}.article-card[data-astro-cid-iyiqi2so].reverse{flex-direction:row-reverse}.card-body[data-astro-cid-iyiqi2so]{flex:1;padding:1.4rem 1.6rem;min-width:0}.card-title[data-astro-cid-iyiqi2so]{font-size:1.4rem;font-weight:600;color:var(--font-color);line-height:1.4;display:inline-block;margin-bottom:.4rem}.card-title[data-astro-cid-iyiqi2so]:hover{color:var(--theme-color)}.card-meta[data-astro-cid-iyiqi2so]{color:var(--grey);font-size:.82rem;display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.6rem}.card-meta[data-astro-cid-iyiqi2so] i[data-astro-cid-iyiqi2so]{margin-right:.25rem;color:var(--theme-color)}.card-meta[data-astro-cid-iyiqi2so] a[data-astro-cid-iyiqi2so]{color:var(--grey)}.card-meta[data-astro-cid-iyiqi2so] a[data-astro-cid-iyiqi2so]:hover{color:var(--theme-color)}.card-excerpt[data-astro-cid-iyiqi2so]{color:var(--grey);font-size:.92rem;line-height:1.7;margin:.4rem 0 .8rem}.card-tags[data-astro-cid-iyiqi2so]{display:flex;flex-wrap:wrap;gap:.4rem}.tag-pill[data-astro-cid-iyiqi2so]{font-size:.78rem;color:var(--theme-color);background:#49b1f514;padding:.1rem .6rem;border-radius:12px}.tag-pill[data-astro-cid-iyiqi2so]:hover{background:var(--theme-color);color:#fff}@media(max-width:768px){.article-card[data-astro-cid-iyiqi2so],.article-card[data-astro-cid-iyiqi2so].reverse{flex-direction:column}.card-cover[data-astro-cid-iyiqi2so]{flex-basis:auto;max-width:100%}.card-cover[data-astro-cid-iyiqi2so] img[data-astro-cid-iyiqi2so]{min-height:180px}}.pagination[data-astro-cid-d776pwuy]{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1.5rem 0;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--card-box-shadow);padding:.8rem 1.2rem}.page-btn[data-astro-cid-d776pwuy]{color:var(--font-color);font-weight:600;padding:.3rem .8rem;border-radius:6px}.page-btn[data-astro-cid-d776pwuy]:not(.disabled):hover{background:var(--theme-color);color:#fff}.page-btn[data-astro-cid-d776pwuy].disabled{color:var(--dark-grey);cursor:default}.page-number[data-astro-cid-d776pwuy]{color:var(--grey);font-size:.9rem}
+</style>
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css">
+<style>.card-widget[data-astro-cid-ssfzsv2f]{padding:1.2rem 1.4rem;margin-bottom:1.2rem}.card-title[data-astro-cid-ssfzsv2f]{font-size:1.05rem;font-weight:600;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}.card-title[data-astro-cid-ssfzsv2f] i[data-astro-cid-ssfzsv2f]{color:var(--theme-color)}.card-author[data-astro-cid-ssfzsv2f]{text-align:center}.card-author[data-astro-cid-ssfzsv2f] .avatar[data-astro-cid-ssfzsv2f]{width:110px;height:110px;border-radius:50%;object-fit:cover;transition:transform .6s}.author-name[data-astro-cid-ssfzsv2f]{font-size:1.2rem;font-weight:600;margin:.6rem 0 .2rem}.author-desc[data-astro-cid-ssfzsv2f]{color:var(--grey);font-size:.9rem;margin-bottom:.6rem}.author-btn[data-astro-cid-ssfzsv2f]{display:inline-block;margin-top:.6rem;padding:.4rem 1.2rem;background:var(--theme-color);color:#fff;border-radius:6px;font-size:.9rem}.author-btn[data-astro-cid-ssfzsv2f]:hover{background:var(--theme-color-hover);color:#fff}.announcement[data-astro-cid-ssfzsv2f]{color:var(--grey);font-size:.9rem;line-height:1.7}.card-list[data-astro-cid-ssfzsv2f]{list-style:none;margin:0;padding:0}.card-list[data-astro-cid-ssfzsv2f] li[data-astro-cid-ssfzsv2f]{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.3rem 0;font-size:.9rem;line-height:1.5}.card-list[data-astro-cid-ssfzsv2f] li[data-astro-cid-ssfzsv2f] a[data-astro-cid-ssfzsv2f]{color:var(--font-color);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card-list[data-astro-cid-ssfzsv2f] li[data-astro-cid-ssfzsv2f] a[data-astro-cid-ssfzsv2f]:hover{color:var(--theme-color)}.card-list[data-astro-cid-ssfzsv2f] .muted[data-astro-cid-ssfzsv2f],.card-list[data-astro-cid-ssfzsv2f] .count[data-astro-cid-ssfzsv2f]{color:var(--grey);font-size:.78rem;flex-shrink:0}.card-list[data-astro-cid-ssfzsv2f].info li[data-astro-cid-ssfzsv2f]{color:var(--grey)}.tag-cloud[data-astro-cid-ssfzsv2f]{display:flex;flex-wrap:wrap;gap:.4rem}.tag-item[data-astro-cid-ssfzsv2f]{font-size:.85rem;color:var(--font-color);padding:.1rem .3rem}.tag-item[data-astro-cid-ssfzsv2f]:hover{color:var(--theme-color)}.tag-item[data-astro-cid-ssfzsv2f] sup[data-astro-cid-ssfzsv2f]{color:var(--grey);font-size:.65rem}
+</style></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item active" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>DarylWxc</h1> <p class="subtitle">Welcome to Daryl&#39;s Personal Space</p> </div> <div class="scroll-down" aria-hidden="true"> <i class="fas fa-angle-down"></i> </div> </header>  <div id="content-wrap"> <main id="main-content"> <article class="article-card fade-in" style="animation-delay:0ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/bcda-noted/" data-astro-cid-iyiqi2so>BCDA-noted</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> May 7, 2025</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Note/" data-astro-cid-iyiqi2so>Note</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>importance of data(analyis) valuable insights better, more informed decisions help personalizing products services identity potential risks regular no…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/Database/" class="tag-pill" data-astro-cid-iyiqi2so># Database</a> </div> </div> </article><article class="article-card fade-in reverse" style="animation-delay:60ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/symbols-in-english/" data-astro-cid-iyiqi2so>Symbols-in-English</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Nov 3, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/English/" data-astro-cid-iyiqi2so>English</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>Symbols (;) // semicolon ( ) // backtick (.) // Period (?) // Question Mark (!) // Exclamation Point (,) // Comma (:) // Colon ( ) // Hyphen ( ) // Pa…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/learning/" class="tag-pill" data-astro-cid-iyiqi2so># learning</a> </div> </div> </article><article class="article-card fade-in" style="animation-delay:120ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/database-notes/" data-astro-cid-iyiqi2so>Database-Notes</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Nov 3, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Back-End/" data-astro-cid-iyiqi2so>Back-End</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>Syntax of SQLQuery DESC(descending order:Highest to Lowest),ASC(ascending order:Lowest to Highest) between used to match the date datatype % match str…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/Database/" class="tag-pill" data-astro-cid-iyiqi2so># Database</a> </div> </div> </article><article class="article-card fade-in reverse" style="animation-delay:180ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/react-porject-build/" data-astro-cid-iyiqi2so>react-porject-build</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Oct 24, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/front-end/" data-astro-cid-iyiqi2so>front-end</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>start with vite Vite Documentation create different folders folder list at first set the config of vite change the link icon in public folder use the …</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/front-end development/" class="tag-pill" data-astro-cid-iyiqi2so># front-end development</a> </div> </div> </article><article class="article-card fade-in" style="animation-delay:240ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/node-learning/" data-astro-cid-iyiqi2so>Node-Learning</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Oct 3, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Class/" data-astro-cid-iyiqi2so>Class</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>Express A frame work make it easy to code with node.js refer to my local exercise file of coding in courses Pug A template Engines instead of HTML fil…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/Studying/" class="tag-pill" data-astro-cid-iyiqi2so># Studying</a> </div> </div> </article><article class="article-card fade-in reverse" style="animation-delay:300ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/class-note/" data-astro-cid-iyiqi2so>CLass-Note</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Sep 3, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Class/" data-astro-cid-iyiqi2so>Class</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>teacher information name: Samuel Sofela: Office: NN318C important:Network,Network,Network name: MAH SAW Office: NN406 F email: mahsa.amini@sait.ca num…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/Studying/" class="tag-pill" data-astro-cid-iyiqi2so># Studying</a> </div> </div> </article><article class="article-card fade-in" style="animation-delay:360ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/practical-oral-expression/" data-astro-cid-iyiqi2so>Practical-Oral-Expression</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Jan 24, 2024</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Personality/" data-astro-cid-iyiqi2so>Personality</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>daily consume time 1. have time/money to spare 2. kill (the) time 3. while away the time 4. pass the time browse 1. browse around 2. look around 3. wa…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/learning/" class="tag-pill" data-astro-cid-iyiqi2so># learning</a><a href="/tags/record/" class="tag-pill" data-astro-cid-iyiqi2so># record</a> </div> </div> </article><article class="article-card fade-in reverse" style="animation-delay:420ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/reading-library/" data-astro-cid-iyiqi2so>Reading-Library</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Nov 18, 2023</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Personality/" data-astro-cid-iyiqi2so>Personality</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>trick 1. 填空题 注意1个还是2个单词(be careful about one word or two words) 同义替换(find keywords) 对应并列关系(and/or/in addtion/also) 因果关系(as a result/in that/therefore)…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/learning/" class="tag-pill" data-astro-cid-iyiqi2so># learning</a><a href="/tags/record/" class="tag-pill" data-astro-cid-iyiqi2so># record</a> </div> </div> </article><article class="article-card fade-in" style="animation-delay:480ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/synonymous-substitution-vocabulary/" data-astro-cid-iyiqi2so>Synonymous-substitution-vocabulary</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Nov 15, 2023</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Personality/" data-astro-cid-iyiqi2so>Personality</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>1 20 (90% will be test) 1. resemble v 像,与...相似 like look like be similar to 2. recognize v 认出,识别;承认 perceive acknowledge realize appreciate admit iden…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/learning/" class="tag-pill" data-astro-cid-iyiqi2so># learning</a><a href="/tags/record/" class="tag-pill" data-astro-cid-iyiqi2so># record</a> </div> </div> </article><article class="article-card fade-in reverse" style="animation-delay:540ms" data-astro-cid-iyiqi2so>  <div class="card-body" data-astro-cid-iyiqi2so> <a class="card-title" href="/posts/writing-library/" data-astro-cid-iyiqi2so>Writing-Library</a> <div class="card-meta" data-astro-cid-iyiqi2so> <span data-astro-cid-iyiqi2so><i class="far fa-calendar" data-astro-cid-iyiqi2so></i> Nov 7, 2023</span> <span data-astro-cid-iyiqi2so> <i class="fas fa-folder-open" data-astro-cid-iyiqi2so></i> <a href="/categories/Personality/" data-astro-cid-iyiqi2so>Personality</a> </span> </div> <p class="card-excerpt" data-astro-cid-iyiqi2so>1. The structure of essay Secret:13 sentences for writing,you don&#39;t must to follow this rule. first paragraph you need to describe your opinion at fir…</p> <div class="card-tags" data-astro-cid-iyiqi2so> <a href="/tags/learning/" class="tag-pill" data-astro-cid-iyiqi2so># learning</a><a href="/tags/record/" class="tag-pill" data-astro-cid-iyiqi2so># record</a> </div> </div> </article><nav class="pagination" data-astro-cid-d776pwuy> <span class="page-btn disabled" data-astro-cid-d776pwuy><i class="fas fa-angle-left" data-astro-cid-d776pwuy></i> Prev</span> <span class="page-number" data-astro-cid-d776pwuy>1 / 11</span> <a class="page-btn" href="/2" data-astro-cid-d776pwuy>Next <i class="fas fa-angle-right" data-astro-cid-d776pwuy></i></a> </nav>  </main> <aside id="aside-content" data-astro-cid-ssfzsv2f>  <div class="card-widget card-author" data-astro-cid-ssfzsv2f> <img class="avatar" src="/img/Aren.jpg" alt="DarylWxc" data-astro-cid-ssfzsv2f> <div class="author-name" data-astro-cid-ssfzsv2f>DarylWxc</div>  <a class="author-btn" href="https://github.com/DarylWxc" target="_blank" rel="noopener" data-astro-cid-ssfzsv2f> <i class="fab fa-github" data-astro-cid-ssfzsv2f></i> Follow Me
+</a> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-bullhorn" data-astro-cid-ssfzsv2f></i> Announcement</div> <div class="announcement" data-astro-cid-ssfzsv2f>My favorite music type is melodic progressive house</div> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-history" data-astro-cid-ssfzsv2f></i> Recent Posts</div> <ul class="card-list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/posts/bcda-noted/" data-astro-cid-ssfzsv2f>BCDA-noted</a> <span class="muted" data-astro-cid-ssfzsv2f>2025-05-07</span> </li><li data-astro-cid-ssfzsv2f> <a href="/posts/symbols-in-english/" data-astro-cid-ssfzsv2f>Symbols-in-English</a> <span class="muted" data-astro-cid-ssfzsv2f>2024-11-03</span> </li><li data-astro-cid-ssfzsv2f> <a href="/posts/database-notes/" data-astro-cid-ssfzsv2f>Database-Notes</a> <span class="muted" data-astro-cid-ssfzsv2f>2024-11-03</span> </li><li data-astro-cid-ssfzsv2f> <a href="/posts/react-porject-build/" data-astro-cid-ssfzsv2f>react-porject-build</a> <span class="muted" data-astro-cid-ssfzsv2f>2024-10-24</span> </li><li data-astro-cid-ssfzsv2f> <a href="/posts/node-learning/" data-astro-cid-ssfzsv2f>Node-Learning</a> <span class="muted" data-astro-cid-ssfzsv2f>2024-10-03</span> </li> </ul> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-folder-open" data-astro-cid-ssfzsv2f></i> Categories</div> <ul class="card-list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/categories/Web前端/" data-astro-cid-ssfzsv2f>Web前端</a> <span class="count" data-astro-cid-ssfzsv2f>52</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/Personality/" data-astro-cid-ssfzsv2f>Personality</a> <span class="count" data-astro-cid-ssfzsv2f>13</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/页面样式/" data-astro-cid-ssfzsv2f>页面样式</a> <span class="count" data-astro-cid-ssfzsv2f>11</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/UI设计开发/" data-astro-cid-ssfzsv2f>UI设计开发</a> <span class="count" data-astro-cid-ssfzsv2f>5</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/Class/" data-astro-cid-ssfzsv2f>Class</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/javaScript设计模式/" data-astro-cid-ssfzsv2f>javaScript设计模式</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/前端/" data-astro-cid-ssfzsv2f>前端</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li><li data-astro-cid-ssfzsv2f> <a href="/categories/环境配置/" data-astro-cid-ssfzsv2f>环境配置</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li> </ul> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-tags" data-astro-cid-ssfzsv2f></i> Tags</div> <div class="tag-cloud" data-astro-cid-ssfzsv2f> <a href="/tags/JavaScript/" class="tag-item" data-astro-cid-ssfzsv2f> JavaScript <sup data-astro-cid-ssfzsv2f>21</sup> </a><a href="/tags/前端框架/" class="tag-item" data-astro-cid-ssfzsv2f> 前端框架 <sup data-astro-cid-ssfzsv2f>21</sup> </a><a href="/tags/Vue/" class="tag-item" data-astro-cid-ssfzsv2f> Vue <sup data-astro-cid-ssfzsv2f>19</sup> </a><a href="/tags/CSS/" class="tag-item" data-astro-cid-ssfzsv2f> CSS <sup data-astro-cid-ssfzsv2f>17</sup> </a><a href="/tags/learning/" class="tag-item" data-astro-cid-ssfzsv2f> learning <sup data-astro-cid-ssfzsv2f>11</sup> </a><a href="/tags/record/" class="tag-item" data-astro-cid-ssfzsv2f> record <sup data-astro-cid-ssfzsv2f>10</sup> </a><a href="/tags/工程化/" class="tag-item" data-astro-cid-ssfzsv2f> 工程化 <sup data-astro-cid-ssfzsv2f>4</sup> </a><a href="/tags/前端开发/" class="tag-item" data-astro-cid-ssfzsv2f> 前端开发 <sup data-astro-cid-ssfzsv2f>4</sup> </a><a href="/tags/响应式布局/" class="tag-item" data-astro-cid-ssfzsv2f> 响应式布局 <sup data-astro-cid-ssfzsv2f>4</sup> </a><a href="/tags/javaScript/" class="tag-item" data-astro-cid-ssfzsv2f> javaScript <sup data-astro-cid-ssfzsv2f>3</sup> </a><a href="/tags/webpack/" class="tag-item" data-astro-cid-ssfzsv2f> webpack <sup data-astro-cid-ssfzsv2f>3</sup> </a><a href="/tags/前端学习/" class="tag-item" data-astro-cid-ssfzsv2f> 前端学习 <sup data-astro-cid-ssfzsv2f>3</sup> </a><a href="/tags/Database/" class="tag-item" data-astro-cid-ssfzsv2f> Database <sup data-astro-cid-ssfzsv2f>2</sup> </a><a href="/tags/Studying/" class="tag-item" data-astro-cid-ssfzsv2f> Studying <sup data-astro-cid-ssfzsv2f>2</sup> </a><a href="/tags/设计模式/" class="tag-item" data-astro-cid-ssfzsv2f> 设计模式 <sup data-astro-cid-ssfzsv2f>2</sup> </a><a href="/tags/ES6/" class="tag-item" data-astro-cid-ssfzsv2f> ES6 <sup data-astro-cid-ssfzsv2f>2</sup> </a><a href="/tags/front-end development/" class="tag-item" data-astro-cid-ssfzsv2f> front-end development <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/notes/" class="tag-item" data-astro-cid-ssfzsv2f> notes <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/Drama/" class="tag-item" data-astro-cid-ssfzsv2f> Drama <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/Music/" class="tag-item" data-astro-cid-ssfzsv2f> Music <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/diary/" class="tag-item" data-astro-cid-ssfzsv2f> diary <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/Typescript/" class="tag-item" data-astro-cid-ssfzsv2f> Typescript <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/字体/" class="tag-item" data-astro-cid-ssfzsv2f> 字体 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/面试/" class="tag-item" data-astro-cid-ssfzsv2f> 面试 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/移动端开发/" class="tag-item" data-astro-cid-ssfzsv2f> 移动端开发 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/网络安全/" class="tag-item" data-astro-cid-ssfzsv2f> 网络安全 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/前端/" class="tag-item" data-astro-cid-ssfzsv2f> 前端 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/单页面与多页面应用/" class="tag-item" data-astro-cid-ssfzsv2f> 单页面与多页面应用 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/工作职责/" class="tag-item" data-astro-cid-ssfzsv2f> 工作职责 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/学习需求/" class="tag-item" data-astro-cid-ssfzsv2f> 学习需求 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/函数/" class="tag-item" data-astro-cid-ssfzsv2f> 函数 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/版本管理/" class="tag-item" data-astro-cid-ssfzsv2f> 版本管理 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/图片编辑/" class="tag-item" data-astro-cid-ssfzsv2f> 图片编辑 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/原型设计/" class="tag-item" data-astro-cid-ssfzsv2f> 原型设计 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/Axure/" class="tag-item" data-astro-cid-ssfzsv2f> Axure <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/Web性能/" class="tag-item" data-astro-cid-ssfzsv2f> Web性能 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/测试/" class="tag-item" data-astro-cid-ssfzsv2f> 测试 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/语法知识/" class="tag-item" data-astro-cid-ssfzsv2f> 语法知识 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/代码管理/" class="tag-item" data-astro-cid-ssfzsv2f> 代码管理 <sup data-astro-cid-ssfzsv2f>1</sup> </a><a href="/tags/伸缩布局/" class="tag-item" data-astro-cid-ssfzsv2f> 伸缩布局 <sup data-astro-cid-ssfzsv2f>1</sup> </a> </div> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-archive" data-astro-cid-ssfzsv2f></i> Archives</div> <ul class="card-list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>May 2025</a> <span class="count" data-astro-cid-ssfzsv2f>1</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>November 2024</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>October 2024</a> <span class="count" data-astro-cid-ssfzsv2f>2</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>September 2024</a> <span class="count" data-astro-cid-ssfzsv2f>1</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>January 2024</a> <span class="count" data-astro-cid-ssfzsv2f>1</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>November 2023</a> <span class="count" data-astro-cid-ssfzsv2f>3</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>October 2023</a> <span class="count" data-astro-cid-ssfzsv2f>3</span> </li><li data-astro-cid-ssfzsv2f> <a href="/archives/" data-astro-cid-ssfzsv2f>September 2023</a> <span class="count" data-astro-cid-ssfzsv2f>1</span> </li> </ul> </div>  <div class="card-widget" data-astro-cid-ssfzsv2f> <div class="card-title" data-astro-cid-ssfzsv2f><i class="fas fa-chart-line" data-astro-cid-ssfzsv2f></i> Web Info</div> <ul class="card-list info" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f><span data-astro-cid-ssfzsv2f>Article :</span><span data-astro-cid-ssfzsv2f>109</span></li> <li data-astro-cid-ssfzsv2f>  <span data-astro-cid-ssfzsv2f>Last Push :</span> <span data-astro-cid-ssfzsv2f>2025-05-07</span>  </li> </ul> </div> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

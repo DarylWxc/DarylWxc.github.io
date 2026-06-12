@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>设计模式 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>设计模式</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted Sep 11, 2020</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 1302 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 3 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h2 id="结构型模式">结构型模式</h2>
+<hr>
+<h2 id="1适配器模式特点将一个接口转换成客户希望的另一个接口使接口不兼容的那些类可以一起工作其别名为包装器wrapper适配器模式既可以作为类结构型模式也可以作为对象结构型模式后台返回的数据格式不同可以通过适配器修改例后台返回json格式的数据通过方法检索出自己需要的数据进行显示这个方法即为适配器通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误最优解项目开发过程中前后端协商讨论数据格式文件名等代码规范">1.适配器模式
+特点：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。
+后台返回的数据格式不同，可以通过适配器修改。例：
+后台返回json格式的数据，通过方法检索出自己需要的数据进行显示，这个方法即为适配器。
+通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误。
+最优解：项目开发过程中前后端协商讨论数据格式、文件名等代码规范。</h2>
+<h2 id="2代理模式为一个对象提供一个代用品或占位符以便控制对他的访问在一个对象中调用其他对象的方法函数可以实例化成对象保护代理数据拦截可以在函数中条件判断拦截数据从而执行不同下文虚拟代理数据通过这些代理传递没有被拦截可实现图片懒加载">2.代理模式
+为一个对象提供一个代用品或占位符，以便控制对他的访问。
+在一个对象中调用其他对象的方法（函数可以实例化成对象）
+保护代理：数据拦截（可以在函数中条件判断拦截数据从而执行不同下文）
+虚拟代理：数据通过这些代理传递没有被拦截（可实现图片懒加载）</h2>
+<p>3.桥接模式
+把事物对象和其具体行为、具体特征分离开来，使它们可以各自独立的变化。
+需要一种方式让对象和行为分离，便于随意拼接。
+优点：分离抽象接口及其实现部分，提高可拓展性。
+缺点：增加系统的理解和设计难度</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">boy,girl,piano,guitar</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">boy-piano,boy-guitar,girl-piano,girl-guitar</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> Boy</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">instrument</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.sayHi</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          console.log</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'hi, 我是男生'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.playInstrument</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          instrument.play</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">  function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> Girl</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">instrument</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.sayHi</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          console.log</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'hi, 我是女生'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.playInstrument</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          instrument.play</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">  function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> Piano</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.play</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          console.log</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'钢琴开始演奏'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">  function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> Guitar</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      this.play</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">          console.log</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'吉他开始演奏'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#91B859;--shiki-dark:#C3E88D">      }</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  let</span><span style="color:#91B859;--shiki-dark:#C3E88D"> piano</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Piano</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  let</span><span style="color:#91B859;--shiki-dark:#C3E88D"> guitar</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Guitar</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  let</span><span style="color:#91B859;--shiki-dark:#C3E88D"> pianoBoy</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Boy</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">piano</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  pianoBoy.playInstrument</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  let</span><span style="color:#91B859;--shiki-dark:#C3E88D"> guitarGirl</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Girl</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">guitar</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  guitarGirl.playInstrument</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span></code></pre>
+<hr>
+<h2 id="4装饰模式动态地给一个对象添加一些额外的职责类似魂斗罗的子弹种类变化原来子弹还在优点装饰类和被装饰类可以独立发展不会相互耦合继承的一个替代模式缺点多层装饰比较复杂类似闭包在函数对象中添加调用其他函数给对象增加功能">4.装饰模式
+动态地给一个对象添加一些额外的职责。（类似魂斗罗的子弹种类变化，原来子弹还在）
+优点：装饰类和被装饰类可以独立发展，不会相互耦合，继承的一个替代模式。
+缺点：多层装饰，比较复杂。
+类似闭包，在函数对象中添加调用其他函数，给对象增加功能</h2>
+<h2 id="5组合模式由小对象构建大对象常和装饰者模式一起使用优点通过对象的多态表现使对单个对象和组合对象的使用具有一致性缺点系统负担性能小函数添加进一个对象可以是实例化的函数通过该函数去调用各种小函数囊括这些功能">5.组合模式
+由小对象构建大对象，常和装饰者模式一起使用
+优点：通过对象的多态表现，使对单个对象和组合对象的使用具有一致性
+缺点：系统负担，性能
+小函数添加进一个对象（可以是实例化的函数），通过该函数去调用各种小函数，囊括这些功能。</h2>
+<h2 id="创建型模式">创建型模式</h2>
+<hr>
+<h2 id="行为型模式">行为型模式</h2>
+<hr>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/设计模式/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 设计模式 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/工作注意事项/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>工作注意事项</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/javascript设计模式/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>javaScript设计模式</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/typescript-learning-note/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Typescript-Learning-Note</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jun 1, 2023</span></a><a class="related-item" href="/posts/javascript之深入map/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Map</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入set/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入Set</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 1, 2022</span></a><a class="related-item" href="/posts/javascript之深入闭包/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入闭包</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入执行上下文/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入执行上下文</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a><a class="related-item" href="/posts/javascript之深入this/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>JavaScript之深入this</span><span class="ri-date" data-astro-cid-dpgbfi7r>Feb 18, 2022</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#结构型模式" data-target="结构型模式" data-astro-cid-6t6zfk7k>结构型模式</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#1适配器模式特点将一个接口转换成客户希望的另一个接口使接口不兼容的那些类可以一起工作其别名为包装器wrapper适配器模式既可以作为类结构型模式也可以作为对象结构型模式后台返回的数据格式不同可以通过适配器修改例后台返回json格式的数据通过方法检索出自己需要的数据进行显示这个方法即为适配器通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误最优解项目开发过程中前后端协商讨论数据格式文件名等代码规范" data-target="1适配器模式特点将一个接口转换成客户希望的另一个接口使接口不兼容的那些类可以一起工作其别名为包装器wrapper适配器模式既可以作为类结构型模式也可以作为对象结构型模式后台返回的数据格式不同可以通过适配器修改例后台返回json格式的数据通过方法检索出自己需要的数据进行显示这个方法即为适配器通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误最优解项目开发过程中前后端协商讨论数据格式文件名等代码规范" data-astro-cid-6t6zfk7k>1.适配器模式
+特点：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。
+后台返回的数据格式不同，可以通过适配器修改。例：
+后台返回json格式的数据，通过方法检索出自己需要的数据进行显示，这个方法即为适配器。
+通常用来避免项目迭代后数据格式或者方法名发生改变出现的错误。
+最优解：项目开发过程中前后端协商讨论数据格式、文件名等代码规范。</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#2代理模式为一个对象提供一个代用品或占位符以便控制对他的访问在一个对象中调用其他对象的方法函数可以实例化成对象保护代理数据拦截可以在函数中条件判断拦截数据从而执行不同下文虚拟代理数据通过这些代理传递没有被拦截可实现图片懒加载" data-target="2代理模式为一个对象提供一个代用品或占位符以便控制对他的访问在一个对象中调用其他对象的方法函数可以实例化成对象保护代理数据拦截可以在函数中条件判断拦截数据从而执行不同下文虚拟代理数据通过这些代理传递没有被拦截可实现图片懒加载" data-astro-cid-6t6zfk7k>2.代理模式
+为一个对象提供一个代用品或占位符，以便控制对他的访问。
+在一个对象中调用其他对象的方法（函数可以实例化成对象）
+保护代理：数据拦截（可以在函数中条件判断拦截数据从而执行不同下文）
+虚拟代理：数据通过这些代理传递没有被拦截（可实现图片懒加载）</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#4装饰模式动态地给一个对象添加一些额外的职责类似魂斗罗的子弹种类变化原来子弹还在优点装饰类和被装饰类可以独立发展不会相互耦合继承的一个替代模式缺点多层装饰比较复杂类似闭包在函数对象中添加调用其他函数给对象增加功能" data-target="4装饰模式动态地给一个对象添加一些额外的职责类似魂斗罗的子弹种类变化原来子弹还在优点装饰类和被装饰类可以独立发展不会相互耦合继承的一个替代模式缺点多层装饰比较复杂类似闭包在函数对象中添加调用其他函数给对象增加功能" data-astro-cid-6t6zfk7k>4.装饰模式
+动态地给一个对象添加一些额外的职责。（类似魂斗罗的子弹种类变化，原来子弹还在）
+优点：装饰类和被装饰类可以独立发展，不会相互耦合，继承的一个替代模式。
+缺点：多层装饰，比较复杂。
+类似闭包，在函数对象中添加调用其他函数，给对象增加功能</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#5组合模式由小对象构建大对象常和装饰者模式一起使用优点通过对象的多态表现使对单个对象和组合对象的使用具有一致性缺点系统负担性能小函数添加进一个对象可以是实例化的函数通过该函数去调用各种小函数囊括这些功能" data-target="5组合模式由小对象构建大对象常和装饰者模式一起使用优点通过对象的多态表现使对单个对象和组合对象的使用具有一致性缺点系统负担性能小函数添加进一个对象可以是实例化的函数通过该函数去调用各种小函数囊括这些功能" data-astro-cid-6t6zfk7k>5.组合模式
+由小对象构建大对象，常和装饰者模式一起使用
+优点：通过对象的多态表现，使对单个对象和组合对象的使用具有一致性
+缺点：系统负担，性能
+小函数添加进一个对象（可以是实例化的函数），通过该函数去调用各种小函数，囊括这些功能。</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#创建型模式" data-target="创建型模式" data-astro-cid-6t6zfk7k>创建型模式</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#行为型模式" data-target="行为型模式" data-astro-cid-6t6zfk7k>行为型模式</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

@@ -1,0 +1,727 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>Vue开发 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>Vue开发</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted May 26, 2020</span>  <a href="/categories/Web前端/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> Web前端 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 14546 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 36 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <h2 id="this-is-my-vue-develop-exprience">This is my vue develop exprience~</h2>
+<h2 id="202057-1602-write">2020/5/7 16:02 Write</h2>
+<p>过往项目经验总结</p>
+<p>关键词：Vue，CSS，SVN，WebPack，IconFont，Flex，Jeecg，Iview，ElementUI</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用Vue开发页面，环境配置，导入包，Package，使用IView组件进行页面开发。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">（使用开源组件一定需要查看开发文档！！！！！！）</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">CSS排版布局，flex学习并使用，各种定位的深入了解。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">router路由在Vue当中的使用，熟练使用组件进行开发。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">熟练使用SVN进行提交和更新代码，提交需要带钩子，如果本地有更改过的文件，在更新时需要将有改动的文件删除再更新，否则会出现乱码</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">父子组件间的传值通信，Props的使用，对话框的熟练使用。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">分析需求并设计页面，使用Axure进行页面的设计，使用开源的移动端组件和阿里的IconFont，必要时可以自行设计组件。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">熟悉WebPack框架和Cli脚手架。</span></span></code></pre>
+<hr>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用ant-design-jeecg-vue进行开发，代码自动生成。文档链接：[jeecg开发文档](</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">"http://doc.jeecg.com/1273969"</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">该框架生成的代码由ElementUI组件组成。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">考虑页面的逻辑和合理性。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">弹框嵌套，需要注意层级。</span></span></code></pre>
+<hr>
+<h2 id="202057-1033-write">2020/5/7 10:33 Write</h2>
+<p>使用Vue进行对应页面开发</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用elementUI进行页面的开发，使用Upload上传文件，自带判断文件后缀。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用POST方法，带FormData参数，使用Append添加序列，需要New一个FormData对象，然后进行传参。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用Dialog组件，显示设备详情，点击跳出，准备参析路由。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">GET方法带的参数只有Params对象。跟在URL后面。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">POST和GET不同：//都为TCP链接，并无差别。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">参数格式不同以外，参数的大小也不同。因为服务器的处理方式不同，不一定能接受到数据（request</span><span style="color:#91B859;--shiki-dark:#C3E88D"> body的数据）。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">由于HTTP的规定和浏览器/服务器的限制，应用过程体型出不同。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">GET产生一个TCP数据包，POST产生两个TCP数据包。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">GET，header和data一起发过去，响应200。（返回数据）</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">POST，先发送header，服务器响应continue，再发送data，响应200。（</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 返回数据）</span></span></code></pre>
+<hr>
+<h2 id="202057-1553-write">2020/5/7 15:53 Write</h2>
+<p>使用Element组件遇到的问题~</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用elementUI的UpLoad组件上传xls文件，需要注意文件格式和文件获取</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">组件自带上传，可以设置header和数据的name，需要注意Token或者Cookie</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">组件获取文件的方式</span><span style="color:#91B859;--shiki-dark:#C3E88D">   this.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">$refs</span><span style="color:#91B859;--shiki-dark:#C3E88D">.{upload}（这是关联upload组件的ref名称）.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">$data</span><span style="color:#91B859;--shiki-dark:#C3E88D">.uploadFiles</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">注意dialog组件的visible显示值设置</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">详细查看开发文档！！！！！必要时进行测试获取信息！！</span></span></code></pre>
+<hr>
+<h2 id="202058-938-write">2020/5/8 9:38 Write</h2>
+<p>使用SVN合并代码，并开发模式遇到问题</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">将文件checkout在其他文件夹里，然后修改原代码文件。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">多注意NetWork中请求的格式，请求的参数格式！！！！</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">其中GET方式的URL会随参数改变，POST方式不会。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用POSTMan测试。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">接口文档管理有使用到SWAGGER和小幺鸡~</span></span></code></pre>
+<hr>
+<h2 id="202059-953-write">2020/5/9 9:53 Write</h2>
+<p>总结工作经验，编写简历</p>
+<hr>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">Vue的两种路由模式：Hash和History模式</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">hash</span><span style="color:#91B859;--shiki-dark:#C3E88D">：默认模式</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">常用NewURL和OldURL来改变链接，动态页面数据。hash值发生变化的时候，会触发hashchange这个时间，通过该事件监听hashchange来实现更新页面部分内容。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">History模式：</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">切换历史状态，back，forward，go三个方法，刷新页面会请求服务器。History模式需要避免刷新。刷新时如果没有相应的响应或者资源，会刷新出404。</span></span></code></pre>
+<hr>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">同事开发地图，使用蜂鸟地图插件。经过询问得知，正在研究。</span></span></code></pre>
+<hr>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">回温Vue文档。查看生命周期。</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">beforeCreate</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->created</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->beforeMount</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->mounted</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->beforeUpdate</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->updated</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->beforeDestroy</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#6182B8;--shiki-dark:#82AAFF">->destoryed</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span><span style="color:#90A4AE;--shiki-dark:#BABED8">//函数调用顺序，中间各有过程</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">周期如下图</span></span></code></pre>
+<p><img alt="vue" loading="lazy" decoding="async" width="1200" height="3039" src="/_astro/vue.D3qYvLXD_ZmPw5s.webp" srcset=""></p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">在使用ElementUI的Upload上传文件时，action的动态响应是在上传后执行的，所以需要给上传方法设置延时器，并且用到this上下文的时候，需要将this传到该函数内使用，否则会报错。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">上传可以设置header的值，在初始化的时候获取token：this.header</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {token:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">`${</span><span style="color:#90A4AE;--shiki-dark:#BABED8">this</span><span style="color:#91B859;--shiki-dark:#C3E88D">.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">$cookie</span><span style="color:#91B859;--shiki-dark:#C3E88D">.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">get</span><span style="color:#91B859;--shiki-dark:#C3E88D">(</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">token</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">}`</span><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">设置的header是一个对象，给header的token属性赋值，要求上传成功后自动关闭对话框，然后清除选择文件数据：this.$refs.upload.clearFiles</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">();</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">需要考虑功能全面，合理</span></span></code></pre>
+<hr>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">vue中数据异步渲染，数据响应式为Vue</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 的重要核心，在数据变更后，可能DOM还未更新，所以可以调用nextTick（callback）函数，这样回调函数将在DOM更新完后被调用。并且this会绑定到当前的vue实例上。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">同域：域名、端口、协议均相同，缺一不可。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">跨域：浏览器从一个域名的网页去请求另一个域名的资源时，不同域，就是跨域。//可能会被另一个域保存Cookie或session用来对同域网站发起非法操作，为CSRF攻击，盗用身份。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">解决方法：JSONP，CORS。//https://www.jianshu.com/p/f880878c1398(参考</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">使用FileZilla</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Client进行网页部署，连接到服务器，将右边框内dist文件删除，从左边框内选择本体文件，然后右键上传。</span></span></code></pre>
+<hr>
+<p>Vue加载本地图片失败，无法使用相对路径。
+//使用绝对路径 :src=“‘<a href="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg</a>’”
+//使用require :src=“require(’@/assets/images/icon/file/jpg.png’)”
+//使用import   import jpg from ’@/assets/images/icon/file/jpg.png’
+Vue使用vue-awesome
+//执行指令 npm install vue-awesome
+//在main.js文件下 import ‘vue-awesome’ || import Icon from ‘vue-awesome/components/Icon’
+//Vue.component(‘icon’,Icon)  然后正常使用  <icon name="”beer”"></icon>
+Vue使用Iconfont
+//选择Icon加入购物车，并且下载源码
+//执行命令npm install css-loader -D(否则会报错）
+//在main.js文件中引入 import ’@/assets/Iconfont/iconfont.css’!!!!!注意这里使用@，绝对路径
+//直接使用<i class="iconfont icon-MV" style="color: white"></i>  在iconfont.json文件中查看各个icon的fontclass
+Vue行内写hover样式
+//onmouseover=“this.style.color=‘#57EDED’”!!由于无法实现hover，使用js事件实现，并且在参数边要加引号”
+//改变光标形状为小手:cursor=‘pointer’
+Vue点击跳转链接
+//如果不写协议，会自动在链接前加上localhost:8080(相当于一个相对路径)
+CSS3 animaiton 实现图片旋转
+//animation: 15s linear 0s normal none infinite rotate;
+//animation-play-state: running;
+Vue导入本地音频文件
+//文件放入static文件里，无需改变任何Webpack配置，直接引入
+//引入写法：mp3Url:“static/attack音D.mp3”
+Vue js将小数转为整数值
+//toFixed(2) 后面的数值代表保留两位小数
+Vue 将字符串转化为数值
+//parseInt(str) 如果是浮点数，将Int改成float即可
+Vue 实现进度条
+// element UI 放置 el-progress   :percentage=“mp3width” 设置percentage为数值变量
+// 实现函数LoadProgress 通过setInterval改变mp3width的值（浮点数）
+//使用el-slide,可以实现点击和拖拽
+//需要注意函数运行速度，存在未取到值而后直接进行计算
+Vue注意事项
+//开发到后发现，需要通过数据关联来通过子组件控制父组件。
+//还有一些加载速度，值得优化和注意。
+Vue遇到组件通信问题
+//尽量减少组件层数，如果在同一层父组件时，子组件可以一起和父组件通信，获得数据共享。</p>
+<hr>
+<h2 id="深入响应式原理vue的核心当一个对象在实例化中的data选项vue将遍历此对象所有的property转为getter和setter每个组件实例都对应有一个watcher实例在渲染过程中把数据property记录为依赖之后当setter触发时会通知watcher使关联的组件重新渲染注意当数据在data选项外时为非响应式数组的长度和直接利用索引直接设置的数据都不是响应性的这时可以使用set方法使用index和数组的子项更新数据vue提前声明所有的响应式propertyvue在更新dom时是异步执行的侦听到数据变化时将开启一个队列缓冲在同一事件循环中发生的所有数据变更使用原生htmljscss开发文书模板bodypadding0pxmargin0px-适应浏览器无白边使用占位符空格nbsp后用正则表达式替换text-alignjustify-文字两端对齐margin0-auto-左右对齐white-spacenormal-文字换行元素空白处理div的使用和flex的合理使用">深入响应式原理，vue的核心。
+当一个对象在实例化中的data选项，Vue将遍历此对象所有的property，转为getter和setter。
+每个组件实例都对应有一个watcher实例，在渲染过程中把数据property记录为依赖，之后当setter触发时，会通知watcher，使关联的组件重新渲染。
+注意：当数据在data选项外时，为非响应式！！！
+数组的长度和直接利用索引直接设置的数据都不是响应性的，这时可以使用set方法，使用index和数组的子项更新数据。
+vue提前声明所有的响应式property。
+Vue在更新DOM时是异步执行的，侦听到数据变化时，将开启一个队列，缓冲在同一事件循环中发生的所有数据变更。
+使用原生html，js，css开发文书模板。
+body{padding:0px;margin:0px} //适应浏览器，无白边
+使用占位符，空格（&#x26;nbsp），后用正则表达式替换。
+text-align:justify;// 文字两端对齐
+margin:0 auto;// 左右对齐
+white-space:normal// 文字换行,元素空白处理
+div的使用和flex的合理使用</h2>
+<p>使用远程桌面连接部署，Windows+r运行 mstsc
+输入用户名和密码，连接
+然后将本地的文件复制并粘贴部署到连接的服务器上</p>
+<hr>
+<h2 id="开源项目vue-element-admin">开源项目Vue-element-admin</h2>
+<p>权限验证：根据用户登录的role去判断角色请求路由表，动态生成可访问页面。路由挂载。
+指令权限：通过封装方法，判断角色权限，类似于V-if，不同角色能看到的操作不同。
+spa(single page web application 单页面开发)//科普
+路由：分动态和静态路由，主要需要注意引入和使用到的地方，需要快速定位代码中使用路由的位置，研究动态路由的实现。
+在文件夹中选择find in path 在所有文件中查询使用的地方
+将router的path改为“/”为默认跳转的第一页面
+vue有三类路由钩子
+1.全局钩子  调用router.beforeEach和.afterEach函数 其中next，to中如果带参数，会导致回调，要避免死循环。
+2.某个路由的钩子
+3.组件内钩子
+Vuex使用和了解</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//State</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">computed:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">    count</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> ()</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">      return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> this.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">$store</span><span style="color:#91B859;--shiki-dark:#C3E88D">.state.count//一般如此调用store的数据</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">    }</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">，</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">..</span><span style="color:#91B859;--shiki-dark:#C3E88D">.mapState</span><span style="color:#90A4AE;--shiki-dark:#BABED8">(</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span><span style="color:#91B859;--shiki-dark:#C3E88D"> //或者通过mapState函数，批量获取</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      sidebar:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.app.sidebar,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      device:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.app.device,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      showSettings:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.settings.showSettings,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      needTagsView:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.settings.tagsView,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      fixedHeader:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.settings.fixedHeader</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">    }),</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//Getter</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> getters:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    doneTodos:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">      return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.todos.filter</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">todo</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> todo.done</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">//返回处理过的数据</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">       return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> this.</span><span style="color:#90A4AE;--shiki-dark:#BABED8">$store</span><span style="color:#91B859;--shiki-dark:#C3E88D">.getters.doneTodosCount//直接返回函数运行后返回的对象</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">    }</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  sidebar:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.app.sidebar,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  size:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.app.size,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  device:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> state</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#91B859;--shiki-dark:#C3E88D"> state.app.device</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">computed:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span><span style="color:#91B859;--shiki-dark:#C3E88D"> //依旧在computed辅助函数里调用，mapGetters函数</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  //</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 使用对象展开运算符将</span><span style="color:#91B859;--shiki-dark:#C3E88D"> getter</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 混入</span><span style="color:#91B859;--shiki-dark:#C3E88D"> computed</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 对象中</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">    ..</span><span style="color:#91B859;--shiki-dark:#C3E88D">.mapGetters</span><span style="color:#90A4AE;--shiki-dark:#BABED8">(</span><span style="color:#91B859;--shiki-dark:#C3E88D">[</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      'doneTodosCount'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      'anotherGetter'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      //</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ...</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">    ])</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//mutation</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 相当于函数，用于改变state的值</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">store.commit(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'increment'</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//调用mutation handler方式</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ...</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">mutations:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {//mutation函数，限制函数同步执行</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  increment</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (state, </span><span style="color:#91B859;--shiki-dark:#C3E88D">n</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) </span><span style="color:#39ADB5;--shiki-dark:#89DDFF">{</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//可以传值</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    state.count</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +=</span><span style="color:#91B859;--shiki-dark:#C3E88D"> n</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">store.commit(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'increment'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 10</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//传入值10</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">mutations:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  increment</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (state, </span><span style="color:#91B859;--shiki-dark:#C3E88D">payload</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) </span><span style="color:#39ADB5;--shiki-dark:#89DDFF">{</span><span style="color:#E2931D;--shiki-dark:#FFCB6B"> //一般是传入一个对象</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    state.count</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +=</span><span style="color:#91B859;--shiki-dark:#C3E88D"> payload.amount</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> mutations</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  SET_TOKEN:</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (state, </span><span style="color:#91B859;--shiki-dark:#C3E88D">token</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span><span style="color:#E2931D;--shiki-dark:#FFCB6B"> //使用常量来定义函数名</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    state.token</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> token</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span><span style="color:#90A4AE;--shiki-dark:#BABED8">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  SET_INTRODUCTION:</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (state, </span><span style="color:#91B859;--shiki-dark:#C3E88D">introduction</span><span style="color:#90A4AE;--shiki-dark:#BABED8">) =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//同上</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    state.introduction</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> introduction</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">commit(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'SET_ROLES'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span><span style="color:#91B859;--shiki-dark:#C3E88D"> roles</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//调用时</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">commit(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'SET_NAME'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span><span style="color:#91B859;--shiki-dark:#C3E88D"> name</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//action</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 类似于mutation，可以在其中调用mutation，可以内部执行异步操作</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">actions:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span><span style="color:#91B859;--shiki-dark:#C3E88D"> //action函数接受一个与store实例具有相同方法和属性的context对象，可以通过该对象获取state和gettersstore.dispatch</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'increment'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  increment</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> ({ commit }) {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    commit(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'increment'</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">store.dispatch(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'increment'</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//action函数通过dispatch方法触发</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//在action中有设计到登录操作，调用异步API和分发多重mutation</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">也可使用mapAction</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//Module</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 用于将store分割成模块，每个模块拥有自己的state，mutation，action，getter，从上到下分割</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">在状态数较大时可以使用，避免臃肿。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">设置Namespaced：true，使其成为带命名空间的模块，避免冲命名污染。</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">在全局命名空间内分发action或提交mutation，将root：true作为第三参数传给dispatch或commit，直接访问到root下的函数（数据）。</span></span></code></pre>
+<hr>
+<p>可以在assets文件中放置css文件，或者一些静态文件。在main.js引入，全局调用。
+路由在跳转的时候可以传递参数，有三种方式：
+方案1</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">this.$router.push(</span><span style="color:#91B859;--shiki-dark:#C3E88D">{//使用方法</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    path:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> `</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">/describe/$</span><span style="color:#91B859;--shiki-dark:#C3E88D">{id}</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">`</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">)}</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">{</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//对应配置的路由</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  path:</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'/describe/:id'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  name:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">Describe</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  component:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Describe</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">this.$route.params.id//调用方法</span></span></code></pre>
+<p>方案二</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">this.$router.push(</span><span style="color:#91B859;--shiki-dark:#C3E88D">{//使用方法</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    name:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">Describe</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    params:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      id:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> id</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">   }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">})</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//路由正常配置</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">$route.params.id//调用方法</span></span></code></pre>
+<p>方案三</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">this.$router.push(</span><span style="color:#91B859;--shiki-dark:#C3E88D">{//使用方法</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  path:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">/describe</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  query:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    id:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> id</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">})</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">$route</span><span style="color:#91B859;--shiki-dark:#C3E88D">.query.id//调用方法</span></span></code></pre>
+<hr>
+<h2 id="项目菜单栏通过多个组件组成使用el-scrollbar组件在element文档没有标注包裹el-menu自定义sidebar-item组件使用v-for动态生成多个子项通过v-if来判断子项显示模式使用render函数返回item组件作为menuitem使用link组件通过is来判断标签类型v-bind绑定跳转链接包裹item来作为跳转链接mixins混入的使用其中有函数数据并且在每个组件混入的数据都是独立的主要作用代码复用减少冗余其中在mixins里的函数命名必须带_避免引入组件中函数名重复scss文件引入其他scss文件可以调用类型但无法调用里面的属性和mixins在mainjs引入就可以全局调用包括引入文件中已经引入的文件item组件使用render函数返回的原因性能问题css3的使用美化页面">项目菜单栏：通过多个组件组成，使用el-scrollbar组件（在element文档没有标注）
+包裹el-menu，自定义sidebar-item组件使用v-for动态生成多个子项，通过v-if来判断子项显示模式，使用render函数返回item组件作为menuitem，使用link组件（通过：is来判断标签类型，v-bind绑定跳转链接）包裹item来作为跳转链接。
+mixins混入的使用，其中有函数，数据，并且在每个组件混入的数据都是独立的。（主要作用：代码复用，减少冗余），其中在mixins里的函数命名必须带$_避免引入组件中函数名重复。
+scss文件引入其他scss文件，可以调用类型，但无法调用里面的属性和mixins，在main.js引入就可以全局调用，包括引入文件中已经引入的文件。
+Item组件使用render函数返回的原因（性能问题）
+css3的使用，美化页面。</h2>
+<h2 id="v-for的使用需要一个参数itemiin数组或对象可以生成多个布局注意p标签自占高度使用a标签displayblock块级元素就可以调整高度了canvas的使用需要研究图形实现的好方法安装prettier自动代码格式化通过ps打开图片获取颜色和像素">v-for的使用，需要一个参数（item,i）in（数组或对象）,可以生成多个。
+布局注意，P标签自占高度，使用a标签，display：block，块级元素，就可以调整高度了。canvas的使用需要研究，图形实现的好方法。
+安装prettier自动代码格式化。
+通过ps打开图片获取颜色和像素。</h2>
+<p>Vue项目不同环境打包指令和配置
+1.env.js文件中各自有</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">'use strict'</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">module.exports</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> NODE_ENV:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">"production（生产）"</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">,//testing（测试）,development（开发）</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> EVN_CONFIG:</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'"prod"'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,//test,dev</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> API_ROOT:</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'"/apis/v1"'</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//api代理地址</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span></code></pre>
+<p>2.还需修改package.json文件</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">"scripts"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "dev"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">webpack-dev-server --inline --progress --config build/webpack.dev.conf.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "start"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">npm run dev</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "build"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">node build/build.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "build:test"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">cross-env NODE_ENV=production env_config=test node build/build.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "build:pre"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">cross-env NODE_ENV=production env_config=pre node build/build.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  "build:prod"</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> "</span><span style="color:#91B859;--shiki-dark:#C3E88D">cross-env NODE_ENV=production env_config=prod node build/build.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8"> }</span></span></code></pre>
+<p>3.修改config/index.js</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">build:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  //</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Template</span><span style="color:#91B859;--shiki-dark:#C3E88D"> for</span><span style="color:#91B859;--shiki-dark:#C3E88D"> index.html</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  //</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 添加test</span><span style="color:#91B859;--shiki-dark:#C3E88D"> pre</span><span style="color:#91B859;--shiki-dark:#C3E88D"> prod</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 三处环境的配制</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  prodEnv:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'./prod.env'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  preEnv:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'./pre.env'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">,</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  testEnv:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'./test.env'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span></code></pre>
+<p>4.在webpackage.pro.conf.js中使用构建环境参数</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 个性env常量的定义</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> env</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'../config/prod.env'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> env</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> config.build[process.env.env_config+</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">Env</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D">]</span></span></code></pre>
+<p>5.build.js文件修改</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">'use strict'</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">require(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'./check-versions'</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)()</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 注释掉的代码</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> process.env.NODE_ENV</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">production</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ora</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'ora'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> rm</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'rimraf'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> path</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'path'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> chalk</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'chalk'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> webpack</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'webpack'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> config</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'../config'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> webpackConfig</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> require</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'./webpack.prod.conf'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 修改spinner的定义</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> spinner</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ora</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'building for production...'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">var</span><span style="color:#91B859;--shiki-dark:#C3E88D"> spinner</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ora</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'building for '</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +</span><span style="color:#91B859;--shiki-dark:#C3E88D"> process.env.NODE_ENV</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D"> of </span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +</span><span style="color:#91B859;--shiki-dark:#C3E88D"> process.env.env_config+</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D"> mode...</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> )</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">spinner.start</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">()</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//更多的其它内容，不需要做任何调整的内容</span><span style="color:#91B859;--shiki-dark:#C3E88D"> ...</span></span></code></pre>
+<h2 id="6打包指令npm-run-buildtest测试环境npm-run-buildprod生产环境以此类推">6.打包指令
+npm run build:test//测试环境
+npm run build:prod//生产环境
+以此类推</h2>
+<h2 id="异步加载asyncdefer动态创建script标签异步任务promiseasync">异步加载：async,defer,动态创建script标签
+异步任务：promise，async</h2>
+<h2 id="8中数据类型分别是numberstringbooleannullundefinedobjectdatafunctionarraysymbolbigintnull只有一个值是null不存在的对象undefined只有一个值是undefined没有初始化undefined是从null中派生出来的undefined是没有定义的null定义了但是为空基本类型的变量是存放在栈内存stack里的基本类型的值是按值访问的基本类型的值是不可变的基本类型的比较是它们的值的比较类型方法运算符优先级参考链接表">8中数据类型分别是：
+Number，String，Boolean，Null，undefined，object（data，function，array），symbol，bigInt
+Null只有一个值，是null，不存在的对象。
+Undefined只有一个值，是undefined，没有初始化，undefined是从null中派生出来的。
+Undefined是没有定义的，null定义了但是为空。
+基本类型的变量是存放在栈内存（stack）里的
+基本类型的值是按值访问的
+基本类型的值是不可变的
+基本类型的比较是它们的值的比较
+类型方法
+运算符优先级<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">参考链接表</a></h2>
+<p>柯里化：接受多个参数的函数变换成接受一个单一参数的函数，并且返回接受余下参数并且返回结果的新函数。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 普通的add函数</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> add</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">x,</span><span style="color:#91B859;--shiki-dark:#C3E88D"> y</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">    return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> x</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +</span><span style="color:#91B859;--shiki-dark:#C3E88D"> y</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">//</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Currying后</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">function</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> curryingAdd</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">    return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> function</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> (y) </span><span style="color:#39ADB5;--shiki-dark:#89DDFF">{</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-light-font-style:italic;--shiki-dark:#89DDFF;--shiki-dark-font-style:italic">        return</span><span style="color:#91B859;--shiki-dark:#C3E88D"> x</span><span style="color:#91B859;--shiki-dark:#C3E88D"> +</span><span style="color:#91B859;--shiki-dark:#C3E88D"> y</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">    }</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">}</span></span></code></pre>
+<hr>
+<h2 id="数组常用方法array1concatarraarrb合并数组2-arrjoinseparator数组转字符串3arrtostring-无参数转字符串4arrtolocalestring以逗号隔开输出5arrslicestartend截取数组6arrspliceindexmanyitem1数组删除添加7arrunshiftxy头部增加8arrshitf头部删除9arrpushxy尾部增加10arrpop尾部删除11arrsortsortby-按字符编码进行排序12arrreverse数组颠倒13arrfilter数组过滤字符串常用方法string1strcharatindex返回指定位置的字符2strindexofvalueindex从index找返回value第一次出现的下标3strmatchvalue存放匹配结果的数组4strsplitseparatormany数组在separator指定的边界处分割字符串5strsearchstr第一个与str匹配的子串起始位置6strslicestartend按下标截取字符串7strsubstrstartlength返回从start开始的len个字符8strsubstringstartstop提取start到stop的字符串9strconcatxyz连接字符串10strreplacesubstrreplacement替换字符串中的部分11strtolowercase变小写12strtouppercase变大写数组循环方法foreachfor-of">数组常用方法（array）：
+1.concat（arrA，arrB，…）//合并数组
+2. arr.join（separator）//数组转字符串
+3.arr.toString //无参数，转字符串
+4.arr.toLocaleString//以逗号隔开输出
+5.arr.slice（start，end）//截取数组
+6.arr.splice（index，many，【item1】）//数组删除/添加
+7.arr.unshift（x,y）//头部增加
+8.arr.shitf（）//头部删除
+9.arr.push(x,y)//尾部增加
+10.arr.pop()//尾部删除
+11.arr.sort(sortby) //按字符编码进行排序
+12.arr.reverse（）//数组颠倒
+13.arr.filter()//数组过滤
+字符串常用方法（string）：
+1.str.charAt(index)//返回指定位置的（字符）！！
+2.str.indexOf(value,[index])//从index找，返回value第一次出现的下标
+3.str.match（value）//存放匹配结果的数组
+4.str.split(separator,[many])//数组在separator指定的边界处分割字符串
+5.str.search(str)//第一个与str匹配的子串起始位置
+6.str.slice(start,end)//按下标截取字符串
+7.str.substr(start,[length])//返回从start开始的len个字符
+8.str.substring（start,[stop]）//提取start到stop的字符串
+9.str.concat(x,y,z)//连接字符串
+10.str.replace(substr,replacement)//替换字符串中的部分
+11.str.toLowerCase()//变小写
+12.str.toUpperCase()//变大写
+数组循环方法：
+forEach(),for-of</h2>
+<h2 id="引用类型objectarrayregexpdatefunction引用类型的值是保存在堆内存heap中的对象object引用类型的值是按引用访问的引用类型的值是可变的引用类型的比较是引用的比较">引用类型：
+Object，Array，RegExp，Date，Function
+引用类型的值是保存在堆内存（heap）中的对象（object）
+引用类型的值是按引用访问的
+引用类型的值是可变的
+引用类型的比较是引用的比较</h2>
+<h2 id="深浅拷贝浅拷贝为引用深拷贝为创建一个相同的新对象">深浅拷贝
+浅拷贝为引用，深拷贝为创建一个相同的新对象。</h2>
+<h2 id="异步和同步1同步任务在主线程上形成一个执行栈2主线程外还有一个任务队列3一旦执行栈里的任务执行完毕系统会读取任务队列里的任务执行4主线程重复以上三个步骤heap堆stack栈任务队列中可以放置定时事件settimeoutsetinterval定时器将事件插入任务队列等执行栈执行完才能去执行指定的回调函数">异步和同步
+1.同步任务在主线程上形成一个执行栈
+2.主线程外还有一个任务队列
+3.一旦“执行栈”里的任务执行完毕，系统会读取任务队列里的任务执行
+4.主线程重复以上三个步骤
+heap（堆）stack（栈）
+任务队列中可以放置定时事件（setTimeout，setInterval）
+定时器将事件插入任务队列，等执行栈执行完才能去执行指定的回调函数</h2>
+<p>使用setInterval()循环，在mounted函数中使用。</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">data:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{timer:</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">''</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">this.timer</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> setInterval</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(()</span><span style="color:#91B859;--shiki-dark:#C3E88D">=</span><span style="color:#90A4AE;--shiki-dark:#BABED8">></span><span style="color:#91B859;--shiki-dark:#C3E88D">{此处写函数}</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">,3000</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">//1000为1s</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">beforeDestroy</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(){</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  clearInterval(this.timer</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//在页面销毁前关闭计时器</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">}</span></span></code></pre>
+<hr>
+<h3 id="使用store">使用store</h3>
+<p>创建新文件timer.js用来设置计时器
+在index.js主store中引入</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">import</span><span style="color:#91B859;--shiki-dark:#C3E88D"> timer</span><span style="color:#91B859;--shiki-dark:#C3E88D"> from</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> '</span><span style="color:#91B859;--shiki-dark:#C3E88D">./modules/timer</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">'</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">const</span><span style="color:#91B859;--shiki-dark:#C3E88D"> store</span><span style="color:#91B859;--shiki-dark:#C3E88D"> =</span><span style="color:#91B859;--shiki-dark:#C3E88D"> new</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Vuex.Store</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#90A4AE;--shiki-dark:#BABED8">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">     modules:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">        timer</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">     }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">})</span></span>
+<span class="line"><span style="color:#9C3EDA;--shiki-dark:#C792EA">export</span><span style="color:#90A4AE;--shiki-dark:#BABED8"> default store //暴露，可以外部引入</span></span></code></pre>
+<h2 id="在js文件中需要引入store-import-store-from-store直接调用store即可-storestateclockstorecommitset_clock1在组件当中调用thisstoredispatch对应action异步thisstorestate对应对象thisstorecommit对应mutation同步只有mutation可以改变状态thisstoregetters对应getter-挂载数据计算功能里面可有数据计算函数">在js文件中，需要引入store ///import store from ’./store’
+直接调用store即可// store.state.clock//store.commit(‘set_clock’,1)
+在组件当中调用//this.$store.dispatch对应action（异步）
+//this.$store.state对应对象
+//this.$store.commit对应mutation（同步）!!只有mutation可以改变状态
+//this.$store.getters对应getter //挂载数据计算功能（里面可有数据计算函数）</h2>
+<p>路由监听：
+permission文件当中使用的this.$router.beforeEach(to,from,next)=>{}是全局监听路由的方法
+vue页面中有三种监听路由的方法：</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">1.watch:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">   $route</span><span style="color:#91B859;--shiki-dark:#C3E88D">:{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      handler(val,oldval</span><span style="color:#90A4AE;--shiki-dark:#BABED8">){</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">        console.log(val</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//新路由信息</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">        console.log(oldval</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//老路由信息</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">      }</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">      deep:true//深度观察监听</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">   }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">2.watch:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  $route(</span><span style="color:#91B859;--shiki-dark:#C3E88D">to,from</span><span style="color:#90A4AE;--shiki-dark:#BABED8">){</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    console.log(from.path</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//从哪来</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    console.log(to.path</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)//到哪去</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">3.methods:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#6182B8;--shiki-dark:#82AAFF">  getpath</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(){</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    console.log(111</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">watch:</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">   '$route'</span><span style="color:#6182B8;--shiki-dark:#82AAFF">:</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">'getPath'</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span></code></pre>
+<h2 id="js数组对象为指针修改需要深拷贝否则会修改原数据防抖防止按钮多次点击封装防抖函数debouncejslet-timeout--nullfunction-bouncefnwait-iftimeout--null-cleartimeouttimeouttimeout--settimeoutfnwait引入import并使用bouncefunction1000数组深拷贝1concatlet-copyarray--concatarray2sliceidx1idx2let-copyarray--slice无参为拷贝数组">js数组对象为指针，修改需要深拷贝，否则会修改原数据
+防抖：防止按钮多次点击
+封装防抖函数：debounce.js
+let timeout = null
+function bounce(fn,wait) {
+if(timeout !== null) clearTimeout(timeout)
+timeout = setTimeout(fn,wait)
+}
+引入(import)并使用
+bounce(()=>{function},1000)
+数组深拷贝：
+1.concat():
+let copyArray = [].concat(array)
+2.slice(idx1,idx2)
+let copyArray = [].slice()//无参为拷贝数组</h2>
+<p>逻辑梳理，设计模式，需求合理，可维护性
+在写api请求的时候，可以使用promise与async await同步操作
+并且可以后续抓错处理</p>
+<h2 id="js中set类型的使用set类型带有的函数let-num--new-set-初始化--typeof-num为objectnumadd-添加元素的函数numsize-set类型的长度set类型无法添加重复的元素-利用这点可以数组去重let-array--num--num--new-setarray数组与set的转换numhas-set类型用来判断一个值是否在set中numdelete-set类型用来删除在set中的值numclearset类型清空所有的值set类型的遍历方式numforeachfunctionvalue--foreachforval-of-num--forofjs中的遍历函数arraymapvalueindexarray-map函数有元素值元素下标数组三个参数针对每个元素处理原数组不变最后返回一个新数组arrayforeachvalueindexarrayforeach函数参数如上无返回值原数组不变arrayfiltervalueindexarrayfilter函数参数如上针对每个元素判断条件返回元素返回新数组原数组不变arraysomearrayevery对所有数组成员依次执行函数返回布尔值用作数组满足条件判断arraysomefunction-callbackvalueindexarr调用filter的数组arraysome如果一个成员满足条件则返回truearrayevery需要全部成员满足条件才返回true原数组都不变arrayreduce-使用函数依次处理每个成员最终返回一个值reducecallbackpreviousvaluecurrentvaluecurrentindexarray函数initialvalue-previousvalue上一次遍历后提供的值最开始为初始值initialvalue遍历函数的区别与总结map-在处理函数中将返回值组成一个新的数组返回原数组arr保持不变foreach-没有返回值即使处理函数中设置了return也无效原数组arr保持不变filter-判断处理函数中的返回值是否为true将返回为true的数组元素该元素为最原始的数组元素组成一个新的数组返回原数组arr保持不变some与every-判断处理函数中的返回值是否为true如果有一个成员返回值为true则some返回true如果所有成员返回值都为true则every返回true原数组arr保持不变reduce-返回值会被记住并且在遍历下一个元素中可以被调用最后返回单个结果值原数组arr保持不变设计模式对代码设计有着非常大的作用尽快学习循环机制-同步异步-函数运行机制-执行栈宏任务macro微任务micro宏任务script整体代码settimeoutsetintervalioui交互事件setimmediatenodejs微任务promisemutaionobserverprocessnextticknodejs">js中Set类型的使用：
+Set类型带有的函数
+let num = new Set() //初始化  typeof num为object
+num.add()// 添加元素的函数
+num.size //set类型的长度
+set类型无法添加重复的元素 //利用这点可以数组去重
+let array = […num] || num = new Set(array)//数组与set的转换
+num.has() //Set类型用来判断一个值是否在set中
+num.delete() //Set类型用来删除在set中的值
+num.clear()//Set类型清空所有的值
+Set类型的遍历方式
+num.forEach(function(value){}) // forEach
+for(val of num){} // for…of
+js中的遍历函数：
+Array.map(value,index,array){} //map函数，有元素值，元素下标，数组三个参数，针对每个元素处理，原数组不变，最后返回一个新数组
+Array.forEach(value,index,array){}//forEach函数，参数如上，无返回值，原数组不变
+Array.filter(value,index,array){}//filter函数,参数如上,针对每个元素，判断条件返回元素，返回新数组，原数组不变
+Array.some(),Array.every()//对所有数组成员依次执行函数，返回布尔值,用作数组满足条件判断
+Array.some(function callback(value,index,arr){})//调用filter的数组
+Array.some()如果一个成员满足条件则返回true，Array.every()需要全部成员满足条件才返回true,原数组都不变
+Array.reduce() //使用函数依次处理每个成员，最终返回一个值
+reduce(callback(previousValue,currentValue,currentIndex,array){函数},initialValue)// previousValue:上一次遍历后提供的值，最开始为初始值:initialValue
+遍历函数的区别与总结：
+map()： 在处理函数中将返回值组成一个新的数组返回，原数组(arr)保持不变。
+forEach()： 没有返回值，即使处理函数中设置了return也无效，原数组(arr)保持不变。
+filter()： 判断处理函数中的返回值是否为true，将返回为true的数组元素(该元素为最原始的数组元素)组成一个新的数组返回，原数组(arr)保持不变。
+some()与every()： 判断处理函数中的返回值是否为true，如果有一个成员返回值为true，则some()返回true；如果所有成员返回值都为true，则every()返回true，原数组(arr)保持不变。
+reduce()： 返回值会被记住，并且在遍历下一个元素中可以被调用，最后返回单个结果值，原数组(arr)保持不变
+设计模式对代码设计有着非常大的作用，尽快学习。
+循环机制->同步异步->函数运行机制->执行栈宏任务(Macro)微任务(Micro)
+宏任务：script(整体代码)，setTimeout,setInterval,I/O,UI交互事件，setImmediate(Node.js)
+微任务：Promise,MutaionObserver,process.nextTick(Node.js)</h2>
+<h2 id="父子组件传值父向子传值单向绑定父传过来的值无法在子组件中更改1v-bind-propsfooanumber-只接受数值类型的参数foobstringnumber-可以接受字符串和数值类型的参数fooctypestringrequiredtrue-可以接受字符串的类型参数必须传入foodtypenumberdefault100-接受数值类型的参数默认值为100fooetypeobjectdefaultreturnmessage当为对象类型时设置默认值必须使用函数返回foofvalidatorfunctionvaluereturn-value--0--value--100使用一个自定义的验证器foogtypearraydefaultfunctionreturn-当为数值类型设置默认值时必须使用数组返回">父子组件传值
+父向子传值：单向绑定，父传过来的值无法在子组件中更改。
+1.v-bind props
+{
+fooA:Number //只接受数值类型的参数
+fooB:[String,Number] //可以接受字符串和数值类型的参数
+fooC:{type:String,required:true} //可以接受字符串的类型，参数必须传入
+fooD:{type:Number,default:100} //接受数值类型的参数，默认值为100
+fooE:{type:Object,default:()=>{return{message:”}};//当为对象类型时设置默认值必须使用函数返回
+fooF:{validator:function(value){return value >= 0 &#x26;&#x26; value &#x3C;= 100;}}//使用一个自定义的验证器
+fooG:{type:Array,default:function(){return[]}}// 当为数值类型设置默认值时必须使用数组返回
+}</h2>
+<h2 id="利用refsrefhome-调用子组件函数获值thisrefshomesetmsgthismgs父setmsgvalthismsg--val子">利用$refs
+ref=“home” //调用子组件函数获值
+this.$refs.home.setMsg(this.mgs)//父
+setMsg(val){this.msg = val}//子</h2>
+<h2 id="子向父传值-v-on-emitthisemitreceivevalue子组件receivereceivemethodsreceiveval">子向父传值： v-on $emit
+this.$emit(“receive”,“value”)//子组件
+@receive=“receive”
+methods:{receive(val){}}</h2>
+<h2 id="利用parentsetmsgthisparenttovaluethismsg-子tovaluevalthismsg--val-父">利用$parent
+setMsg(){this.$parent.toValue(this.msg)} //子
+toValue(val){this.msg = val} //父</h2>
+<h2 id="爷传孙propsmgsmsg爷v-bindattrs父propsmgsstring子">爷传孙:props
+:mgs=“msg”//爷
+v-bind=“$attrs”//父
+props:{mgs:String}//子</h2>
+<h2 id="孙传爷thisemitsetvalthismsg孙v-onlisteners父setvalsetval-setvalvalthismsg--val">孙传爷
+this.$emit(“setVal”,this.msg)//孙
+v-on=“$listeners”//父
+@setVal=“setVal” setVal(val){this.msg = val}</h2>
+<h2 id="祖组件传后代组件要求值必须为对象providereturn-datathisdataobj与data同级祖组件injectdatacomputedreturnthisdatamsgthisdatanum">祖组件传后代组件:要求值必须为对象!!!
+provide(){return {data:this.dataObj}}//与data同级,祖组件
+inject:[‘data’],computed:{()=>{return’${this.data.msg}&#x26;{this.data.num}‘}}</h2>
+<h2 id="兄弟组件传值storeeventbus可用调用完必须销毁否则出bug">兄弟组件传值(store)
+EventBus可用，调用完必须销毁，否则出bug。</h2>
+<p>apply:传入两个参数，一个参数数组，一个运行环境，默认Window。
+call:传入多个参数，一个 运行环境，其他为参数。
+bind:使用多加（），绑定上下文。
+三个函数皆为改变上下文this的函数
+多熟悉组件间通信，路由间通信。</p>
+<h3 id="持续进行编写和开发经验保存">持续进行编写和开发，经验保存</h3>
+<p>后续将CSDN博客中的经验总结并转移，并学习更多HEXO使用方式和编写方式</p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/前端框架/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 前端框架 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/web前端性能优化-页面加载/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>Web前端性能优化-页面加载</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/axure原型设计/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>Axure原型设计</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/vue-router原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue-Router原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vuex原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vuex原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 5, 2022</span></a><a class="related-item" href="/posts/vue全局api原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue全局API原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue计算属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue计算属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue监听属性原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue监听属性原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a><a class="related-item" href="/posts/vue模板组件原理/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Vue模板组件原理</span><span class="ri-date" data-astro-cid-dpgbfi7r>Jan 4, 2022</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#this-is-my-vue-develop-exprience" data-target="this-is-my-vue-develop-exprience" data-astro-cid-6t6zfk7k>This is my vue develop exprience~</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202057-1602-write" data-target="202057-1602-write" data-astro-cid-6t6zfk7k>2020/5/7 16:02 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202057-1033-write" data-target="202057-1033-write" data-astro-cid-6t6zfk7k>2020/5/7 10:33 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202057-1553-write" data-target="202057-1553-write" data-astro-cid-6t6zfk7k>2020/5/7 15:53 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202058-938-write" data-target="202058-938-write" data-astro-cid-6t6zfk7k>2020/5/8 9:38 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202059-953-write" data-target="202059-953-write" data-astro-cid-6t6zfk7k>2020/5/9 9:53 Write</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#深入响应式原理vue的核心当一个对象在实例化中的data选项vue将遍历此对象所有的property转为getter和setter每个组件实例都对应有一个watcher实例在渲染过程中把数据property记录为依赖之后当setter触发时会通知watcher使关联的组件重新渲染注意当数据在data选项外时为非响应式数组的长度和直接利用索引直接设置的数据都不是响应性的这时可以使用set方法使用index和数组的子项更新数据vue提前声明所有的响应式propertyvue在更新dom时是异步执行的侦听到数据变化时将开启一个队列缓冲在同一事件循环中发生的所有数据变更使用原生htmljscss开发文书模板bodypadding0pxmargin0px-适应浏览器无白边使用占位符空格nbsp后用正则表达式替换text-alignjustify-文字两端对齐margin0-auto-左右对齐white-spacenormal-文字换行元素空白处理div的使用和flex的合理使用" data-target="深入响应式原理vue的核心当一个对象在实例化中的data选项vue将遍历此对象所有的property转为getter和setter每个组件实例都对应有一个watcher实例在渲染过程中把数据property记录为依赖之后当setter触发时会通知watcher使关联的组件重新渲染注意当数据在data选项外时为非响应式数组的长度和直接利用索引直接设置的数据都不是响应性的这时可以使用set方法使用index和数组的子项更新数据vue提前声明所有的响应式propertyvue在更新dom时是异步执行的侦听到数据变化时将开启一个队列缓冲在同一事件循环中发生的所有数据变更使用原生htmljscss开发文书模板bodypadding0pxmargin0px-适应浏览器无白边使用占位符空格nbsp后用正则表达式替换text-alignjustify-文字两端对齐margin0-auto-左右对齐white-spacenormal-文字换行元素空白处理div的使用和flex的合理使用" data-astro-cid-6t6zfk7k>深入响应式原理，vue的核心。
+当一个对象在实例化中的data选项，Vue将遍历此对象所有的property，转为getter和setter。
+每个组件实例都对应有一个watcher实例，在渲染过程中把数据property记录为依赖，之后当setter触发时，会通知watcher，使关联的组件重新渲染。
+注意：当数据在data选项外时，为非响应式！！！
+数组的长度和直接利用索引直接设置的数据都不是响应性的，这时可以使用set方法，使用index和数组的子项更新数据。
+vue提前声明所有的响应式property。
+Vue在更新DOM时是异步执行的，侦听到数据变化时，将开启一个队列，缓冲在同一事件循环中发生的所有数据变更。
+使用原生html，js，css开发文书模板。
+body${padding:0px;margin:0px} //适应浏览器，无白边
+使用占位符，空格（&amp;nbsp），后用正则表达式替换。
+text-align:justify;// 文字两端对齐
+margin:0 auto;// 左右对齐
+white-space:normal// 文字换行,元素空白处理
+div的使用和flex的合理使用</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#开源项目vue-element-admin" data-target="开源项目vue-element-admin" data-astro-cid-6t6zfk7k>开源项目Vue-element-admin</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#项目菜单栏通过多个组件组成使用el-scrollbar组件在element文档没有标注包裹el-menu自定义sidebar-item组件使用v-for动态生成多个子项通过v-if来判断子项显示模式使用render函数返回item组件作为menuitem使用link组件通过is来判断标签类型v-bind绑定跳转链接包裹item来作为跳转链接mixins混入的使用其中有函数数据并且在每个组件混入的数据都是独立的主要作用代码复用减少冗余其中在mixins里的函数命名必须带_避免引入组件中函数名重复scss文件引入其他scss文件可以调用类型但无法调用里面的属性和mixins在mainjs引入就可以全局调用包括引入文件中已经引入的文件item组件使用render函数返回的原因性能问题css3的使用美化页面" data-target="项目菜单栏通过多个组件组成使用el-scrollbar组件在element文档没有标注包裹el-menu自定义sidebar-item组件使用v-for动态生成多个子项通过v-if来判断子项显示模式使用render函数返回item组件作为menuitem使用link组件通过is来判断标签类型v-bind绑定跳转链接包裹item来作为跳转链接mixins混入的使用其中有函数数据并且在每个组件混入的数据都是独立的主要作用代码复用减少冗余其中在mixins里的函数命名必须带_避免引入组件中函数名重复scss文件引入其他scss文件可以调用类型但无法调用里面的属性和mixins在mainjs引入就可以全局调用包括引入文件中已经引入的文件item组件使用render函数返回的原因性能问题css3的使用美化页面" data-astro-cid-6t6zfk7k>项目菜单栏：通过多个组件组成，使用el-scrollbar组件（在element文档没有标注）
+包裹el-menu，自定义sidebar-item组件使用v-for动态生成多个子项，通过v-if来判断子项显示模式，使用render函数返回item组件作为menuitem，使用link组件（通过：is来判断标签类型，v-bind绑定跳转链接）包裹item来作为跳转链接。
+mixins混入的使用，其中有函数，数据，并且在每个组件混入的数据都是独立的。（主要作用：代码复用，减少冗余），其中在mixins里的函数命名必须带$_避免引入组件中函数名重复。
+scss文件引入其他scss文件，可以调用类型，但无法调用里面的属性和mixins，在main.js引入就可以全局调用，包括引入文件中已经引入的文件。
+Item组件使用render函数返回的原因（性能问题）
+css3的使用，美化页面。</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#v-for的使用需要一个参数itemiin数组或对象可以生成多个布局注意p标签自占高度使用a标签displayblock块级元素就可以调整高度了canvas的使用需要研究图形实现的好方法安装prettier自动代码格式化通过ps打开图片获取颜色和像素" data-target="v-for的使用需要一个参数itemiin数组或对象可以生成多个布局注意p标签自占高度使用a标签displayblock块级元素就可以调整高度了canvas的使用需要研究图形实现的好方法安装prettier自动代码格式化通过ps打开图片获取颜色和像素" data-astro-cid-6t6zfk7k>v-for的使用，需要一个参数（item,i）in（数组或对象）,可以生成多个。
+布局注意，P标签自占高度，使用a标签，display：block，块级元素，就可以调整高度了。canvas的使用需要研究，图形实现的好方法。
+安装prettier自动代码格式化。
+通过ps打开图片获取颜色和像素。</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#6打包指令npm-run-buildtest测试环境npm-run-buildprod生产环境以此类推" data-target="6打包指令npm-run-buildtest测试环境npm-run-buildprod生产环境以此类推" data-astro-cid-6t6zfk7k>6.打包指令
+npm run build:test//测试环境
+npm run build:prod//生产环境
+以此类推</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#异步加载asyncdefer动态创建script标签异步任务promiseasync" data-target="异步加载asyncdefer动态创建script标签异步任务promiseasync" data-astro-cid-6t6zfk7k>异步加载：async,defer,动态创建script标签
+异步任务：promise，async</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#8中数据类型分别是numberstringbooleannullundefinedobjectdatafunctionarraysymbolbigintnull只有一个值是null不存在的对象undefined只有一个值是undefined没有初始化undefined是从null中派生出来的undefined是没有定义的null定义了但是为空基本类型的变量是存放在栈内存stack里的基本类型的值是按值访问的基本类型的值是不可变的基本类型的比较是它们的值的比较类型方法运算符优先级参考链接表" data-target="8中数据类型分别是numberstringbooleannullundefinedobjectdatafunctionarraysymbolbigintnull只有一个值是null不存在的对象undefined只有一个值是undefined没有初始化undefined是从null中派生出来的undefined是没有定义的null定义了但是为空基本类型的变量是存放在栈内存stack里的基本类型的值是按值访问的基本类型的值是不可变的基本类型的比较是它们的值的比较类型方法运算符优先级参考链接表" data-astro-cid-6t6zfk7k>8中数据类型分别是：
+Number，String，Boolean，Null，undefined，object（data，function，array），symbol，bigInt
+Null只有一个值，是null，不存在的对象。
+Undefined只有一个值，是undefined，没有初始化，undefined是从null中派生出来的。
+Undefined是没有定义的，null定义了但是为空。
+基本类型的变量是存放在栈内存（stack）里的
+基本类型的值是按值访问的
+基本类型的值是不可变的
+基本类型的比较是它们的值的比较
+类型方法
+运算符优先级参考链接表</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#数组常用方法array1concatarraarrb合并数组2-arrjoinseparator数组转字符串3arrtostring-无参数转字符串4arrtolocalestring以逗号隔开输出5arrslicestartend截取数组6arrspliceindexmanyitem1数组删除添加7arrunshiftxy头部增加8arrshitf头部删除9arrpushxy尾部增加10arrpop尾部删除11arrsortsortby-按字符编码进行排序12arrreverse数组颠倒13arrfilter数组过滤字符串常用方法string1strcharatindex返回指定位置的字符2strindexofvalueindex从index找返回value第一次出现的下标3strmatchvalue存放匹配结果的数组4strsplitseparatormany数组在separator指定的边界处分割字符串5strsearchstr第一个与str匹配的子串起始位置6strslicestartend按下标截取字符串7strsubstrstartlength返回从start开始的len个字符8strsubstringstartstop提取start到stop的字符串9strconcatxyz连接字符串10strreplacesubstrreplacement替换字符串中的部分11strtolowercase变小写12strtouppercase变大写数组循环方法foreachfor-of" data-target="数组常用方法array1concatarraarrb合并数组2-arrjoinseparator数组转字符串3arrtostring-无参数转字符串4arrtolocalestring以逗号隔开输出5arrslicestartend截取数组6arrspliceindexmanyitem1数组删除添加7arrunshiftxy头部增加8arrshitf头部删除9arrpushxy尾部增加10arrpop尾部删除11arrsortsortby-按字符编码进行排序12arrreverse数组颠倒13arrfilter数组过滤字符串常用方法string1strcharatindex返回指定位置的字符2strindexofvalueindex从index找返回value第一次出现的下标3strmatchvalue存放匹配结果的数组4strsplitseparatormany数组在separator指定的边界处分割字符串5strsearchstr第一个与str匹配的子串起始位置6strslicestartend按下标截取字符串7strsubstrstartlength返回从start开始的len个字符8strsubstringstartstop提取start到stop的字符串9strconcatxyz连接字符串10strreplacesubstrreplacement替换字符串中的部分11strtolowercase变小写12strtouppercase变大写数组循环方法foreachfor-of" data-astro-cid-6t6zfk7k>数组常用方法（array）：
+1.concat（arrA，arrB，…）//合并数组
+2. arr.join（separator）//数组转字符串
+3.arr.toString //无参数，转字符串
+4.arr.toLocaleString//以逗号隔开输出
+5.arr.slice（start，end）//截取数组
+6.arr.splice（index，many，【item1】）//数组删除/添加
+7.arr.unshift（x,y）//头部增加
+8.arr.shitf（）//头部删除
+9.arr.push(x,y)//尾部增加
+10.arr.pop()//尾部删除
+11.arr.sort(sortby) //按字符编码进行排序
+12.arr.reverse（）//数组颠倒
+13.arr.filter()//数组过滤
+字符串常用方法（string）：
+1.str.charAt(index)//返回指定位置的（字符）！！
+2.str.indexOf(value,[index])//从index找，返回value第一次出现的下标
+3.str.match（value）//存放匹配结果的数组
+4.str.split(separator,[many])//数组在separator指定的边界处分割字符串
+5.str.search(str)//第一个与str匹配的子串起始位置
+6.str.slice(start,end)//按下标截取字符串
+7.str.substr(start,[length])//返回从start开始的len个字符
+8.str.substring（start,[stop]）//提取start到stop的字符串
+9.str.concat(x,y,z)//连接字符串
+10.str.replace(substr,replacement)//替换字符串中的部分
+11.str.toLowerCase()//变小写
+12.str.toUpperCase()//变大写
+数组循环方法：
+forEach(),for-of</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#引用类型objectarrayregexpdatefunction引用类型的值是保存在堆内存heap中的对象object引用类型的值是按引用访问的引用类型的值是可变的引用类型的比较是引用的比较" data-target="引用类型objectarrayregexpdatefunction引用类型的值是保存在堆内存heap中的对象object引用类型的值是按引用访问的引用类型的值是可变的引用类型的比较是引用的比较" data-astro-cid-6t6zfk7k>引用类型：
+Object，Array，RegExp，Date，Function
+引用类型的值是保存在堆内存（heap）中的对象（object）
+引用类型的值是按引用访问的
+引用类型的值是可变的
+引用类型的比较是引用的比较</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#深浅拷贝浅拷贝为引用深拷贝为创建一个相同的新对象" data-target="深浅拷贝浅拷贝为引用深拷贝为创建一个相同的新对象" data-astro-cid-6t6zfk7k>深浅拷贝
+浅拷贝为引用，深拷贝为创建一个相同的新对象。</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#异步和同步1同步任务在主线程上形成一个执行栈2主线程外还有一个任务队列3一旦执行栈里的任务执行完毕系统会读取任务队列里的任务执行4主线程重复以上三个步骤heap堆stack栈任务队列中可以放置定时事件settimeoutsetinterval定时器将事件插入任务队列等执行栈执行完才能去执行指定的回调函数" data-target="异步和同步1同步任务在主线程上形成一个执行栈2主线程外还有一个任务队列3一旦执行栈里的任务执行完毕系统会读取任务队列里的任务执行4主线程重复以上三个步骤heap堆stack栈任务队列中可以放置定时事件settimeoutsetinterval定时器将事件插入任务队列等执行栈执行完才能去执行指定的回调函数" data-astro-cid-6t6zfk7k>异步和同步
+1.同步任务在主线程上形成一个执行栈
+2.主线程外还有一个任务队列
+3.一旦“执行栈”里的任务执行完毕，系统会读取任务队列里的任务执行
+4.主线程重复以上三个步骤
+heap（堆）stack（栈）
+任务队列中可以放置定时事件（setTimeout，setInterval）
+定时器将事件插入任务队列，等执行栈执行完才能去执行指定的回调函数</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#使用store" data-target="使用store" data-astro-cid-6t6zfk7k>使用store</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#在js文件中需要引入store-import-store-from-store直接调用store即可-storestateclockstorecommitset_clock1在组件当中调用thisstoredispatch对应action异步thisstorestate对应对象thisstorecommit对应mutation同步只有mutation可以改变状态thisstoregetters对应getter-挂载数据计算功能里面可有数据计算函数" data-target="在js文件中需要引入store-import-store-from-store直接调用store即可-storestateclockstorecommitset_clock1在组件当中调用thisstoredispatch对应action异步thisstorestate对应对象thisstorecommit对应mutation同步只有mutation可以改变状态thisstoregetters对应getter-挂载数据计算功能里面可有数据计算函数" data-astro-cid-6t6zfk7k>在js文件中，需要引入store ///import store from ’./store’
+直接调用store即可// store.state.clock//store.commit(‘set_clock’,1)
+在组件当中调用//this.$store.dispatch对应action（异步）
+//this.$store.state对应对象
+//this.$store.commit对应mutation（同步）!!只有mutation可以改变状态
+//this.$store.getters对应getter //挂载数据计算功能（里面可有数据计算函数）</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#js数组对象为指针修改需要深拷贝否则会修改原数据防抖防止按钮多次点击封装防抖函数debouncejslet-timeout--nullfunction-bouncefnwait-iftimeout--null-cleartimeouttimeouttimeout--settimeoutfnwait引入import并使用bouncefunction1000数组深拷贝1concatlet-copyarray--concatarray2sliceidx1idx2let-copyarray--slice无参为拷贝数组" data-target="js数组对象为指针修改需要深拷贝否则会修改原数据防抖防止按钮多次点击封装防抖函数debouncejslet-timeout--nullfunction-bouncefnwait-iftimeout--null-cleartimeouttimeouttimeout--settimeoutfnwait引入import并使用bouncefunction1000数组深拷贝1concatlet-copyarray--concatarray2sliceidx1idx2let-copyarray--slice无参为拷贝数组" data-astro-cid-6t6zfk7k>js数组对象为指针，修改需要深拷贝，否则会修改原数据
+防抖：防止按钮多次点击
+封装防抖函数：debounce.js
+let timeout = null
+function bounce(fn,wait) ${
+if(timeout !== null) clearTimeout(timeout)
+timeout = setTimeout(fn,wait)
+}
+引入(import)并使用
+bounce(()=&gt;${function},1000)
+数组深拷贝：
+1.concat():
+let copyArray = [].concat(array)
+2.slice(idx1,idx2)
+let copyArray = [].slice()//无参为拷贝数组</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#js中set类型的使用set类型带有的函数let-num--new-set-初始化--typeof-num为objectnumadd-添加元素的函数numsize-set类型的长度set类型无法添加重复的元素-利用这点可以数组去重let-array--num--num--new-setarray数组与set的转换numhas-set类型用来判断一个值是否在set中numdelete-set类型用来删除在set中的值numclearset类型清空所有的值set类型的遍历方式numforeachfunctionvalue--foreachforval-of-num--forofjs中的遍历函数arraymapvalueindexarray-map函数有元素值元素下标数组三个参数针对每个元素处理原数组不变最后返回一个新数组arrayforeachvalueindexarrayforeach函数参数如上无返回值原数组不变arrayfiltervalueindexarrayfilter函数参数如上针对每个元素判断条件返回元素返回新数组原数组不变arraysomearrayevery对所有数组成员依次执行函数返回布尔值用作数组满足条件判断arraysomefunction-callbackvalueindexarr调用filter的数组arraysome如果一个成员满足条件则返回truearrayevery需要全部成员满足条件才返回true原数组都不变arrayreduce-使用函数依次处理每个成员最终返回一个值reducecallbackpreviousvaluecurrentvaluecurrentindexarray函数initialvalue-previousvalue上一次遍历后提供的值最开始为初始值initialvalue遍历函数的区别与总结map-在处理函数中将返回值组成一个新的数组返回原数组arr保持不变foreach-没有返回值即使处理函数中设置了return也无效原数组arr保持不变filter-判断处理函数中的返回值是否为true将返回为true的数组元素该元素为最原始的数组元素组成一个新的数组返回原数组arr保持不变some与every-判断处理函数中的返回值是否为true如果有一个成员返回值为true则some返回true如果所有成员返回值都为true则every返回true原数组arr保持不变reduce-返回值会被记住并且在遍历下一个元素中可以被调用最后返回单个结果值原数组arr保持不变设计模式对代码设计有着非常大的作用尽快学习循环机制-同步异步-函数运行机制-执行栈宏任务macro微任务micro宏任务script整体代码settimeoutsetintervalioui交互事件setimmediatenodejs微任务promisemutaionobserverprocessnextticknodejs" data-target="js中set类型的使用set类型带有的函数let-num--new-set-初始化--typeof-num为objectnumadd-添加元素的函数numsize-set类型的长度set类型无法添加重复的元素-利用这点可以数组去重let-array--num--num--new-setarray数组与set的转换numhas-set类型用来判断一个值是否在set中numdelete-set类型用来删除在set中的值numclearset类型清空所有的值set类型的遍历方式numforeachfunctionvalue--foreachforval-of-num--forofjs中的遍历函数arraymapvalueindexarray-map函数有元素值元素下标数组三个参数针对每个元素处理原数组不变最后返回一个新数组arrayforeachvalueindexarrayforeach函数参数如上无返回值原数组不变arrayfiltervalueindexarrayfilter函数参数如上针对每个元素判断条件返回元素返回新数组原数组不变arraysomearrayevery对所有数组成员依次执行函数返回布尔值用作数组满足条件判断arraysomefunction-callbackvalueindexarr调用filter的数组arraysome如果一个成员满足条件则返回truearrayevery需要全部成员满足条件才返回true原数组都不变arrayreduce-使用函数依次处理每个成员最终返回一个值reducecallbackpreviousvaluecurrentvaluecurrentindexarray函数initialvalue-previousvalue上一次遍历后提供的值最开始为初始值initialvalue遍历函数的区别与总结map-在处理函数中将返回值组成一个新的数组返回原数组arr保持不变foreach-没有返回值即使处理函数中设置了return也无效原数组arr保持不变filter-判断处理函数中的返回值是否为true将返回为true的数组元素该元素为最原始的数组元素组成一个新的数组返回原数组arr保持不变some与every-判断处理函数中的返回值是否为true如果有一个成员返回值为true则some返回true如果所有成员返回值都为true则every返回true原数组arr保持不变reduce-返回值会被记住并且在遍历下一个元素中可以被调用最后返回单个结果值原数组arr保持不变设计模式对代码设计有着非常大的作用尽快学习循环机制-同步异步-函数运行机制-执行栈宏任务macro微任务micro宏任务script整体代码settimeoutsetintervalioui交互事件setimmediatenodejs微任务promisemutaionobserverprocessnextticknodejs" data-astro-cid-6t6zfk7k>js中Set类型的使用：
+Set类型带有的函数
+let num = new Set() //初始化  typeof num为object
+num.add()// 添加元素的函数
+num.size //set类型的长度
+set类型无法添加重复的元素 //利用这点可以数组去重
+let array = […num] || num = new Set(array)//数组与set的转换
+num.has() //Set类型用来判断一个值是否在set中
+num.delete() //Set类型用来删除在set中的值
+num.clear()//Set类型清空所有的值
+Set类型的遍历方式
+num.forEach(function(value)${}) // forEach
+for(val of num)${} // for…of
+js中的遍历函数：
+Array.map(value,index,array)${} //map函数，有元素值，元素下标，数组三个参数，针对每个元素处理，原数组不变，最后返回一个新数组
+Array.forEach(value,index,array)${}//forEach函数，参数如上，无返回值，原数组不变
+Array.filter(value,index,array)${}//filter函数,参数如上,针对每个元素，判断条件返回元素，返回新数组，原数组不变
+Array.some(),Array.every()//对所有数组成员依次执行函数，返回布尔值,用作数组满足条件判断
+Array.some(function callback(value,index,arr)${})//调用filter的数组
+Array.some()如果一个成员满足条件则返回true，Array.every()需要全部成员满足条件才返回true,原数组都不变
+Array.reduce() //使用函数依次处理每个成员，最终返回一个值
+reduce(callback(previousValue,currentValue,currentIndex,array)${函数},initialValue)// previousValue:上一次遍历后提供的值，最开始为初始值:initialValue
+遍历函数的区别与总结：
+map()： 在处理函数中将返回值组成一个新的数组返回，原数组(arr)保持不变。
+forEach()： 没有返回值，即使处理函数中设置了return也无效，原数组(arr)保持不变。
+filter()： 判断处理函数中的返回值是否为true，将返回为true的数组元素(该元素为最原始的数组元素)组成一个新的数组返回，原数组(arr)保持不变。
+some()与every()： 判断处理函数中的返回值是否为true，如果有一个成员返回值为true，则some()返回true；如果所有成员返回值都为true，则every()返回true，原数组(arr)保持不变。
+reduce()： 返回值会被记住，并且在遍历下一个元素中可以被调用，最后返回单个结果值，原数组(arr)保持不变
+设计模式对代码设计有着非常大的作用，尽快学习。
+循环机制-&gt;同步异步-&gt;函数运行机制-&gt;执行栈宏任务(Macro)微任务(Micro)
+宏任务：script(整体代码)，setTimeout,setInterval,I/O,UI交互事件，setImmediate(Node.js)
+微任务：Promise,MutaionObserver,process.nextTick(Node.js)</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#父子组件传值父向子传值单向绑定父传过来的值无法在子组件中更改1v-bind-propsfooanumber-只接受数值类型的参数foobstringnumber-可以接受字符串和数值类型的参数fooctypestringrequiredtrue-可以接受字符串的类型参数必须传入foodtypenumberdefault100-接受数值类型的参数默认值为100fooetypeobjectdefaultreturnmessage当为对象类型时设置默认值必须使用函数返回foofvalidatorfunctionvaluereturn-value--0--value--100使用一个自定义的验证器foogtypearraydefaultfunctionreturn-当为数值类型设置默认值时必须使用数组返回" data-target="父子组件传值父向子传值单向绑定父传过来的值无法在子组件中更改1v-bind-propsfooanumber-只接受数值类型的参数foobstringnumber-可以接受字符串和数值类型的参数fooctypestringrequiredtrue-可以接受字符串的类型参数必须传入foodtypenumberdefault100-接受数值类型的参数默认值为100fooetypeobjectdefaultreturnmessage当为对象类型时设置默认值必须使用函数返回foofvalidatorfunctionvaluereturn-value--0--value--100使用一个自定义的验证器foogtypearraydefaultfunctionreturn-当为数值类型设置默认值时必须使用数组返回" data-astro-cid-6t6zfk7k>父子组件传值
+父向子传值：单向绑定，父传过来的值无法在子组件中更改。
+1.v-bind props
+${
+fooA:Number //只接受数值类型的参数
+fooB:[String,Number] //可以接受字符串和数值类型的参数
+fooC:${type:String,required:true} //可以接受字符串的类型，参数必须传入
+fooD:${type:Number,default:100} //接受数值类型的参数，默认值为100
+fooE:${type:Object,default:()=&gt;${return${message:”}};//当为对象类型时设置默认值必须使用函数返回
+fooF:${validator:function(value)${return value &gt;= 0 &amp;&amp; value &lt;= 100;}}//使用一个自定义的验证器
+fooG:${type:Array,default:function()${return[]}}// 当为数值类型设置默认值时必须使用数组返回
+}</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#利用refsrefhome-调用子组件函数获值thisrefshomesetmsgthismgs父setmsgvalthismsg--val子" data-target="利用refsrefhome-调用子组件函数获值thisrefshomesetmsgthismgs父setmsgvalthismsg--val子" data-astro-cid-6t6zfk7k>利用$refs
+ref=“home” //调用子组件函数获值
+this.$refs.home.setMsg(this.mgs)//父
+setMsg(val)${this.msg = val}//子</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#子向父传值-v-on-emitthisemitreceivevalue子组件receivereceivemethodsreceiveval" data-target="子向父传值-v-on-emitthisemitreceivevalue子组件receivereceivemethodsreceiveval" data-astro-cid-6t6zfk7k>子向父传值： v-on $emit
+this.$emit(“receive”,“value”)//子组件
+@receive=“receive”
+methods:${receive(val)${}}</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#利用parentsetmsgthisparenttovaluethismsg-子tovaluevalthismsg--val-父" data-target="利用parentsetmsgthisparenttovaluethismsg-子tovaluevalthismsg--val-父" data-astro-cid-6t6zfk7k>利用$parent
+setMsg()${this.$parent.toValue(this.msg)} //子
+toValue(val)${this.msg = val} //父</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#爷传孙propsmgsmsg爷v-bindattrs父propsmgsstring子" data-target="爷传孙propsmgsmsg爷v-bindattrs父propsmgsstring子" data-astro-cid-6t6zfk7k>爷传孙:props
+:mgs=“msg”//爷
+v-bind=“$attrs”//父
+props:${mgs:String}//子</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#孙传爷thisemitsetvalthismsg孙v-onlisteners父setvalsetval-setvalvalthismsg--val" data-target="孙传爷thisemitsetvalthismsg孙v-onlisteners父setvalsetval-setvalvalthismsg--val" data-astro-cid-6t6zfk7k>孙传爷
+this.$emit(“setVal”,this.msg)//孙
+v-on=“$listeners”//父
+@setVal=“setVal” setVal(val)${this.msg = val}</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#祖组件传后代组件要求值必须为对象providereturn-datathisdataobj与data同级祖组件injectdatacomputedreturnthisdatamsgthisdatanum" data-target="祖组件传后代组件要求值必须为对象providereturn-datathisdataobj与data同级祖组件injectdatacomputedreturnthisdatamsgthisdatanum" data-astro-cid-6t6zfk7k>祖组件传后代组件:要求值必须为对象!!!
+provide()${return ${data:this.dataObj}}//与data同级,祖组件
+inject:[‘data’],computed:${()=&gt;${return’$${this.data.msg}&amp;${this.data.num}‘}}</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#兄弟组件传值storeeventbus可用调用完必须销毁否则出bug" data-target="兄弟组件传值storeeventbus可用调用完必须销毁否则出bug" data-astro-cid-6t6zfk7k>兄弟组件传值(store)
+EventBus可用，调用完必须销毁，否则出bug。</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#持续进行编写和开发经验保存" data-target="持续进行编写和开发经验保存" data-astro-cid-6t6zfk7k>持续进行编写和开发，经验保存</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>

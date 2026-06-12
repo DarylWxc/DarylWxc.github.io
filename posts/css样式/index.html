@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v6.4.6"><meta name="description" content="DarylWxc's personal blog"><title>CSS样式 | DarylWxc</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"><script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          const dark =
+            saved === "dark" ||
+            (!saved &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/_..HFsFL8Ho.css">
+<link rel="stylesheet" href="/_astro/BaseLayout.CmJx0DuN.css"></head> <body> <div id="web_bg" style="--web-bg-image: url('/img/ghost-blade.jpg')"></div> <nav id="nav" data-astro-cid-dmqpwcec> <a href="/" class="site-title" data-astro-cid-dmqpwcec>DarylWxc</a> <button id="nav-toggle" aria-label="Toggle menu" data-astro-cid-dmqpwcec> <i class="fas fa-bars" data-astro-cid-dmqpwcec></i> </button> <div id="nav-menu" data-astro-cid-dmqpwcec> <a href="/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-home" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Home</span> </a><a href="/archives/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-archive" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Archives</span> </a><a href="/tags/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-tags" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Tags</span> </a><a href="/categories/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-folder-open" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>Categories</span> </a><a href="/about/" class="menu-item" data-astro-cid-dmqpwcec> <i class="fas fa-heart" aria-hidden="true" data-astro-cid-dmqpwcec></i> <span data-astro-cid-dmqpwcec>About</span> </a> </div> </nav>  <script type="module">const o=document.getElementById("nav-toggle"),s=document.getElementById("nav-menu");o?.addEventListener("click",()=>s?.classList.toggle("open"));const t=()=>{const e=document.getElementById("page-header"),n=e?e.offsetHeight-80:80;document.body.classList.toggle("nav-fixed",window.scrollY>n)};window.addEventListener("scroll",t,{passive:!0});t();</script> <header id="page-header" class="not-home" style="background-image: url('/img/Princess.png')"> <div class="banner-info"> <h1>CSS样式</h1>  </div>  </header>  <div id="post-wrap" data-astro-cid-gjtny2mx> <div class="post-spacer" aria-hidden="true" data-astro-cid-gjtny2mx></div> <main id="main-content" data-astro-cid-gjtny2mx> <article class="post-article" data-astro-cid-gjtny2mx> <div class="post-meta" data-astro-cid-gjtny2mx> <span data-astro-cid-gjtny2mx><i class="far fa-calendar" data-astro-cid-gjtny2mx></i> Posted May 9, 2020</span>  <a href="/categories/UI设计开发/" data-astro-cid-gjtny2mx> <i class="fas fa-folder-open" data-astro-cid-gjtny2mx></i> UI设计开发 </a> <span data-astro-cid-gjtny2mx><i class="far fa-file-word" data-astro-cid-gjtny2mx></i> 3416 words</span> <span data-astro-cid-gjtny2mx><i class="far fa-clock" data-astro-cid-gjtny2mx></i> 9 min</span> </div> <div id="article-container" data-astro-cid-gjtny2mx>  <p>页面UI设计与开发</p>
+<hr>
+<h2 id="202059-1501-write">2020/5/9 15:01 Write</h2>
+<p>关键词：UI</p>
+<p>选择器优先权：important>内联>id>类|伪类|属性选择>伪元素|标签>通配符>继承</p>
+<p>注意可继承属性和不可继承属性</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">cursor:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 改变光标的形式</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">box-sizing：使Padding往内伸缩</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">outline：外边框</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">focus：获取焦点</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">font-size：0</span><span style="color:#91B859;--shiki-dark:#C3E88D"> （解决空格留白问题）</span></span></code></pre>
+<h3 id="浮动的特点">浮动的特点</h3>
+<p>元素浮动后会脱离文档流
+浮动以后元素会一直向父元素的最上方移动
+直到遇到父元素的边框或者其他的浮动元素，会停止移动
+如果浮动元素的上边是一个块元素，则浮动元素不会覆盖块元素
+浮动元素不会超过他上边的浮动的兄弟元素，最多一边齐
+浮动元素不会覆盖文字，文字会自动环绕在浮动元素的周围，可以通过浮动来实现文字环绕的效果</p>
+<h3 id="元素浮动后的效果">元素浮动后的效果</h3>
+<p>块元素：块元素脱离文档流以后（不会独占一行，宽度高度会被内容撑开）
+内联元素：脱离文档流后变成块元素</p>
+<h3 id="定位">定位</h3>
+<p>relative:相对于自己（相对定位）
+开启元素的相对定位后，如果不设置偏移量元素不会发生任何变化
+相对定位元素对于自身在文档流中的位置来定位
+相对定位的元素不会脱离文档流
+相对定位不会改变元素的性质，块元素还是块元素
+相对定位的元素会提升一个层级
+使用top left right bottom偏移</p>
+<p>absolute：相对于父标签
+同相对定位
+最近的开启了定位的祖先元素进行定位，如果所有的祖先元素没开启定位，则相对于浏览器窗口进行定位
+绝对定位的元素会完全脱离文档流
+绝对定位会改变元素的性质。内联变块，块的高度和宽度都被内容撑开，并且不独占一行
+绝对定位会使元素提升一个层级</p>
+<p>fixed：相对于浏览器窗口
+特殊的绝对定位，相对于浏览器窗口定位
+永远相对于浏览器窗口进行定位，不会随滚动条滚动</p>
+<h3 id="层级">层级</h3>
+<p>定位元素>浮动元素>文档流中的元素
+当元素开启了定位后，可以通过Z-index来设置层级
+z-index值越高越优先显示
+如果z-index值一样，或者都没有z-index则优先显示下边的元素
+父元素永远不会盖住子元素</p>
+<hr>
+<h3 id="flex布局flex弹性伸缩盒展示用于块级元素inline-flex用于行内元素">flex布局：（flex）弹性伸缩盒展示，用于块级元素——（inline-flex）用于行内元素</h3>
+<h2 id="优点flex布局容易上手缺点浏览器兼容性比较差只能兼容到ie9及以上常用属性flex-direction-控制主轴justify-content主轴上的子项对齐方式align-items侧轴上的对齐方式flex-wrap指定flex子项是否换行align-content适用于多行align-self指定某个子项的对齐方式">优点：flex布局容易上手
+缺点：浏览器兼容性比较差，只能兼容到ie9及以上
+常用属性：
+flex-direction ////控制主轴
+justify-content//主轴上的子项对齐方式
+align-items//侧轴上的对齐方式
+flex-wrap///指定flex子项是否换行
+align-content///适用于多行，
+align-self////指定某个子项的对齐方式</h2>
+<h3 id="grid网格布局">grid网格布局</h3>
+<h2 id="优点灵活的区域网格容器和网格项缺点兼容性不好指定displaygrid行列单元格repeat重复属性设置宽高columnsrowsfr片段minmax设置最大最小值grid-row-gap行间隔grid-colunm-gap设置列间隔grid-auto-flow自定义排序类flex布局的定位属性">优点：灵活的区域网格容器和网格项
+缺点：兼容性不好
+指定display：grid
+行，列，单元格
+repeat（重复属性），设置宽高（columns，rows）
+fr（片段），minmax（设置最大最小值）,grid-row-gap（行间隔）
+grid-colunm-gap（设置列间隔）,grid-auto-flow（自定义排序）
+类flex布局的定位属性</h2>
+<h3 id="浮动布局">浮动布局</h3>
+<h2 id="优点元素浮动可以设置宽高可以文字环绕图片缺点元素浮动脱离文档流容易造成父级元素高度塌陷元素浮动后产生bfc靠子元素撑开高度且浮动不能单个浮动要多个需要时还需清除浮动与闭合浮动浮动大多数位置靠上靠左靠右解决高度塌陷开启父元素的bfc默认关闭在父元素最后添加一个div清除浮动使用after伪类清除浮动">优点：元素浮动可以设置宽高，可以文字环绕图片
+缺点：元素浮动脱离文档流，容易造成父级元素高度塌陷
+元素浮动后产生BFC，靠子元素撑开高度，且浮动不能单个浮动，要多个。
+需要时还需清除浮动与闭合浮动
+浮动大多数位置靠上，靠左，靠右
+解决高度塌陷：
+开启父元素的BFC（默认关闭）
+在父元素最后添加一个DIV清除浮动
+使用after伪类清除浮动</h2>
+<h3 id="border-style">border style</h3>
+<p>共八种样式：
+dotted
+dashed
+solid
+double
+groove
+ridge
+inset
+outset</p>
+<h3 id="css3动画属性">CSS3动画属性</h3>
+<p>通过hover改变属性样式，在主选择器中使用transition进行动画过渡。
+包括宽度和背景颜色都可以。
+2D转换有包括：
+位移（translate）：顾名思义，在原有位置上移动
+旋转（rotate）：在原有位置上旋转，类似网易云音乐的碟盘
+变形：改变属性形状
+缩放（scale）：在原有位置上进行放大或者缩小
+也包括3D转换，属性使用不同。
+浮动：浮动后与浮动同向的margin会偏移两倍，反方向margin解决。
+浮动中间可以使用多一个div来隔开浮动的效果。
+父浮动，子不变。
+选择器的学习，需要深入。</p>
+<h3 id="触发bfc块级格式化上下文">触发BFC：块级格式化上下文</h3>
+<h2 id="body根元素浮动元素float除none以外的值绝对定位元素positionabsolutefixeddisplay为inline-blocktable-cellsflexoverflow除了visible以外的值hiddenautoscroll1bfc可以容纳浮动元素2同一个bfc下外边距会发生折叠3bfc可以阻止元素被浮动元素覆盖">.body根元素
+.浮动元素：float除none以外的值
+.绝对定位元素：position（absolute，fixed）
+.display为inline-block，table-cells，flex
+.overflow除了visible以外的值（hidden，auto，scroll）
+1.BFC可以容纳浮动元素
+2.同一个BFC下外边距会发生折叠
+3.BFC可以阻止元素被浮动元素覆盖</h2>
+<h3 id="层叠上下文可以设置z-index来决定层叠">层叠上下文（可以设置z-index来决定层叠）</h3>
+<h2 id="z-index仅在position定位和非static上起效果层叠等级和层级上下文决定堆叠顺序由html标签产生的根层叠上下文决定权在z-index上inlineinline-block元素的层叠顺序要高于blockfloat元素层叠等级层叠顺序相同时后面的覆盖前面的">z-index仅在position定位和非static上起效果
+层叠等级和层级上下文决定堆叠顺序
+由html标签产生的根层叠上下文，决定权在z-index上
+inline/inline-block元素的层叠顺序要高于block/float元素
+层叠等级层叠顺序相同时，后面的覆盖前面的</h2>
+<h3 id="边距折叠">边距折叠</h3>
+<h2 id="相邻的非浮动元素发生折叠折叠发生在垂直外边距上折叠后取最大的那个margin值作为最终值浮动元素不折叠margin折叠只发生在块级元素上浮动元素不与其他元素margin折叠bfc不与它的子元素发生margin折叠绝对定位根元素不与任何margin折叠">相邻的非浮动元素发生折叠
+折叠发生在垂直外边距上
+折叠后取最大的那个margin值作为最终值
+浮动元素不折叠
+margin折叠只发生在块级元素上
+浮动元素不与其他元素margin折叠
+BFC不与它的子元素发生margin折叠
+绝对定位，根元素不与任何margin折叠</h2>
+<h3 id="浏览器渲染机制">浏览器渲染机制</h3>
+<p>1.HTML解析出DOM Tree
+2.CSS解析出Style Rules
+3.将二者关联生成Render Tree
+4.Layout根据Render Tree计算每个节点的信息
+5.Painting根据计算好的信息绘制整个页面
+回流（Reflow）：浏览器根据各自样式来计算结果并将元素放到它该出现的位置
+触发reflow：
+1.当增加，删除，修改DOM节点时，或是插入动画的时候
+2.当移动DOM的位置，或是插入动画的时候
+3.当修改CSS样式的时候
+4.当Resize窗口的时候，或是滚动的时候
+5.当修改网页的默认字体时
+重绘（Repaint）：盒子的各种属性确认后，浏览器按照各自的特性绘制。
+触发Repaint：
+1.DOM改动
+2.CSS改动
+回流必将引起重绘，重绘不一定会引起回流。</p>
+<h3 id="白屏">白屏</h3>
+<h3 id="fouc浏览器样式闪烁">FOUC（浏览器样式闪烁）</h3>
+<p>只有在IE浏览器下才会出现， 原因有：
+1.使用import方法导入样式表
+2.将样式表放在底部
+3.有几个样式表，放在HTML结构的不同位置
+解决方法：使用link标签将样式表放在head中</p>
+<h3 id="不同浏览器的默认样式">不同浏览器的默认样式</h3>
+<p>例如：ul自带margin16px
+去除默认margin和padding
+在选择器处</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">*</span><span style="color:#39ADB5;--shiki-dark:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> margin:0</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B"> padding:0</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">}</span></span></code></pre>
+<h3 id="css3动画使用">css3动画使用</h3>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">&#x3C;</span><span style="color:#90A4AE;--shiki-dark:#BABED8">img class</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">=</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">goods animated</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">.animated</span><span style="color:#91B859;--shiki-dark:#C3E88D"> {</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  animation-name:move</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//移动:keyframes定义的动画</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  animation-duation:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 3s</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//持续时间3s</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  animation-timing-function:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> linear</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//线性移动</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  animation-iteration-count:infinite</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//无限循环</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">@keyframes</span><span style="color:#91B859;--shiki-dark:#C3E88D"> move{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  from</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    transform:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> translateX</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">0</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">//从0点位X轴方向</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  to</span><span style="color:#91B859;--shiki-dark:#C3E88D">{</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">    transform:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> translateX</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">300px</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D">//正向移动300px</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">  }</span></span>
+<span class="line"><span style="color:#90A4AE;--shiki-dark:#BABED8">}</span></span></code></pre>
+<hr>
+<p>css：calc（）计算样式</p>
+<pre class="astro-code astro-code-themes material-theme-lighter material-theme-palenight" style="background-color:#FAFAFA;--shiki-dark-bg:#292D3E;color:#90A4AE;--shiki-dark:#babed8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">width:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> calc</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">100%</span><span style="color:#91B859;--shiki-dark:#C3E88D"> -</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 80px</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">);</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">//普通计算</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">--widthA:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 100px</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  --widthB:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> calc</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">var(--widthA</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D"> /</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 2</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  --widthC:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> calc</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">var(--widthB</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span><span style="color:#91B859;--shiki-dark:#C3E88D"> /</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 2</span><span style="color:#90A4AE;--shiki-dark:#BABED8">)</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">;</span></span>
+<span class="line"><span style="color:#E2931D;--shiki-dark:#FFCB6B">  width:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> var</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#E2931D;--shiki-dark:#FFCB6B">--widthC</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">);</span><span style="color:#E2931D;--shiki-dark:#FFCB6B"> //变量计算</span></span></code></pre>
+<h2 id="outline外边框">outline:外边框</h2>
+<p>relative定位参考链接：<a href="https://juejin.im/post/5afb7fc7518825426d2d4aff">https://juejin.im/post/5afb7fc7518825426d2d4aff</a>
+absolute定位参考链接：<a href="https://juejin.im/post/5aed4d3951882567236ea42e">https://juejin.im/post/5aed4d3951882567236ea42e</a></p>  </div> <div class="post-tags" data-astro-cid-gjtny2mx> <a href="/tags/CSS/" class="tag-pill" data-astro-cid-gjtny2mx>
+# CSS </a><a href="/tags/响应式布局/" class="tag-pill" data-astro-cid-gjtny2mx>
+# 响应式布局 </a> </div> </article> <nav class="post-nav" data-astro-cid-bknnyp27> <div class="pn-item pn-prev" data-astro-cid-bknnyp27> <a href="/posts/小程序开发经验/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27><i class="fas fa-angle-left" data-astro-cid-bknnyp27></i> Previous</span> <span class="pn-title" data-astro-cid-bknnyp27>小程序开发经验</span> </a> </div> <div class="pn-item pn-next" data-astro-cid-bknnyp27> <a href="/posts/使用hexo搭建个人博客/" data-astro-cid-bknnyp27> <span class="pn-label" data-astro-cid-bknnyp27>Next <i class="fas fa-angle-right" data-astro-cid-bknnyp27></i></span> <span class="pn-title" data-astro-cid-bknnyp27>使用HEXO搭建个人博客</span> </a> </div> </nav> <section class="related" data-astro-cid-dpgbfi7r><h2 class="related-title" data-astro-cid-dpgbfi7r><i class="fas fa-thumbs-up" data-astro-cid-dpgbfi7r></i> Related Posts</h2><div class="related-grid" data-astro-cid-dpgbfi7r><a class="related-item" href="/posts/水平垂直居中方式/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>水平垂直居中方式</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 7, 2021</span></a><a class="related-item" href="/posts/bfc/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>BFC</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 6, 2021</span></a><a class="related-item" href="/posts/清除浮动的方法/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>清除浮动的方法</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 11, 2020</span></a><a class="related-item" href="/posts/flex布局/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>Flex布局</span><span class="ri-date" data-astro-cid-dpgbfi7r>May 11, 2020</span></a><a class="related-item" href="/posts/css响应式设计/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS响应式设计</span><span class="ri-date" data-astro-cid-dpgbfi7r>Apr 16, 2021</span></a><a class="related-item" href="/posts/css基础/" data-astro-cid-dpgbfi7r><span class="ri-title" data-astro-cid-dpgbfi7r>CSS基础</span><span class="ri-date" data-astro-cid-dpgbfi7r>Mar 15, 2021</span></a></div></section> </main> <aside id="aside-content" data-astro-cid-gjtny2mx> <div class="card-widget toc-card" data-astro-cid-6t6zfk7k><div class="card-title" data-astro-cid-6t6zfk7k><i class="fas fa-list-ul" data-astro-cid-6t6zfk7k></i> Table of Contents</div><nav id="toc" data-astro-cid-6t6zfk7k><ol data-astro-cid-6t6zfk7k><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#202059-1501-write" data-target="202059-1501-write" data-astro-cid-6t6zfk7k>2020/5/9 15:01 Write</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#浮动的特点" data-target="浮动的特点" data-astro-cid-6t6zfk7k>浮动的特点</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#元素浮动后的效果" data-target="元素浮动后的效果" data-astro-cid-6t6zfk7k>元素浮动后的效果</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#定位" data-target="定位" data-astro-cid-6t6zfk7k>定位</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#层级" data-target="层级" data-astro-cid-6t6zfk7k>层级</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#flex布局flex弹性伸缩盒展示用于块级元素inline-flex用于行内元素" data-target="flex布局flex弹性伸缩盒展示用于块级元素inline-flex用于行内元素" data-astro-cid-6t6zfk7k>flex布局：（flex）弹性伸缩盒展示，用于块级元素——（inline-flex）用于行内元素</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#优点flex布局容易上手缺点浏览器兼容性比较差只能兼容到ie9及以上常用属性flex-direction-控制主轴justify-content主轴上的子项对齐方式align-items侧轴上的对齐方式flex-wrap指定flex子项是否换行align-content适用于多行align-self指定某个子项的对齐方式" data-target="优点flex布局容易上手缺点浏览器兼容性比较差只能兼容到ie9及以上常用属性flex-direction-控制主轴justify-content主轴上的子项对齐方式align-items侧轴上的对齐方式flex-wrap指定flex子项是否换行align-content适用于多行align-self指定某个子项的对齐方式" data-astro-cid-6t6zfk7k>优点：flex布局容易上手
+缺点：浏览器兼容性比较差，只能兼容到ie9及以上
+常用属性：
+flex-direction ////控制主轴
+justify-content//主轴上的子项对齐方式
+align-items//侧轴上的对齐方式
+flex-wrap///指定flex子项是否换行
+align-content///适用于多行，
+align-self////指定某个子项的对齐方式</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#grid网格布局" data-target="grid网格布局" data-astro-cid-6t6zfk7k>grid网格布局</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#优点灵活的区域网格容器和网格项缺点兼容性不好指定displaygrid行列单元格repeat重复属性设置宽高columnsrowsfr片段minmax设置最大最小值grid-row-gap行间隔grid-colunm-gap设置列间隔grid-auto-flow自定义排序类flex布局的定位属性" data-target="优点灵活的区域网格容器和网格项缺点兼容性不好指定displaygrid行列单元格repeat重复属性设置宽高columnsrowsfr片段minmax设置最大最小值grid-row-gap行间隔grid-colunm-gap设置列间隔grid-auto-flow自定义排序类flex布局的定位属性" data-astro-cid-6t6zfk7k>优点：灵活的区域网格容器和网格项
+缺点：兼容性不好
+指定display：grid
+行，列，单元格
+repeat（重复属性），设置宽高（columns，rows）
+fr（片段），minmax（设置最大最小值）,grid-row-gap（行间隔）
+grid-colunm-gap（设置列间隔）,grid-auto-flow（自定义排序）
+类flex布局的定位属性</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#浮动布局" data-target="浮动布局" data-astro-cid-6t6zfk7k>浮动布局</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#优点元素浮动可以设置宽高可以文字环绕图片缺点元素浮动脱离文档流容易造成父级元素高度塌陷元素浮动后产生bfc靠子元素撑开高度且浮动不能单个浮动要多个需要时还需清除浮动与闭合浮动浮动大多数位置靠上靠左靠右解决高度塌陷开启父元素的bfc默认关闭在父元素最后添加一个div清除浮动使用after伪类清除浮动" data-target="优点元素浮动可以设置宽高可以文字环绕图片缺点元素浮动脱离文档流容易造成父级元素高度塌陷元素浮动后产生bfc靠子元素撑开高度且浮动不能单个浮动要多个需要时还需清除浮动与闭合浮动浮动大多数位置靠上靠左靠右解决高度塌陷开启父元素的bfc默认关闭在父元素最后添加一个div清除浮动使用after伪类清除浮动" data-astro-cid-6t6zfk7k>优点：元素浮动可以设置宽高，可以文字环绕图片
+缺点：元素浮动脱离文档流，容易造成父级元素高度塌陷
+元素浮动后产生BFC，靠子元素撑开高度，且浮动不能单个浮动，要多个。
+需要时还需清除浮动与闭合浮动
+浮动大多数位置靠上，靠左，靠右
+解决高度塌陷：
+开启父元素的BFC（默认关闭）
+在父元素最后添加一个DIV清除浮动
+使用after伪类清除浮动</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#border-style" data-target="border-style" data-astro-cid-6t6zfk7k>border style</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#css3动画属性" data-target="css3动画属性" data-astro-cid-6t6zfk7k>CSS3动画属性</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#触发bfc块级格式化上下文" data-target="触发bfc块级格式化上下文" data-astro-cid-6t6zfk7k>触发BFC：块级格式化上下文</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#body根元素浮动元素float除none以外的值绝对定位元素positionabsolutefixeddisplay为inline-blocktable-cellsflexoverflow除了visible以外的值hiddenautoscroll1bfc可以容纳浮动元素2同一个bfc下外边距会发生折叠3bfc可以阻止元素被浮动元素覆盖" data-target="body根元素浮动元素float除none以外的值绝对定位元素positionabsolutefixeddisplay为inline-blocktable-cellsflexoverflow除了visible以外的值hiddenautoscroll1bfc可以容纳浮动元素2同一个bfc下外边距会发生折叠3bfc可以阻止元素被浮动元素覆盖" data-astro-cid-6t6zfk7k>.body根元素
+.浮动元素：float除none以外的值
+.绝对定位元素：position（absolute，fixed）
+.display为inline-block，table-cells，flex
+.overflow除了visible以外的值（hidden，auto，scroll）
+1.BFC可以容纳浮动元素
+2.同一个BFC下外边距会发生折叠
+3.BFC可以阻止元素被浮动元素覆盖</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#层叠上下文可以设置z-index来决定层叠" data-target="层叠上下文可以设置z-index来决定层叠" data-astro-cid-6t6zfk7k>层叠上下文（可以设置z-index来决定层叠）</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#z-index仅在position定位和非static上起效果层叠等级和层级上下文决定堆叠顺序由html标签产生的根层叠上下文决定权在z-index上inlineinline-block元素的层叠顺序要高于blockfloat元素层叠等级层叠顺序相同时后面的覆盖前面的" data-target="z-index仅在position定位和非static上起效果层叠等级和层级上下文决定堆叠顺序由html标签产生的根层叠上下文决定权在z-index上inlineinline-block元素的层叠顺序要高于blockfloat元素层叠等级层叠顺序相同时后面的覆盖前面的" data-astro-cid-6t6zfk7k>z-index仅在position定位和非static上起效果
+层叠等级和层级上下文决定堆叠顺序
+由html标签产生的根层叠上下文，决定权在z-index上
+inline/inline-block元素的层叠顺序要高于block/float元素
+层叠等级层叠顺序相同时，后面的覆盖前面的</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#边距折叠" data-target="边距折叠" data-astro-cid-6t6zfk7k>边距折叠</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#相邻的非浮动元素发生折叠折叠发生在垂直外边距上折叠后取最大的那个margin值作为最终值浮动元素不折叠margin折叠只发生在块级元素上浮动元素不与其他元素margin折叠bfc不与它的子元素发生margin折叠绝对定位根元素不与任何margin折叠" data-target="相邻的非浮动元素发生折叠折叠发生在垂直外边距上折叠后取最大的那个margin值作为最终值浮动元素不折叠margin折叠只发生在块级元素上浮动元素不与其他元素margin折叠bfc不与它的子元素发生margin折叠绝对定位根元素不与任何margin折叠" data-astro-cid-6t6zfk7k>相邻的非浮动元素发生折叠
+折叠发生在垂直外边距上
+折叠后取最大的那个margin值作为最终值
+浮动元素不折叠
+margin折叠只发生在块级元素上
+浮动元素不与其他元素margin折叠
+BFC不与它的子元素发生margin折叠
+绝对定位，根元素不与任何margin折叠</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#浏览器渲染机制" data-target="浏览器渲染机制" data-astro-cid-6t6zfk7k>浏览器渲染机制</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#白屏" data-target="白屏" data-astro-cid-6t6zfk7k>白屏</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#fouc浏览器样式闪烁" data-target="fouc浏览器样式闪烁" data-astro-cid-6t6zfk7k>FOUC（浏览器样式闪烁）</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#不同浏览器的默认样式" data-target="不同浏览器的默认样式" data-astro-cid-6t6zfk7k>不同浏览器的默认样式</a></li><li class="toc-l1" data-astro-cid-6t6zfk7k><a href="#css3动画使用" data-target="css3动画使用" data-astro-cid-6t6zfk7k>css3动画使用</a></li><li class="toc-l0" data-astro-cid-6t6zfk7k><a href="#outline外边框" data-target="outline外边框" data-astro-cid-6t6zfk7k>outline:外边框</a></li></ol></nav></div><script type="module">const r=Array.from(document.querySelectorAll("#toc a[data-target]"));if(r.length){const a=new Map(r.map(t=>[t.dataset.target,t])),o=new IntersectionObserver(t=>{for(const e of t)e.isIntersecting&&(r.forEach(s=>s.classList.remove("active")),a.get(e.target.id)?.classList.add("active"))},{rootMargin:"-10% 0px -80% 0px",threshold:0});r.forEach(t=>{const e=document.getElementById(t.dataset.target);e&&o.observe(e)})}</script> </aside> </div>  <footer id="footer" data-astro-cid-sz7xmlte> <div class="footer-inner" data-astro-cid-sz7xmlte> <div class="footer-badges" data-astro-cid-sz7xmlte> <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=314486495" data-astro-cid-sz7xmlte> <img alt="Music" src="https://img.shields.io/badge/Music-NetEase-%23FF0000" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://github.com/DarylWxc" data-astro-cid-sz7xmlte> <img alt="Github" src="https://img.shields.io/badge/HomePage-Github-d021d6?style=flat&logo=GitHub" data-astro-cid-sz7xmlte> </a> <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199093623098/" data-astro-cid-sz7xmlte> <img alt="Steam" src="https://img.shields.io/badge/Community-Steam-171d25?logo=Steam" data-astro-cid-sz7xmlte> </a> </div> <div class="footer-owner" data-astro-cid-sz7xmlte>
+&copy; 2019 - 2026 <a href="/" data-astro-cid-sz7xmlte>DarylWxc</a> </div> <div class="footer-msg" data-astro-cid-sz7xmlte>
+Powered by <a href="https://astro.build" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>Astro</a> <span id="heartbeat" data-astro-cid-sz7xmlte><i class="fas fa-heart" data-astro-cid-sz7xmlte></i></span>
+Made with love
+</div> </div> </footer> <div id="rightside" data-astro-cid-v4o2aonp> <button id="darkmode-toggle" class="rightside-btn" aria-label="Toggle dark mode" data-astro-cid-v4o2aonp> <i class="fas fa-moon" data-astro-cid-v4o2aonp></i> </button> <button id="go-up" class="rightside-btn" aria-label="Scroll to top" data-astro-cid-v4o2aonp> <i class="fas fa-arrow-up" data-astro-cid-v4o2aonp></i> </button> </div>  <script type="module">document.getElementById("go-up")?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const o=document.getElementById("darkmode-toggle"),n=o?.querySelector("i"),d=()=>{const t=document.documentElement.getAttribute("data-theme")==="dark";n&&(n.className=t?"fas fa-sun":"fas fa-moon")};o?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e),d()});d();</script> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="music-player"> <button id="music-handle" aria-label="Toggle music player"> <i class="fas fa-music"></i> </button> <div class="aplayer no-destroy" data-id="8515499831" data-server="netease" data-type="playlist" data-fixed="false" data-autoplay="false" data-list-folded="true" data-list-max-height="250px" data-lrcType="-1" data-theme="#49b1f5" data-order="list" data-preload="auto" data-volume="0.7"></div> </div>  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script>  <script>
+  document.getElementById("music-handle")?.addEventListener("click", () => {
+    document.getElementById("music-player")?.classList.toggle("open");
+  });
+</script>  <script>
+      document.querySelector(".scroll-down")?.addEventListener("click", () => {
+        const h = document.getElementById("page-header");
+        if (h)
+          window.scrollTo({ top: h.offsetHeight - 50, behavior: "smooth" });
+      });
+    </script>  <script>
+      document.querySelectorAll("pre.astro-code").forEach((pre) => {
+        if (pre.querySelector(".copy-btn")) return;
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+        btn.addEventListener("click", () => {
+          const code = pre.querySelector("code");
+          navigator.clipboard
+            .writeText(code ? code.innerText : pre.innerText)
+            .then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+        });
+        pre.appendChild(btn);
+      });
+    </script>  <script>
+      (function () {
+        const colors = ["#ff6b81", "#ff4757", "#ff7242", "#ffa502", "#eccc68"];
+        document.addEventListener("click", (e) => {
+          const heart = document.createElement("span");
+          heart.className = "click-heart";
+          heart.textContent = "❤";
+          heart.style.left = e.clientX + "px";
+          heart.style.top = e.clientY + "px";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1000);
+        });
+      })();
+    </script> </body> </html>
